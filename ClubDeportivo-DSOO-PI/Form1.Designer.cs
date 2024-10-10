@@ -29,39 +29,13 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.TxtUsuario = new System.Windows.Forms.TextBox();
-            this.Txtcontrasenia = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.LogoClub = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnIngresar = new System.Windows.Forms.Button();
+            this.txtUsuario = new System.Windows.Forms.TextBox();
+            this.txtPass = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.LogoClub)).BeginInit();
             this.SuspendLayout();
-            // 
-            // TxtUsuario
-            // 
-            this.TxtUsuario.Location = new System.Drawing.Point(424, 117);
-            this.TxtUsuario.Margin = new System.Windows.Forms.Padding(5);
-            this.TxtUsuario.Name = "TxtUsuario";
-            this.TxtUsuario.Size = new System.Drawing.Size(285, 20);
-            this.TxtUsuario.TabIndex = 0;
-            this.TxtUsuario.Text = "USUARIO";
-            // 
-            // Txtcontrasenia
-            // 
-            this.Txtcontrasenia.Location = new System.Drawing.Point(424, 188);
-            this.Txtcontrasenia.Name = "Txtcontrasenia";
-            this.Txtcontrasenia.Size = new System.Drawing.Size(285, 20);
-            this.Txtcontrasenia.TabIndex = 1;
-            this.Txtcontrasenia.Text = "CONTRASEÑA";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.button1.Location = new System.Drawing.Point(518, 262);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(123, 44);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "INGRESAR";
-            this.button1.UseVisualStyleBackColor = false;
             // 
             // LogoClub
             // 
@@ -73,17 +47,60 @@
             this.LogoClub.TabIndex = 3;
             this.LogoClub.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Modern No. 20", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(474, 50);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(230, 29);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Ingreso al sistema";
+            // 
+            // btnIngresar
+            // 
+            this.btnIngresar.Location = new System.Drawing.Point(532, 252);
+            this.btnIngresar.Name = "btnIngresar";
+            this.btnIngresar.Size = new System.Drawing.Size(131, 30);
+            this.btnIngresar.TabIndex = 5;
+            this.btnIngresar.Text = "INGRESAR";
+            this.btnIngresar.UseVisualStyleBackColor = true;
+            // 
+            // txtUsuario
+            // 
+            this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsuario.Location = new System.Drawing.Point(458, 120);
+            this.txtUsuario.Name = "txtUsuario";
+            this.txtUsuario.Size = new System.Drawing.Size(246, 26);
+            this.txtUsuario.TabIndex = 6;
+            this.txtUsuario.Text = "USUARIO";
+            this.txtUsuario.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtUsuario.Enter += new System.EventHandler(this.textBox1_Enter);
+            this.txtUsuario.Leave += new System.EventHandler(this.txtUsuario_Leave);
+            // 
+            // txtPass
+            // 
+            this.txtPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPass.Location = new System.Drawing.Point(458, 174);
+            this.txtPass.Name = "txtPass";
+            this.txtPass.Size = new System.Drawing.Size(246, 26);
+            this.txtPass.TabIndex = 7;
+            this.txtPass.Text = "CONTRASEÑA";
+            this.txtPass.Enter += new System.EventHandler(this.txtPass_Enter);
+            this.txtPass.Leave += new System.EventHandler(this.txtPass_Leave);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtPass);
+            this.Controls.Add(this.txtUsuario);
+            this.Controls.Add(this.btnIngresar);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.LogoClub);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.Txtcontrasenia);
-            this.Controls.Add(this.TxtUsuario);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Login";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.LogoClub)).EndInit();
             this.ResumeLayout(false);
@@ -92,11 +109,12 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox TxtUsuario;
-        private System.Windows.Forms.TextBox Txtcontrasenia;
-        private System.Windows.Forms.Button button1;
+        
         private System.Windows.Forms.PictureBox LogoClub;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnIngresar;
+        private System.Windows.Forms.TextBox txtUsuario;
+        private System.Windows.Forms.TextBox txtPass;
     }
 }
 
