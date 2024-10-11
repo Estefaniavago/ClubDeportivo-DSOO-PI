@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ClubDeportivo.Datos;
+using Org.BouncyCastle.Pqc.Crypto.Lms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -66,6 +68,23 @@ namespace ClubDeportivo_DSOO_PI
                 txtPass.Text = "CONTRASEÑA";
                 /*Quiero que no se va la contraseña cuando la escribo*/
                 txtPass.UseSystemPasswordChar = false;/*Si es true todo lo que escribo esta camuflado*/
+            }
+
+        }
+
+        private void btnIngresar_Click(object sender, EventArgs e)
+        {
+            DataTable tablaLogin = new DataTable(); // es la que recibe los datos desde el formulario
+            Usuarios dato = new Usuarios(); // variable que contiene todas las caracteristicas de la clase
+            tablaLogin = dato.Log_Usu(txtUsuario.Text, txtPass.Text);
+            if (tablaLogin.Rows.Count > 0)
+            {
+                // quiere decir que el resultado tiene 1 fila por lo que el usuario EXISTE
+                 MessageBox.Show("Ingreso exitoso");
+            }
+            else
+            {
+                MessageBox.Show("Usuario y/o password incorrecto");
             }
 
         }
