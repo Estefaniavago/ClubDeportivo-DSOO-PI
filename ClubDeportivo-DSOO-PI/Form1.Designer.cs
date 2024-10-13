@@ -29,93 +29,88 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.LogoClub = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnIngresar = new System.Windows.Forms.Button();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.txtPass = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.LogoClub)).BeginInit();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // LogoClub
-            // 
-            this.LogoClub.Image = ((System.Drawing.Image)(resources.GetObject("LogoClub.Image")));
-            this.LogoClub.Location = new System.Drawing.Point(82, 74);
-            this.LogoClub.Name = "LogoClub";
-            this.LogoClub.Size = new System.Drawing.Size(298, 242);
-            this.LogoClub.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.LogoClub.TabIndex = 3;
-            this.LogoClub.TabStop = false;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Modern No. 20", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(474, 50);
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(57)))), ((int)(((byte)(80)))));
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(230, 29);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Ingreso al sistema";
-            // 
-            // btnIngresar
-            // 
-            this.btnIngresar.Location = new System.Drawing.Point(532, 252);
-            this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(131, 30);
-            this.btnIngresar.TabIndex = 5;
-            this.btnIngresar.Text = "INGRESAR";
-            this.btnIngresar.UseVisualStyleBackColor = true;
-            this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsuario.Location = new System.Drawing.Point(458, 120);
+            resources.ApplyResources(this.txtUsuario, "txtUsuario");
+            this.txtUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(246, 26);
-            this.txtUsuario.TabIndex = 6;
-            this.txtUsuario.Text = "USUARIO";
             this.txtUsuario.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.txtUsuario.Enter += new System.EventHandler(this.textBox1_Enter);
             this.txtUsuario.Leave += new System.EventHandler(this.txtUsuario_Leave);
             // 
             // txtPass
             // 
-            this.txtPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPass.Location = new System.Drawing.Point(458, 174);
+            resources.ApplyResources(this.txtPass, "txtPass");
+            this.txtPass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtPass.Name = "txtPass";
-            this.txtPass.Size = new System.Drawing.Size(246, 26);
-            this.txtPass.TabIndex = 7;
-            this.txtPass.Text = "CONTRASEÑA";
             this.txtPass.Enter += new System.EventHandler(this.txtPass_Enter);
             this.txtPass.Leave += new System.EventHandler(this.txtPass_Leave);
             // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Name = "label2";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Name = "label3";
+            // 
+            // pictureBox1
+            // 
+            resources.ApplyResources(this.pictureBox1, "pictureBox1");
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::ClubDeportivo_DSOO_PI.Properties.Resources.ClubDeportivoPOORecurso_1_3x;
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.txtPass);
             this.Controls.Add(this.txtUsuario);
-            this.Controls.Add(this.btnIngresar);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.LogoClub);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Name = "Form1";
-            this.Text = "Login";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.LogoClub)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        
-        private System.Windows.Forms.PictureBox LogoClub;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnIngresar;
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.TextBox txtPass;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
