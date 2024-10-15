@@ -27,7 +27,7 @@ namespace ClubDeportivo.Datos
             servidor = "localhost";
             puerto = "3306";
             usuario = "root";
-            clave = "I.Gm.a0510";
+            clave = "root";
         }
         // proceso de interacción
         public MySqlConnection CrearConexion()
