@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
-
+//Creo una clase para el estilo personalizado de los botones para no usar librerias.
 public class CustomButton : Button
 {
     protected override void OnPaint(PaintEventArgs pevent)

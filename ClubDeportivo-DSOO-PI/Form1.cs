@@ -20,11 +20,14 @@ namespace ClubDeportivo_DSOO_PI
         public Form1()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.Manual; // posición manual
+            this.Size = new Size(800, 450); // tamaño
+            this.Location = new Point(100, 100); // posición en la pantalla
         }
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            // Dibuja un fondo degradado
+            // fondo degradado
             LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle,
                 Color.LightBlue, Color.White, 90F);
             e.Graphics.FillRectangle(brush, this.ClientRectangle);
@@ -34,21 +37,32 @@ namespace ClubDeportivo_DSOO_PI
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            // Crear botón personalizado
+            // Botón personalizado Ingresar
             CustomButton btnIngresar = new CustomButton();
             btnIngresar.Text = "INGRESAR";
             btnIngresar.Size = new Size(150, 40);
-            btnIngresar.Location = new Point(505, 300); // Ajusta la posición
+            btnIngresar.Location = new Point(400, 282); // Ajusta la posición
             btnIngresar.BackColor = Color.FromArgb(12, 57, 80); // Color de fondo inicial
             btnIngresar.ForeColor = Color.White; // Color del texto
             btnIngresar.Click += btnIngresar_Click; // Asocia el evento
             this.Controls.Add(btnIngresar); // Añade el botón al formulario
 
             txtPass.Text = "CONTRASEÑA";
-            txtPass.UseSystemPasswordChar = false; // Asegúrate de que el texto esté visible inicialmente
+            txtPass.UseSystemPasswordChar = false; //  texto visible inicialmente
 
             txtUsuario.Text = "USUARIO";
             txtUsuario.ForeColor = Color.FromArgb(12, 57, 80);
+
+            // Configuración del botón "SALIR"
+            CustomButton btnSalir = new CustomButton();
+            btnSalir.Text = "SALIR";
+            btnSalir.Size = new Size(150, 40);
+            btnSalir.Location = new Point(600, 282);
+            btnSalir.BackColor = Color.FromArgb(12, 57, 80); // Color de fondo
+            btnSalir.ForeColor = Color.White; // Color del texto
+            btnSalir.Click += BtnSalir_Click; // Asocia el evento
+            this.Controls.Add(btnSalir); // Añade el botón al formulario
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -62,7 +76,7 @@ namespace ClubDeportivo_DSOO_PI
             if (txtUsuario.Text == "USUARIO")
             {
                 txtUsuario.Text = "";
-                txtUsuario.ForeColor = Color.Black; // Cambia el color al foco
+                txtUsuario.ForeColor = Color.Black; 
             }
         }
 
@@ -72,7 +86,7 @@ namespace ClubDeportivo_DSOO_PI
             if (string.IsNullOrEmpty(txtUsuario.Text))
             {
                 txtUsuario.Text = "USUARIO";
-                txtUsuario.ForeColor = Color.Gray; // Restaura el color del marcador
+                txtUsuario.ForeColor = Color.Gray; 
             }
         }
 
@@ -93,7 +107,7 @@ namespace ClubDeportivo_DSOO_PI
                 txtPass.UseSystemPasswordChar = false; // Muestra el texto
             }
         }
-    
+
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
@@ -103,16 +117,19 @@ namespace ClubDeportivo_DSOO_PI
             if (tablaLogin.Rows.Count > 0)
             {
                 // quiere decir que el resultado tiene 1 fila por lo que el usuario EXISTE
-                 MessageBox.Show("Ingreso exitoso");
+                string nombreUsuario = tablaLogin.Rows[0]["nombreUsuario"].ToString();
 
-                Form2 form2 = new Form2();
+                MessageBox.Show($"Ingreso exitoso. Bienvenid@ {nombreUsuario}");
 
-                form2.Show();
-                this.Hide();
+
+                Form2 form2 = new Form2(nombreUsuario);
+                form2.ShowDialog();
+
+
             }
             else
             {
-                MessageBox.Show("Usuario y/o password incorrecto");
+                MessageBox.Show("Usuario y/o password incorrecto. Inente nuevamente");
             }
 
         }
@@ -129,6 +146,15 @@ namespace ClubDeportivo_DSOO_PI
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void BtnSalir_Click(object sender, EventArgs e)
+        {
+           
+                MessageBox.Show($"Hasta luego!!");
+                this.Close(); // Cierra el formulario
+
 
         }
     }
