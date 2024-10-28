@@ -132,5 +132,10 @@ namespace ClubDeportivo_DSOO_PI
         {
 
         }
+
+        private void Form2_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

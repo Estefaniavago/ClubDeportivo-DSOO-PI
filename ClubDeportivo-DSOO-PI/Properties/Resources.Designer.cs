@@ -73,6 +73,16 @@ namespace ClubDeportivo_DSOO_PI.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap crossfit_3180368_1280 {
+            get {
+                object obj = ResourceManager.GetObject("crossfit-3180368_1280", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap fitmoveRecurso_2_3x {
             get {
                 object obj = ResourceManager.GetObject("fitmoveRecurso 2@3x", resourceCulture);
