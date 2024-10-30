@@ -250,7 +250,7 @@
     <value>3</value>
   </data>
   <data name="btnIngresar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>587, 283</value>
+    <value>501, 283</value>
   </data>
   <data name="btnIngresar.Size" type="System.Drawing.Size, System.Drawing">
     <value>167, 43</value>
