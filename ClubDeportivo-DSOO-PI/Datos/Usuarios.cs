@@ -24,7 +24,7 @@ namespace ClubDeportivo.Datos
             try
             {
                 sqlCon = Conexion.getInstancia().CrearConexion();
-                MySqlCommand comando = new MySqlCommand("RegistrarPersona", sqlCon); // Supongamos que tienes un procedimiento almacenado llamado RegistrarPersona
+                MySqlCommand comando = new MySqlCommand("RegistrarPersona", sqlCon); 
                 comando.CommandType = CommandType.StoredProcedure;
 
                 comando.Parameters.Add("nom", MySqlDbType.VarChar).Value = persona.nombre;

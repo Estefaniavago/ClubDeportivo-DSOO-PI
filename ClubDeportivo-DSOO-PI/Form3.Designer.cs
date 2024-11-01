@@ -138,7 +138,6 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(132, 22);
             this.txtNombre.TabIndex = 8;
-            
             // 
             // txtApellido
             // 
@@ -179,6 +178,7 @@
             this.Socio.TabStop = true;
             this.Socio.Text = "Socio";
             this.Socio.UseVisualStyleBackColor = true;
+            this.Socio.CheckedChanged += new System.EventHandler(this.Socio_CheckedChanged);
             // 
             // rbNoSocio
             // 
@@ -191,6 +191,7 @@
             this.rbNoSocio.TabStop = true;
             this.rbNoSocio.Text = "No Socio";
             this.rbNoSocio.UseVisualStyleBackColor = true;
+            this.rbNoSocio.CheckedChanged += new System.EventHandler(this.rbNoSocio_CheckedChanged);
             // 
             // chkAptoFisico
             // 
@@ -216,12 +217,11 @@
             // dtgvRegistro
             // 
             this.dtgvRegistro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvRegistro.Location = new System.Drawing.Point(110, 420);
+            this.dtgvRegistro.Location = new System.Drawing.Point(110, 383);
             this.dtgvRegistro.Name = "dtgvRegistro";
             this.dtgvRegistro.RowHeadersWidth = 51;
-            this.dtgvRegistro.Size = new System.Drawing.Size(837, 108);
+            this.dtgvRegistro.Size = new System.Drawing.Size(837, 159);
             this.dtgvRegistro.TabIndex = 16;
-            
             // 
             // btnSalir
             // 
@@ -234,6 +234,7 @@
             this.btnSalir.TabIndex = 17;
             this.btnSalir.Text = "SALIR";
             this.btnSalir.UseVisualStyleBackColor = false;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // registroUsuario
             // 

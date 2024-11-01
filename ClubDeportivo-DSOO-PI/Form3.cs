@@ -28,7 +28,7 @@ namespace ClubDeportivo_DSOO_PI
                 return;
             }
 
-            // Recoger los datos del formulario
+            // Recoger los datos del formulario .
             string nombre = txtNombre.Text;
             string apellido = txtApellido.Text;
             string tipoDoc = cboxTipoDocumento.SelectedItem?.ToString() ?? string.Empty;
@@ -41,6 +41,9 @@ namespace ClubDeportivo_DSOO_PI
             int nroDoc = Convert.ToInt32(txtNumero.Text);
             bool aptoFisico = chkAptoFisico.Checked;
 
+            // Determinar si el usuario es socio o no
+            bool esSocio = Socio.Checked;
+
             // Crear el objeto de tipo E_Persona
             E_Persona nuevaPersona = new E_Persona()
             {
@@ -48,7 +51,8 @@ namespace ClubDeportivo_DSOO_PI
                 apellido = apellido,
                 tipodoc = tipoDoc,
                 nrodoc = nroDoc,
-                aptofisico = aptoFisico
+                aptofisico = aptoFisico,
+                condicion = esSocio
             };
 
             // Llamar al método de la clase Persona para registrar al nuevo usuario
@@ -75,7 +79,7 @@ namespace ClubDeportivo_DSOO_PI
         // Método para manejar el evento CheckedChanged del checkbox chkAptoFisico
         private void chkAptoFisico_CheckedChanged(object sender, EventArgs e)
         {
-            // Este método puede estar vacío o puedes agregar lógica adicional si necesitas hacer algo cada vez que cambie el estado del checkbox
+            
         }
 
 
@@ -88,30 +92,82 @@ namespace ClubDeportivo_DSOO_PI
                 Persona personaDatos = new Persona();
                 DataTable usuarios = personaDatos.ObtenerUsuarios();
 
-                usuarios.Columns.Add("EstadoSocio", typeof(string));
+                // Añadir una columna extra para mostrar si es socio o no de manera descriptiva, si no existe ya
+                if (!usuarios.Columns.Contains("EstadoSocio"))
+                {
+                    usuarios.Columns.Add("EstadoSocio", typeof(string));
+                }
+
+                // Asegurarse de que la columna `aptofisico` esté presente y tenga datos válidos
+                if (!usuarios.Columns.Contains("aptofisico"))
+                {
+                    usuarios.Columns.Add("aptofisico", typeof(bool));
+                }
 
                 foreach (DataRow row in usuarios.Rows)
                 {
-                    row["EstadoSocio"] = (bool)row["condicion"] ? "Socio" : "No Socio";
+                    // Definir si es socio o no según la columna `condicion`
+                    if (row["condicion"] != DBNull.Value)
+                    {
+                        row["EstadoSocio"] = (bool)row["condicion"] ? "Socio" : "No Socio";
+                    }
+                    else
+                    {
+                        row["EstadoSocio"] = "No Especificado";
+                    }
+
+                    // Asegurarse de que `aptofisico` tenga un valor booleano
+                    if (row["aptofisico"] == DBNull.Value)
+                    {
+                        row["aptofisico"] = false;
+                    }
                 }
+
                 // Asignar el DataTable al DataGridView
                 dtgvRegistro.DataSource = usuarios;
-            
-                if (dtgvRegistro.Columns.Contains("condicion"))
-            {
-                dtgvRegistro.Columns["condicion"].Visible = false;
-            }
 
-            // Cambiar el encabezado de la columna "EstadoSocio"
-            if (dtgvRegistro.Columns.Contains("EstadoSocio"))
+                // Configurar la columna `aptofisico` para que sea de tipo `CheckBoxColumn`
+                if (dtgvRegistro.Columns.Contains("aptofisico"))
+                {
+                    dtgvRegistro.Columns["aptofisico"].ReadOnly = true; 
+                    dtgvRegistro.Columns["aptofisico"].HeaderText = "Apto Físico";
+                }
+            
+
+                // Ocultar la columna original "condicion" para evitar confusiones
+                if (dtgvRegistro.Columns.Contains("condicion"))
+                {
+                    dtgvRegistro.Columns["condicion"].Visible = false;
+                }
+            }
+            catch (Exception ex)
             {
-                dtgvRegistro.Columns["EstadoSocio"].HeaderText = "Socio / No Socio";
+                MessageBox.Show($"Error al cargar los usuarios: {ex.Message}", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-    catch (Exception ex)
-    {
-        MessageBox.Show($"Error al cargar los usuarios: {ex.Message}", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
-    }
-}
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show($"Hasta luego");
+            this.Close(); // Cierra el formulario actual
+        }
+
+        private void Socio_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Socio.Checked)
+            {
+                rbNoSocio.Checked = false; // Desmarcar "No Socio" si se selecciona "Socio"
+            }
+
+        }
+
+        private void rbNoSocio_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbNoSocio.Checked)
+            {
+                Socio.Checked = false; // Desmarcar "Socio" si se selecciona "No Socio"
+            }
+
+        }
     }
 }
