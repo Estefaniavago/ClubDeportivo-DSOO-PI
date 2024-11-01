@@ -1,4 +1,6 @@
-﻿using MySql.Data.MySqlClient;
+﻿using ClubDeportivo_DSOO_PI.Datos;
+using ClubDeportivo_DSOO_PI.Entidades;
+using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI;
 using System;
 using System.CodeDom;
@@ -13,6 +15,50 @@ namespace ClubDeportivo.Datos
 {
     internal class Usuarios
     {
+        //Método para agregar persona
+        public string RegistrarPersona(E_Persona persona)
+        {
+            string respuesta = "";
+            MySqlConnection sqlCon = new MySqlConnection();
+
+            try
+            {
+                sqlCon = Conexion.getInstancia().CrearConexion();
+                MySqlCommand comando = new MySqlCommand("RegistrarPersona", sqlCon); // Supongamos que tienes un procedimiento almacenado llamado RegistrarPersona
+                comando.CommandType = CommandType.StoredProcedure;
+
+                comando.Parameters.Add("nom", MySqlDbType.VarChar).Value = persona.nombre;
+                comando.Parameters.Add("ape", MySqlDbType.VarChar).Value = persona.apellido;
+                comando.Parameters.Add("tipo", MySqlDbType.VarChar).Value = persona.tipodoc;
+                comando.Parameters.Add("doc", MySqlDbType.Int32).Value = persona.nrodoc;
+                comando.Parameters.Add("apto", MySqlDbType.Bit).Value = persona.aptofisico;
+                comando.Parameters.Add("cond", MySqlDbType.Bit).Value = persona.condicion;
+
+                MySqlParameter resParam = new MySqlParameter("res", MySqlDbType.Int32);
+                resParam.Direction = ParameterDirection.Output;
+                comando.Parameters.Add(resParam);
+
+                sqlCon.Open();
+                int filasAfectadas = comando.ExecuteNonQuery();
+                respuesta = filasAfectadas > 0 ? "Registro exitoso" : "Error al registrar";
+
+            }
+            catch (Exception ex)
+            {
+                respuesta = ex.Message;
+            }
+            finally
+            {
+                if (sqlCon.State == ConnectionState.Open)
+                {
+                    sqlCon.Close();
+                }
+            }
+            return respuesta;
+        }
+
+
+
         // creamos un metodo que retorne una tabla con la informacion
         public DataTable Log_Usu(string L_usu, string P_usu)
         {

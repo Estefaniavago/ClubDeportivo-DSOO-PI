@@ -57,7 +57,17 @@ namespace ClubDeportivo_DSOO_PI
 
         private void button2_Click(object sender, EventArgs e)
         {
+            MessageBox.Show($"Hasta luego, {nombreUsuario}.");
+            this.Close(); // Cierra el formulario actual
+        }
 
+        private void btnRegistro_Click(object sender, EventArgs e)
+        {
+            // Crear una instancia del formulario Form3 (registroUsuario)
+            registroUsuario form3 = new registroUsuario();
+            
+            // Mostrar el formulario Form3
+            form3.ShowDialog();
         }
     }
 }
