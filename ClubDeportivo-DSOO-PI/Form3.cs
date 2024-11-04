@@ -44,6 +44,12 @@ namespace ClubDeportivo_DSOO_PI
             // Determinar si el usuario es socio o no
             bool esSocio = Socio.Checked;
 
+            if (esSocio)
+            {
+                MessageBox.Show("Debe pagar la cuota");
+
+            }
+
             // Crear el objeto de tipo E_Persona
             E_Persona nuevaPersona = new E_Persona()
             {
@@ -167,6 +173,11 @@ namespace ClubDeportivo_DSOO_PI
             {
                 Socio.Checked = false; // Desmarcar "Socio" si se selecciona "No Socio"
             }
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
 
         }
     }

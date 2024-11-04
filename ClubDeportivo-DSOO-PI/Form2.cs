@@ -12,17 +12,17 @@ using System.Windows.Forms;
 
 namespace ClubDeportivo_DSOO_PI
 {
-    public partial class Form2 : Form
+    public partial class frmPrincipal : Form
     {
-        private string nombreUsuario;
-        public Form2(string usuario)
+       //private string nombreUsuario;
+        public frmPrincipal()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.Manual; // posición manual
             this.Size = new Size(800, 450); // tamaño
             this.Location = new Point(100, 100); // posición en la pantalla
             this.Load += new System.EventHandler(this.Form2_Load);
-            nombreUsuario = usuario; // Guardar nombre de usuario
+             // Guardar nombre de usuario
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -50,15 +50,10 @@ namespace ClubDeportivo_DSOO_PI
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show($"Hasta luego, {nombreUsuario}.");
-            this.Close(); // Cierra el formulario actual
+            MessageBox.Show($"Hasta luego.");
+            Application.Exit();
         }
 
         private void btnRegistro_Click(object sender, EventArgs e)
@@ -68,6 +63,13 @@ namespace ClubDeportivo_DSOO_PI
             
             // Mostrar el formulario Form3
             form3.ShowDialog();
+        }
+
+        private void btnPago_Click(object sender, EventArgs e)
+        {
+            Form formulario = new frmPago();
+            formulario.Show(); //Llama al formulario de forma no modal
+            
         }
     }
 }

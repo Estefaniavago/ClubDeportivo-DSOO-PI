@@ -59,7 +59,7 @@ namespace ClubDeportivo_DSOO_PI
                 MessageBox.Show($"Ingreso exitoso. Bienvenid@ {nombreUsuario}");
 
 
-                Form2 form2 = new Form2(nombreUsuario);
+                frmPrincipal form2 = new frmPrincipal();
                 form2.ShowDialog();
 
 
