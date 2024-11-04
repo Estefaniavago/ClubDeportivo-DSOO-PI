@@ -10,22 +10,14 @@ using System.Windows.Forms;
 
 namespace ClubDeportivo_DSOO_PI
 {
-    public partial class frmPago : Form
+    public partial class FrmRegistroNoSocio : Form
     {
-        public frmPago()
+        public FrmRegistroNoSocio()
         {
             InitializeComponent();
         }
 
-        private void btnVolver_Click(object sender, EventArgs e)
-        {
-            Form prinicipal = new frmPrincipal();
-            prinicipal.Show();
-            this.Close();
-
-        }
-
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

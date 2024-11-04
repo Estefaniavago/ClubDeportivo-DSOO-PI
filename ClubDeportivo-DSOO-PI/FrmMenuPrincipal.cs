@@ -56,20 +56,37 @@ namespace ClubDeportivo_DSOO_PI
             Application.Exit();
         }
 
-        private void btnRegistro_Click(object sender, EventArgs e)
-        {
-            // Crear una instancia del formulario Form3 (registroUsuario)
-            registroUsuario form3 = new registroUsuario();
-            
-            // Mostrar el formulario Form3
-            form3.ShowDialog();
-        }
 
         private void btnPago_Click(object sender, EventArgs e)
         {
+        }
+
+        private void btnRegistroSocio_Click_1(object sender, EventArgs e)
+        {
+            // Crear una instancia del formulario Form3 (registroUsuario)
+            registroSocio form3 = new registroSocio();
+
+            // Mostrar el formulario Form3
+            form3.ShowDialog();
+
+        }
+
+        private void btnPagoMensual_Click(object sender, EventArgs e)
+        {
+
             Form formulario = new frmPago();
             formulario.Show(); //Llama al formulario de forma no modal
-            
+
+        }
+
+
+        private void btnRegistroNoSocio_Click(object sender, EventArgs e)
+        {
+            // Crear una instancia del formulario Form4 (registroNoSocio)
+           FrmRegistroNoSocio form4 = new FrmRegistroNoSocio();
+
+            // Mostrar el formulario Form3
+            form4.ShowDialog();
         }
     }
 }

@@ -14,6 +14,7 @@ namespace ClubDeportivo_DSOO_PI.Entidades
         public string tipodoc { get; set; }
         public int nrodoc { get; set; }
         public bool aptofisico { get; set; }
-        public bool condicion { get; set; }
+        public bool condicion { get; set; }//ESTO DEBERIAMOS MODIFICAR
+
     }
 }

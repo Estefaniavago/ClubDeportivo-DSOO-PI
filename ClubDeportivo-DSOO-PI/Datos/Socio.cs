@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ClubDeportivo_DSOO_PI.Datos
 {
-    public class Persona
+    public class Socio
     {
         public string Nuevo_Registro(E_Persona persona)
         {
@@ -53,9 +53,9 @@ namespace ClubDeportivo_DSOO_PI.Datos
                 sqlCon.Open();
                 MySqlCommand comando = new MySqlCommand("SELECT * FROM persona", sqlCon);
                 MySqlDataAdapter adapter = new MySqlDataAdapter(comando);
-                DataTable usuarios = new DataTable();
-                adapter.Fill(usuarios);
-                return usuarios;
+                DataTable personas = new DataTable();
+                adapter.Fill(personas);
+                return personas;
             }
             catch (Exception ex)
             {

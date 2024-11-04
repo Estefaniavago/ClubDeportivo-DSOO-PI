@@ -1,6 +1,6 @@
 ﻿namespace ClubDeportivo_DSOO_PI
 {
-    partial class registroUsuario
+    partial class registroSocio
     {
         /// <summary>
         /// Required designer variable.
@@ -39,14 +39,13 @@
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.txtNumero = new System.Windows.Forms.TextBox();
             this.cboxTipoDocumento = new System.Windows.Forms.ComboBox();
-            this.Socio = new System.Windows.Forms.RadioButton();
-            this.rbNoSocio = new System.Windows.Forms.RadioButton();
             this.chkAptoFisico = new System.Windows.Forms.CheckBox();
             this.btnRegistrar = new System.Windows.Forms.Button();
             this.dtgvRegistro = new System.Windows.Forms.DataGridView();
             this.btnSalir = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnLimpiar = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvRegistro)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -56,9 +55,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(449, 31);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(122, 13);
+            this.label1.Size = new System.Drawing.Size(106, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "REGISTRAR USUARIO";
+            this.label1.Text = "REGISTRAR SOCIO";
             // 
             // lblNombre
             // 
@@ -146,30 +145,6 @@
             this.cboxTipoDocumento.Size = new System.Drawing.Size(100, 21);
             this.cboxTipoDocumento.TabIndex = 11;
             // 
-            // Socio
-            // 
-            this.Socio.AutoSize = true;
-            this.Socio.Location = new System.Drawing.Point(466, 186);
-            this.Socio.Name = "Socio";
-            this.Socio.Size = new System.Drawing.Size(52, 17);
-            this.Socio.TabIndex = 12;
-            this.Socio.TabStop = true;
-            this.Socio.Text = "Socio";
-            this.Socio.UseVisualStyleBackColor = true;
-            this.Socio.CheckedChanged += new System.EventHandler(this.Socio_CheckedChanged);
-            // 
-            // rbNoSocio
-            // 
-            this.rbNoSocio.AutoSize = true;
-            this.rbNoSocio.Location = new System.Drawing.Point(520, 186);
-            this.rbNoSocio.Name = "rbNoSocio";
-            this.rbNoSocio.Size = new System.Drawing.Size(69, 17);
-            this.rbNoSocio.TabIndex = 13;
-            this.rbNoSocio.TabStop = true;
-            this.rbNoSocio.Text = "No Socio";
-            this.rbNoSocio.UseVisualStyleBackColor = true;
-            this.rbNoSocio.CheckedChanged += new System.EventHandler(this.rbNoSocio_CheckedChanged);
-            // 
             // chkAptoFisico
             // 
             this.chkAptoFisico.AutoSize = true;
@@ -183,7 +158,7 @@
             // btnRegistrar
             // 
             this.btnRegistrar.Location = new System.Drawing.Point(402, 264);
-            this.btnRegistrar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnRegistrar.Margin = new System.Windows.Forms.Padding(2);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(114, 29);
             this.btnRegistrar.TabIndex = 15;
@@ -195,7 +170,7 @@
             // 
             this.dtgvRegistro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvRegistro.Location = new System.Drawing.Point(95, 310);
-            this.dtgvRegistro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtgvRegistro.Margin = new System.Windows.Forms.Padding(2);
             this.dtgvRegistro.Name = "dtgvRegistro";
             this.dtgvRegistro.RowHeadersWidth = 51;
             this.dtgvRegistro.Size = new System.Drawing.Size(628, 129);
@@ -233,19 +208,27 @@
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.button1_Click);
             // 
-            // registroUsuario
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(463, 188);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(54, 13);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "Condición";
+            // 
+            // registroSocio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.dtgvRegistro);
             this.Controls.Add(this.btnRegistrar);
             this.Controls.Add(this.chkAptoFisico);
-            this.Controls.Add(this.rbNoSocio);
-            this.Controls.Add(this.Socio);
             this.Controls.Add(this.cboxTipoDocumento);
             this.Controls.Add(this.txtNumero);
             this.Controls.Add(this.txtApellido);
@@ -258,7 +241,7 @@
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
-            this.Name = "registroUsuario";
+            this.Name = "registroSocio";
             this.Text = "Registro Usuario";
             this.TransparencyKey = System.Drawing.Color.Salmon;
             this.Load += new System.EventHandler(this.Form3_Load);
@@ -283,12 +266,11 @@
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.TextBox txtNumero;
         private System.Windows.Forms.ComboBox cboxTipoDocumento;
-        private System.Windows.Forms.RadioButton Socio;
-        private System.Windows.Forms.RadioButton rbNoSocio;
         private System.Windows.Forms.CheckBox chkAptoFisico;
         private System.Windows.Forms.Button btnRegistrar;
         private System.Windows.Forms.DataGridView dtgvRegistro;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.Label label2;
     }
 }

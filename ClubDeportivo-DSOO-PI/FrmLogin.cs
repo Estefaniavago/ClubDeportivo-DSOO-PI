@@ -15,9 +15,9 @@ using System.Windows.Forms;
 
 namespace ClubDeportivo_DSOO_PI
 {
-    public partial class Form1 : Form
+    public partial class frmLogin : Form
     {
-        public Form1()
+        public frmLogin()
         {
            InitializeComponent();
             this.StartPosition = FormStartPosition.Manual; // posición manual

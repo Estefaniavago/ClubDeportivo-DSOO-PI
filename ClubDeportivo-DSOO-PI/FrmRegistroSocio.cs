@@ -6,9 +6,9 @@ using System.Windows.Forms;
 
 namespace ClubDeportivo_DSOO_PI
 {
-    public partial class registroUsuario : Form
+    public partial class registroSocio : Form
     {
-        public registroUsuario()
+        public registroSocio()
         {
             InitializeComponent();
         }
@@ -42,7 +42,7 @@ namespace ClubDeportivo_DSOO_PI
             bool aptoFisico = chkAptoFisico.Checked;
 
             // Determinar si el usuario es socio o no
-            bool esSocio = Socio.Checked;
+            bool esSocio = true;
 
             if (esSocio)
             {
@@ -62,7 +62,7 @@ namespace ClubDeportivo_DSOO_PI
             };
 
             // Llamar al método de la clase Persona para registrar al nuevo usuario
-            Persona datosPersona = new Persona();
+            Socio datosPersona = new Socio();
             string respuesta = datosPersona.Nuevo_Registro(nuevaPersona);
 
             if (int.TryParse(respuesta, out int codigo))
@@ -73,7 +73,10 @@ namespace ClubDeportivo_DSOO_PI
                 }
                 else
                 {
-                    MessageBox.Show($"Registro exitoso. Código de Usuario: {respuesta}", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
+                    MessageBox.Show($"Registro exitoso. Código de Usuario: {respuesta}. Debe pagar la primer cuota", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    frmPago form4 = new frmPago();
+                    form4.ShowDialog();
                     CargarUsuarios(); // Refrescar la lista de usuarios después del registro
                 }
             }
@@ -95,7 +98,7 @@ namespace ClubDeportivo_DSOO_PI
         {
             try
             {
-                Persona personaDatos = new Persona();
+                Socio personaDatos = new Socio();
                 DataTable usuarios = personaDatos.ObtenerUsuarios();
 
                 // Añadir una columna extra para mostrar si es socio o no de manera descriptiva, si no existe ya
@@ -158,9 +161,9 @@ namespace ClubDeportivo_DSOO_PI
             this.Close(); // Cierra el formulario actual
         }
 
-        private void Socio_CheckedChanged(object sender, EventArgs e)
+        /*private void Socio_CheckedChanged(object sender, EventArgs e)
         {
-            if (Socio.Checked)
+            if (frmRegistroSocio.Checked)
             {
                 rbNoSocio.Checked = false; // Desmarcar "No Socio" si se selecciona "Socio"
             }
@@ -171,10 +174,10 @@ namespace ClubDeportivo_DSOO_PI
         {
             if (rbNoSocio.Checked)
             {
-                Socio.Checked = false; // Desmarcar "Socio" si se selecciona "No Socio"
+                frmRegistroSocio.Checked = false; // Desmarcar "Socio" si se selecciona "No Socio"
             }
 
-        }
+        }*/
 
         private void button1_Click(object sender, EventArgs e)
         {
