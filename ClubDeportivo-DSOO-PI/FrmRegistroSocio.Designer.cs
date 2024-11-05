@@ -33,7 +33,6 @@
             this.lblApellido = new System.Windows.Forms.Label();
             this.lblTipo = new System.Windows.Forms.Label();
             this.lblNumero = new System.Windows.Forms.Label();
-            this.lblSocio = new System.Windows.Forms.Label();
             this.lblAptofisico = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtApellido = new System.Windows.Forms.TextBox();
@@ -45,7 +44,6 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnLimpiar = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvRegistro)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -95,19 +93,10 @@
             this.lblNumero.TabIndex = 5;
             this.lblNumero.Text = "Número";
             // 
-            // lblSocio
-            // 
-            this.lblSocio.AutoSize = true;
-            this.lblSocio.Location = new System.Drawing.Point(398, 188);
-            this.lblSocio.Name = "lblSocio";
-            this.lblSocio.Size = new System.Drawing.Size(54, 13);
-            this.lblSocio.TabIndex = 6;
-            this.lblSocio.Text = "Condición";
-            // 
             // lblAptofisico
             // 
             this.lblAptofisico.AutoSize = true;
-            this.lblAptofisico.Location = new System.Drawing.Point(404, 219);
+            this.lblAptofisico.Location = new System.Drawing.Point(400, 203);
             this.lblAptofisico.Name = "lblAptofisico";
             this.lblAptofisico.Size = new System.Drawing.Size(61, 13);
             this.lblAptofisico.TabIndex = 7;
@@ -144,11 +133,12 @@
             this.cboxTipoDocumento.Name = "cboxTipoDocumento";
             this.cboxTipoDocumento.Size = new System.Drawing.Size(100, 21);
             this.cboxTipoDocumento.TabIndex = 11;
+            this.cboxTipoDocumento.SelectedIndexChanged += new System.EventHandler(this.cboxTipoDocumento_SelectedIndexChanged);
             // 
             // chkAptoFisico
             // 
             this.chkAptoFisico.AutoSize = true;
-            this.chkAptoFisico.Location = new System.Drawing.Point(466, 219);
+            this.chkAptoFisico.Location = new System.Drawing.Point(482, 203);
             this.chkAptoFisico.Name = "chkAptoFisico";
             this.chkAptoFisico.Size = new System.Drawing.Size(15, 14);
             this.chkAptoFisico.TabIndex = 14;
@@ -206,16 +196,7 @@
             this.btnLimpiar.TabIndex = 18;
             this.btnLimpiar.Text = "LIMPIAR";
             this.btnLimpiar.UseVisualStyleBackColor = true;
-            this.btnLimpiar.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(463, 188);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 13);
-            this.label2.TabIndex = 19;
-            this.label2.Text = "Condición";
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // registroSocio
             // 
@@ -223,7 +204,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.dtgvRegistro);
@@ -234,7 +214,6 @@
             this.Controls.Add(this.txtApellido);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.lblAptofisico);
-            this.Controls.Add(this.lblSocio);
             this.Controls.Add(this.lblNumero);
             this.Controls.Add(this.lblTipo);
             this.Controls.Add(this.lblApellido);
@@ -244,7 +223,7 @@
             this.Name = "registroSocio";
             this.Text = "Registro Usuario";
             this.TransparencyKey = System.Drawing.Color.Salmon;
-            this.Load += new System.EventHandler(this.Form3_Load);
+            this.Load += new System.EventHandler(this.registroSocio_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvRegistro)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -260,7 +239,6 @@
         private System.Windows.Forms.Label lblApellido;
         private System.Windows.Forms.Label lblTipo;
         private System.Windows.Forms.Label lblNumero;
-        private System.Windows.Forms.Label lblSocio;
         private System.Windows.Forms.Label lblAptofisico;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtApellido;
@@ -271,6 +249,5 @@
         private System.Windows.Forms.DataGridView dtgvRegistro;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnLimpiar;
-        private System.Windows.Forms.Label label2;
     }
 }

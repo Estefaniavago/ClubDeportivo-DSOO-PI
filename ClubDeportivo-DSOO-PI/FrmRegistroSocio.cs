@@ -3,6 +3,7 @@ using ClubDeportivo_DSOO_PI.Datos; // Referencia a la carpeta de Datos
 using System;
 using System.Data;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ClubDeportivo_DSOO_PI
 {
@@ -13,10 +14,12 @@ namespace ClubDeportivo_DSOO_PI
             InitializeComponent();
         }
 
-        private void Form3_Load(object sender, EventArgs e)
+        private void registroSocio_Load(object sender, EventArgs e)
         {
             // Cargar todos los usuarios cuando se abra el formulario
             CargarUsuarios();
+            //Carga el DNI por defecto en el combobox
+            cboxTipoDocumento.SelectedItem = "DNI"; 
         }
 
         private void btnRegistrar_Click(object sender, EventArgs e)
@@ -41,15 +44,10 @@ namespace ClubDeportivo_DSOO_PI
             int nroDoc = Convert.ToInt32(txtNumero.Text);
             bool aptoFisico = chkAptoFisico.Checked;
 
-            // Determinar si el usuario es socio o no
+            // Determinar que el usuario es socio
             bool esSocio = true;
 
-            if (esSocio)
-            {
-                MessageBox.Show("Debe pagar la cuota");
-
-            }
-
+            
             // Crear el objeto de tipo E_Persona
             E_Persona nuevaPersona = new E_Persona()
             {
@@ -75,7 +73,7 @@ namespace ClubDeportivo_DSOO_PI
                 {
                     
                     MessageBox.Show($"Registro exitoso. Código de Usuario: {respuesta}. Debe pagar la primer cuota", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    frmPago form4 = new frmPago();
+                    frmPago form4 = new frmPago(respuesta);
                     form4.ShowDialog();
                     CargarUsuarios(); // Refrescar la lista de usuarios después del registro
                 }
@@ -157,7 +155,7 @@ namespace ClubDeportivo_DSOO_PI
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            MessageBox.Show($"Hasta luego");
+            MessageBox.Show($"Ustede volverá al menú principal");
             this.Close(); // Cierra el formulario actual
         }
 
@@ -179,9 +177,20 @@ namespace ClubDeportivo_DSOO_PI
 
         }*/
 
-        private void button1_Click(object sender, EventArgs e)
+        private void cboxTipoDocumento_SelectedIndexChanged(object sender, EventArgs e)
         {
+           
 
         }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtNombre.Text = "";
+            txtApellido.Text = "";
+            txtNumero.Text = "";
+            chkAptoFisico.Checked = false; 
+        }
+
+        
     }
 }
