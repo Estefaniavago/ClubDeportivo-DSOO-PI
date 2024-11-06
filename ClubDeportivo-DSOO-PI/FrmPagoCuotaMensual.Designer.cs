@@ -1,6 +1,6 @@
 ﻿namespace ClubDeportivo_DSOO_PI
 {
-    partial class frmPago
+    partial class frmPagoCuota
     {
         /// <summary>
         /// Required designer variable.
@@ -179,7 +179,7 @@
             this.button2.Text = "COMPROBANTE";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // frmPago
+            // frmPagoCuota
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -191,9 +191,9 @@
             this.Controls.Add(this.lblPagos);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnVolver);
-            this.Name = "frmPago";
+            this.Name = "frmPagoCuota";
             this.Text = "Pago";
-            this.Load += new System.EventHandler(this.frmPago_Load);
+            this.Load += new System.EventHandler(this.frmPagoCuota_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

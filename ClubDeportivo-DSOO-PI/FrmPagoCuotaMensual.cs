@@ -13,22 +13,20 @@ using ClubDeportivo_DSOO_PI.Datos; // Referencia a la carpeta de Datos
 
 namespace ClubDeportivo_DSOO_PI
 {
-    public partial class frmPago : Form
+    public partial class frmPagoCuota : Form
     {
         private string nroRegistro;
-        public frmPago(string nroRegistro)
+        public frmPagoCuota(string nroRegistro)
         {
             InitializeComponent();
-            txtUsuario.Text = nroRegistro;
+            
 
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Si vuelve sin abonar se borrará el ultimo registro", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            
-            Form prinicipal = new frmPrincipal();
-            prinicipal.Show();
+            Form principal = new frmPrincipal();
+            principal.Show();
             this.Close();
 
         }
@@ -38,12 +36,12 @@ namespace ClubDeportivo_DSOO_PI
 
         }
 
-        private void frmPago_Load(object sender, EventArgs e)
+        private void txtUsuario_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
-        private void txtUsuario_TextChanged(object sender, EventArgs e)
+        private void frmPagoCuota_Load(object sender, EventArgs e)
         {
 
         }

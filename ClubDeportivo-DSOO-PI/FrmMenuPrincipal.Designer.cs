@@ -35,7 +35,6 @@
             this.btnListado = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -126,18 +125,6 @@
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Aquamarine;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(230, 114);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(185, 66);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "REGISTRAR no socio";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.btnRegistroNoSocio_Click);
-            // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.Aquamarine;
@@ -157,7 +144,6 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(688, 415);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnListado);
             this.Controls.Add(this.btnCarnet);
@@ -185,7 +171,6 @@
         private System.Windows.Forms.Button btnCarnet;
         private System.Windows.Forms.Button btnListado;
         private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
     }
 }

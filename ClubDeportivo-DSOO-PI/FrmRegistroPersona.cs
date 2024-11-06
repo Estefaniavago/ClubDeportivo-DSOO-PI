@@ -7,14 +7,14 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ClubDeportivo_DSOO_PI
 {
-    public partial class registroSocio : Form
+    public partial class registroPersona : Form
     {
-        public registroSocio()
+        public registroPersona()
         {
             InitializeComponent();
         }
 
-        private void registroSocio_Load(object sender, EventArgs e)
+        private void registroPersona_Load(object sender, EventArgs e)
         {
             // Cargar todos los usuarios cuando se abra el formulario
             CargarUsuarios();
@@ -25,27 +25,32 @@ namespace ClubDeportivo_DSOO_PI
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
             // Validar que los campos obligatorios estén completos
-            if (string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(txtApellido.Text) || string.IsNullOrEmpty(txtNumero.Text))
+            if (string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(txtApellido.Text) 
+                || string.IsNullOrEmpty(txtNumero.Text))
             {
-                MessageBox.Show("Debe completar todos los campos requeridos (*)", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Debe completar todos los campos requeridos (*)", 
+                    "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Recoger los datos del formulario .
+            //Toma los datos del formulario .
             string nombre = txtNombre.Text;
             string apellido = txtApellido.Text;
             string tipoDoc = cboxTipoDocumento.SelectedItem?.ToString() ?? string.Empty;
-            if (string.IsNullOrEmpty(tipoDoc))
+            
+            //ESTO YA NO SE NECESITARIA PORQUE ESTA PUESTO POR DEFECTO DNI, NUNCA VA A ESTAR EMPTY.
+            /*if (string.IsNullOrEmpty(tipoDoc))
             {
                 MessageBox.Show("Debe seleccionar un tipo de documento.", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-            }
+            }*/
 
             int nroDoc = Convert.ToInt32(txtNumero.Text);
+            
             bool aptoFisico = chkAptoFisico.Checked;
 
-            // Determinar que el usuario es socio
-            bool esSocio = true;
+            // Determinar que el usuario no es socio por defecto, se hace socio al pagar la primer cuota
+            //bool esSocio = false;
 
             
             // Crear el objeto de tipo E_Persona
@@ -56,12 +61,16 @@ namespace ClubDeportivo_DSOO_PI
                 tipodoc = tipoDoc,
                 nrodoc = nroDoc,
                 aptofisico = aptoFisico,
-                condicion = esSocio
+                //condicion = esSocio
             };
 
-            // Llamar al método de la clase Persona para registrar al nuevo usuario
-            Socio datosPersona = new Socio();
+            // Llamar al método de la clase Persona para registrar al nuevo usuario en la bbdd
+            Persona datosPersona = new Persona();
             string respuesta = datosPersona.Nuevo_Registro(nuevaPersona);
+            // En respuesta se guarda si se pudo agregar o no
+            //Si la respuesta es 1, ya existe el usuario. si no existe devuelve un numero de registro y se
+            //convierte a int el string y refresca la 
+
 
             if (int.TryParse(respuesta, out int codigo))
             {
@@ -72,9 +81,9 @@ namespace ClubDeportivo_DSOO_PI
                 else
                 {
                     
-                    MessageBox.Show($"Registro exitoso. Código de Usuario: {respuesta}. Debe pagar la primer cuota", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    frmPago form4 = new frmPago(respuesta);
-                    form4.ShowDialog();
+                    MessageBox.Show($"Registro exitoso. Código de Usuario: {respuesta}.", 
+                        "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
                     CargarUsuarios(); // Refrescar la lista de usuarios después del registro
                 }
             }
@@ -96,7 +105,7 @@ namespace ClubDeportivo_DSOO_PI
         {
             try
             {
-                Socio personaDatos = new Socio();
+                Persona personaDatos = new Persona();
                 DataTable usuarios = personaDatos.ObtenerUsuarios();
 
                 // Añadir una columna extra para mostrar si es socio o no de manera descriptiva, si no existe ya

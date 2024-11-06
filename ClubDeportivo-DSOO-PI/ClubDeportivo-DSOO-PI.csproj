@@ -121,17 +121,11 @@
     <Compile Include="FrmMenuPrincipal.Designer.cs">
       <DependentUpon>FrmMenuPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmRegistroNoSocio.cs">
+    <Compile Include="FrmRegistroPersona.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmRegistroNoSocio.Designer.cs">
-      <DependentUpon>FrmRegistroNoSocio.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmRegistroSocio.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmRegistroSocio.Designer.cs">
-      <DependentUpon>FrmRegistroSocio.cs</DependentUpon>
+    <Compile Include="FrmRegistroPersona.Designer.cs">
+      <DependentUpon>FrmRegistroPersona.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmPagoCuotaMensual.cs">
       <SubType>Form</SubType>
@@ -150,11 +144,8 @@
     <EmbeddedResource Include="FrmMenuPrincipal.resx">
       <DependentUpon>FrmMenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmRegistroNoSocio.resx">
-      <DependentUpon>FrmRegistroNoSocio.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmRegistroSocio.resx">
-      <DependentUpon>FrmRegistroSocio.cs</DependentUpon>
+    <EmbeddedResource Include="FrmRegistroPersona.resx">
+      <DependentUpon>FrmRegistroPersona.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPagoCuotaMensual.resx">
       <DependentUpon>FrmPagoCuotaMensual.cs</DependentUpon>

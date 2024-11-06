@@ -1,6 +1,6 @@
 ﻿namespace ClubDeportivo_DSOO_PI
 {
-    partial class registroSocio
+    partial class registroPersona
     {
         /// <summary>
         /// Required designer variable.
@@ -198,7 +198,7 @@
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
-            // registroSocio
+            // registroPersona
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -220,10 +220,10 @@
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
-            this.Name = "registroSocio";
+            this.Name = "registroPersona";
             this.Text = "Registro Usuario";
             this.TransparencyKey = System.Drawing.Color.Salmon;
-            this.Load += new System.EventHandler(this.registroSocio_Load);
+            this.Load += new System.EventHandler(this.registroPersona_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvRegistro)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ClubDeportivo_DSOO_PI.Datos
 {
-    public class Socio
+    public class Persona
     {
         public string Nuevo_Registro(E_Persona persona)
         {/*Nuevo_Registro: Este método se encarga de insertar un nuevo registro 
