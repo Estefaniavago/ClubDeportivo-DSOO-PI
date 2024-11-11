@@ -34,7 +34,7 @@
             this.lblUsuario = new System.Windows.Forms.Label();
             this.btnPagar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtUsuario = new System.Windows.Forms.TextBox();
+            this.txtNroRegistro = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.rdCredito = new System.Windows.Forms.RadioButton();
@@ -100,14 +100,14 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Medio de Pago";
             // 
-            // txtUsuario
+            // txtNroRegistro
             // 
-            this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsuario.Location = new System.Drawing.Point(323, 144);
-            this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(100, 29);
-            this.txtUsuario.TabIndex = 6;
-            this.txtUsuario.TextChanged += new System.EventHandler(this.txtUsuario_TextChanged);
+            this.txtNroRegistro.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNroRegistro.Location = new System.Drawing.Point(323, 144);
+            this.txtNroRegistro.Name = "txtNroRegistro";
+            this.txtNroRegistro.Size = new System.Drawing.Size(100, 29);
+            this.txtNroRegistro.TabIndex = 6;
+            this.txtNroRegistro.TextChanged += new System.EventHandler(this.txtUsuario_TextChanged);
             // 
             // groupBox1
             // 
@@ -123,6 +123,7 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // comboBox1
             // 
@@ -186,7 +187,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.txtUsuario);
+            this.Controls.Add(this.txtNroRegistro);
             this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.lblPagos);
             this.Controls.Add(this.pictureBox1);
@@ -210,7 +211,7 @@
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.Button btnPagar;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtUsuario;
+        private System.Windows.Forms.TextBox txtNroRegistro;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rdEfectivo;
         private System.Windows.Forms.ComboBox comboBox1;

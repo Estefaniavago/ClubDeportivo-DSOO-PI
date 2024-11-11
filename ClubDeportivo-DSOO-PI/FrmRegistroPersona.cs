@@ -9,9 +9,11 @@ namespace ClubDeportivo_DSOO_PI
 {
     public partial class registroPersona : Form
     {
+        bool botonPresionado = false;
         public registroPersona()
         {
             InitializeComponent();
+            btnPagarPrimerCuota.Enabled = false;
         }
 
         private void registroPersona_Load(object sender, EventArgs e)
@@ -85,6 +87,8 @@ namespace ClubDeportivo_DSOO_PI
                         "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     
                     CargarUsuarios(); // Refrescar la lista de usuarios después del registro
+                    botonPresionado = true;
+                    btnPagarPrimerCuota.Enabled = true;
                 }
             }
             else
@@ -200,6 +204,13 @@ namespace ClubDeportivo_DSOO_PI
             chkAptoFisico.Checked = false; 
         }
 
-        
+        private void btnPagarPrimerCuota_Click(object sender, EventArgs e)
+        {
+            if (botonPresionado) { 
+                Form formulario = new frmPagoCuota();
+                formulario.Show(); //Llama al formulario de forma no modal
+                   }
+            
+        }
     }
 }

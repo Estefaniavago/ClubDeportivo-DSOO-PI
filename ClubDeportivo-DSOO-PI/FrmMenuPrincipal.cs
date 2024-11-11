@@ -74,12 +74,12 @@ namespace ClubDeportivo_DSOO_PI
         private void btnPagoMensual_Click(object sender, EventArgs e)
         {
 
-            //Form formulario = new frmPago();
-            //formulario.Show(); //Llama al formulario de forma no modal
+            Form formulario = new frmPagoCuota();
+            formulario.Show(); //Llama al formulario de forma no modal
 
         }
 
 
-      
+
     }
 }

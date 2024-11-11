@@ -16,11 +16,9 @@ namespace ClubDeportivo_DSOO_PI
     public partial class frmPagoCuota : Form
     {
         private string nroRegistro;
-        public frmPagoCuota(string nroRegistro)
+        public frmPagoCuota()
         {
             InitializeComponent();
-            
-
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
@@ -42,6 +40,11 @@ namespace ClubDeportivo_DSOO_PI
         }
 
         private void frmPagoCuota_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
         {
 
         }

@@ -44,6 +44,7 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnLimpiar = new System.Windows.Forms.Button();
+            this.btnPagarPrimerCuota = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvRegistro)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -190,7 +191,7 @@
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(648, 264);
+            this.btnLimpiar.Location = new System.Drawing.Point(684, 263);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
             this.btnLimpiar.TabIndex = 18;
@@ -198,12 +199,23 @@
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
+            // btnPagarPrimerCuota
+            // 
+            this.btnPagarPrimerCuota.Location = new System.Drawing.Point(547, 245);
+            this.btnPagarPrimerCuota.Name = "btnPagarPrimerCuota";
+            this.btnPagarPrimerCuota.Size = new System.Drawing.Size(108, 60);
+            this.btnPagarPrimerCuota.TabIndex = 19;
+            this.btnPagarPrimerCuota.Text = "PAGAR PRIMER CUOTA";
+            this.btnPagarPrimerCuota.UseVisualStyleBackColor = true;
+            this.btnPagarPrimerCuota.Click += new System.EventHandler(this.btnPagarPrimerCuota_Click);
+            // 
             // registroPersona
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnPagarPrimerCuota);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.dtgvRegistro);
@@ -249,5 +261,6 @@
         private System.Windows.Forms.DataGridView dtgvRegistro;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.Button btnPagarPrimerCuota;
     }
 }
