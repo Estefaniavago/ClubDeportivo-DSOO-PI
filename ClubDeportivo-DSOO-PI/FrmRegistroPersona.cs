@@ -212,5 +212,10 @@ namespace ClubDeportivo_DSOO_PI
                    }
             
         }
+
+        private void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

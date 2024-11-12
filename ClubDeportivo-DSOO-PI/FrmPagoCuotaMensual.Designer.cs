@@ -107,7 +107,7 @@
             this.txtNroRegistro.Name = "txtNroRegistro";
             this.txtNroRegistro.Size = new System.Drawing.Size(100, 29);
             this.txtNroRegistro.TabIndex = 6;
-            this.txtNroRegistro.TextChanged += new System.EventHandler(this.txtUsuario_TextChanged);
+            this.txtNroRegistro.TextChanged += new System.EventHandler(this.txtNroRegistro_TextChanged);
             // 
             // groupBox1
             // 
