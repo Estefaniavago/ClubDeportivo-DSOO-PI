@@ -207,7 +207,7 @@ namespace ClubDeportivo_DSOO_PI
         private void btnPagarPrimerCuota_Click(object sender, EventArgs e)
         {
             if (botonPresionado) { 
-                Form formulario = new frmPagoCuota();
+                Form formulario = new frmPagoCuotaMensual();
                 formulario.Show(); //Llama al formulario de forma no modal
                    }
             
