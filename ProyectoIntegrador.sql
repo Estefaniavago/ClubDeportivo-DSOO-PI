@@ -23,6 +23,14 @@ condicion boolean default true,
 constraint pk_persona primary key (idRegistro)
 
 ); 
+drop table if exists vencimientos;
+create table if not exists vencimientos(
+idPago int auto_increment,
+idRegistro int,
+fecha DATE,
+constraint pk_vencimientos primary key (idPago),
+foreign key (idRegistro) references persona(idRegistro)
+);
 
 insert into usuario(idUsuario,nombreUsuario,claveUsuario) values
 (1,'Vanesa','1234'),
