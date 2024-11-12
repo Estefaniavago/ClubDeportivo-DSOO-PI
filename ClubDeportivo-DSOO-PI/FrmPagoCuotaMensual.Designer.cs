@@ -78,9 +78,9 @@
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.Location = new System.Drawing.Point(320, 128);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(98, 13);
+            this.lblUsuario.Size = new System.Drawing.Size(165, 13);
             this.lblUsuario.TabIndex = 3;
-            this.lblUsuario.Text = "Numero de Usuario";
+            this.lblUsuario.Text = "Numero de Registr/Numero socio";
             // 
             // btnPagar
             // 
