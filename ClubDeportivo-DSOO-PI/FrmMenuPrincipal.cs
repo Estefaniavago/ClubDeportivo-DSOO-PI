@@ -75,6 +75,12 @@ namespace ClubDeportivo_DSOO_PI
             frmPagoCuotaMensual formulario = new frmPagoCuotaMensual();
             MostrarFormularioEnPanel(formulario);
         }
+
+        private void btnGrillaPr_Click(object sender, EventArgs e)
+        {
+            PersonasRegistradas form2 = new PersonasRegistradas();
+            form2.ShowDialog();
+        }
     }
 }
 

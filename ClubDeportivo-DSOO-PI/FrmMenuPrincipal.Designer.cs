@@ -34,12 +34,13 @@
             this.btnCarnet = new System.Windows.Forms.Button();
             this.btnListado = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnGrillaPr = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -62,7 +63,7 @@
             this.btnRegistroSocio.BackColor = System.Drawing.Color.Aquamarine;
             this.btnRegistroSocio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistroSocio.Location = new System.Drawing.Point(4, 7);
-            this.btnRegistroSocio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRegistroSocio.Margin = new System.Windows.Forms.Padding(4);
             this.btnRegistroSocio.Name = "btnRegistroSocio";
             this.btnRegistroSocio.Size = new System.Drawing.Size(192, 43);
             this.btnRegistroSocio.TabIndex = 7;
@@ -75,7 +76,7 @@
             this.btnPagoMensual.BackColor = System.Drawing.Color.Aquamarine;
             this.btnPagoMensual.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPagoMensual.Location = new System.Drawing.Point(0, 160);
-            this.btnPagoMensual.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPagoMensual.Margin = new System.Windows.Forms.Padding(4);
             this.btnPagoMensual.Name = "btnPagoMensual";
             this.btnPagoMensual.Size = new System.Drawing.Size(196, 40);
             this.btnPagoMensual.TabIndex = 8;
@@ -88,7 +89,7 @@
             this.btnCarnet.BackColor = System.Drawing.Color.Aquamarine;
             this.btnCarnet.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.btnCarnet.Location = new System.Drawing.Point(4, 58);
-            this.btnCarnet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCarnet.Margin = new System.Windows.Forms.Padding(4);
             this.btnCarnet.Name = "btnCarnet";
             this.btnCarnet.Size = new System.Drawing.Size(192, 45);
             this.btnCarnet.TabIndex = 9;
@@ -100,7 +101,7 @@
             this.btnListado.BackColor = System.Drawing.Color.Aquamarine;
             this.btnListado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnListado.Location = new System.Drawing.Point(4, 111);
-            this.btnListado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnListado.Margin = new System.Windows.Forms.Padding(4);
             this.btnListado.Name = "btnListado";
             this.btnListado.Size = new System.Drawing.Size(192, 41);
             this.btnListado.TabIndex = 10;
@@ -111,8 +112,8 @@
             // 
             this.btnSalir.BackColor = System.Drawing.Color.Aquamarine;
             this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.Location = new System.Drawing.Point(13, 283);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSalir.Location = new System.Drawing.Point(13, 355);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(4);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(172, 47);
             this.btnSalir.TabIndex = 11;
@@ -120,24 +121,12 @@
             this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Click += new System.EventHandler(this.button2_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::ClubDeportivo_DSOO_PI.Properties.Resources.fitmoveRecurso_2_3x;
-            this.pictureBox1.Location = new System.Drawing.Point(16, 11);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(171, 75);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.Aquamarine;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(0, 208);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(199, 36);
             this.button2.TabIndex = 13;
@@ -147,6 +136,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnGrillaPr);
             this.panel1.Controls.Add(this.btnRegistroSocio);
             this.panel1.Controls.Add(this.btnSalir);
             this.panel1.Controls.Add(this.button2);
@@ -167,6 +157,31 @@
             this.panel2.TabIndex = 15;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::ClubDeportivo_DSOO_PI.Properties.Resources.fitmoveRecurso_2_3x;
+            this.pictureBox1.Location = new System.Drawing.Point(16, 11);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(171, 75);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btnGrillaPr
+            // 
+            this.btnGrillaPr.BackColor = System.Drawing.Color.Aquamarine;
+            this.btnGrillaPr.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGrillaPr.Location = new System.Drawing.Point(1, 252);
+            this.btnGrillaPr.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGrillaPr.Name = "btnGrillaPr";
+            this.btnGrillaPr.Size = new System.Drawing.Size(199, 57);
+            this.btnGrillaPr.TabIndex = 14;
+            this.btnGrillaPr.Text = "PERSONAS REGISTRADAS";
+            this.btnGrillaPr.UseVisualStyleBackColor = false;
+            this.btnGrillaPr.Click += new System.EventHandler(this.btnGrillaPr_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -184,8 +199,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu Principal";
             this.Load += new System.EventHandler(this.Form2_Load_1);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -203,5 +218,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btnGrillaPr;
     }
 }

@@ -58,7 +58,7 @@ Retorno: Devuelve el valor de res como una cadena. Si ocurre una excepción,
             }
         }
 
-        public DataTable ObtenerUsuarios()
+        public DataTable ObtenerPersona()
         {/* ObtenerUsuarios: Este método obtiene una lista de usuarios 
           (en este caso, registros de personas) de la base de datos.
 
@@ -80,7 +80,7 @@ Retorno: Devuelve el valor de res como una cadena. Si ocurre una excepción,
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al obtener los usuarios: " + ex.Message);
+                throw new Exception("Error al obtener los persona: " + ex.Message);
             }
             finally
             {

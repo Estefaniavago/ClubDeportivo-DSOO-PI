@@ -19,7 +19,7 @@ namespace ClubDeportivo_DSOO_PI
         private void registroPersona_Load(object sender, EventArgs e)
         {
             // Cargar todos los usuarios cuando se abra el formulario
-            CargarPersona();
+            //CargarPersona();
             //Carga el DNI por defecto en el combobox
             cboxTipoDocumento.SelectedItem = "DNI"; 
         }
@@ -86,7 +86,7 @@ namespace ClubDeportivo_DSOO_PI
                     MessageBox.Show($"Registro exitoso. Código de Usuario: {respuesta}.", 
                         "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     
-                    CargarPersona(); // Refrescar la lista de usuarios después del registro
+                    //CargarPersona(); // Refrescar la lista de usuarios después del registro
                     botonPresionado = true;
                     btnPagarPrimerCuota.Enabled = true;
                 }
@@ -105,66 +105,66 @@ namespace ClubDeportivo_DSOO_PI
 
 
         // Método para cargar la lista de usuarios en el DataGridView
-        private void CargarPersona()
-        {
-            try
-            {
-                Persona personaDatos = new Persona();
-                DataTable usuarios = personaDatos.ObtenerUsuarios();
+        //public void CargarPersona()
+        //{
+        //    try
+        //    {
+        //        Persona personaDatos = new Persona();
+        //        DataTable usuarios = personaDatos.ObtenerPersona();
 
-                // Añadir una columna extra para mostrar si es socio o no de manera descriptiva, si no existe ya
-                if (!usuarios.Columns.Contains("EstadoSocio"))
-                {
-                    usuarios.Columns.Add("EstadoSocio", typeof(string));
-                }
+        //        // Añadir una columna extra para mostrar si es socio o no de manera descriptiva, si no existe ya
+        //        if (!usuarios.Columns.Contains("EstadoSocio"))
+        //        {
+        //            usuarios.Columns.Add("EstadoSocio", typeof(string));
+        //        }
 
-                // Asegurarse de que la columna `aptofisico` esté presente y tenga datos válidos
-                if (!usuarios.Columns.Contains("aptofisico"))
-                {
-                    usuarios.Columns.Add("aptofisico", typeof(bool));
-                }
+        //        // Asegurarse de que la columna `aptofisico` esté presente y tenga datos válidos
+        //        if (!usuarios.Columns.Contains("aptofisico"))
+        //        {
+        //            usuarios.Columns.Add("aptofisico", typeof(bool));
+        //        }
 
-                foreach (DataRow row in usuarios.Rows)
-                {
-                    // Definir si es socio o no según la columna `condicion`
-                    if (row["condicion"] != DBNull.Value)
-                    {
-                        row["EstadoSocio"] = (bool)row["condicion"] ? "Socio" : "No Socio";
-                    }
-                    else
-                    {
-                        row["EstadoSocio"] = "No Especificado";
-                    }
+        //        foreach (DataRow row in usuarios.Rows)
+        //        {
+        //            // Definir si es socio o no según la columna `condicion`
+        //            if (row["condicion"] != DBNull.Value)
+        //            {
+        //                row["EstadoSocio"] = (bool)row["condicion"] ? "Socio" : "No Socio";
+        //            }
+        //            else
+        //            {
+        //                row["EstadoSocio"] = "No Especificado";
+        //            }
 
-                    // Asegurarse de que `aptofisico` tenga un valor booleano
-                    if (row["aptofisico"] == DBNull.Value)
-                    {
-                        row["aptofisico"] = false;
-                    }
-                }
+        //            // Asegurarse de que `aptofisico` tenga un valor booleano
+        //            if (row["aptofisico"] == DBNull.Value)
+        //            {
+        //                row["aptofisico"] = false;
+        //            }
+        //        }
 
-                // Asignar el DataTable al DataGridView
-                dtgvRegistro.DataSource = usuarios;
+        //        // Asignar el DataTable al DataGridView
+        //        dtgvRegistro.DataSource = usuarios;
 
-                // Configurar la columna `aptofisico` para que sea de tipo `CheckBoxColumn`
-                if (dtgvRegistro.Columns.Contains("aptofisico"))
-                {
-                    dtgvRegistro.Columns["aptofisico"].ReadOnly = true; 
-                    dtgvRegistro.Columns["aptofisico"].HeaderText = "Apto Físico";
-                }
+        //        // Configurar la columna `aptofisico` para que sea de tipo `CheckBoxColumn`
+        //        if (dtgvRegistro.Columns.Contains("aptofisico"))
+        //        {
+        //            dtgvRegistro.Columns["aptofisico"].ReadOnly = true; 
+        //            dtgvRegistro.Columns["aptofisico"].HeaderText = "Apto Físico";
+        //        }
             
 
-                // Ocultar la columna original "condicion" para evitar confusiones
-                if (dtgvRegistro.Columns.Contains("condicion"))
-                {
-                    dtgvRegistro.Columns["condicion"].Visible = false;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al cargar los usuarios: {ex.Message}", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+        //        // Ocultar la columna original "condicion" para evitar confusiones
+        //        if (dtgvRegistro.Columns.Contains("condicion"))
+        //        {
+        //            dtgvRegistro.Columns["condicion"].Visible = false;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show($"Error al cargar los usuarios: {ex.Message}", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
