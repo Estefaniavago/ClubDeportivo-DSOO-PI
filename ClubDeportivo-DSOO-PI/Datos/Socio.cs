@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace ClubDeportivo_DSOO_PI.Datos
 {
-    internal class Class1
+    internal class Socio
     {
+        //hereda E_Socio
+        //llamar a la base datos la condicion de socio, tabla de vencimientos
     }
 }
