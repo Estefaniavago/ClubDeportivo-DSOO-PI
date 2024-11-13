@@ -25,6 +25,19 @@ namespace ClubDeportivo_DSOO_PI
             InitializeComponent();
         }
 
+        private void registroPersona_Load(object sender, EventArgs e)
+        {
+            // Cargar todos los usuarios cuando se abra el formulario
+            CargarPersona();
+            //Carga el DNI por defecto en el combobox
+            cbCuotas.SelectedItem = "6 cuotas";
+        }
+
+        private void CargarPersona()
+        {
+
+        }
+
         private void btnVolver_Click(object sender, EventArgs e)
         {
             Form principal = new frmPrincipal();
@@ -98,11 +111,12 @@ namespace ClubDeportivo_DSOO_PI
                 medioPago = "Efectivo";
                 cuotas = 1;
             }
-            else if (rdDebito.Checked)
+            else if (rdCredito.Checked)
             {
-                medioPago = "Débito";
+                medioPago = "Crédito";
                 cuotas = 3;
                 montoPorCuota = montoTotal / cuotas;
+
             }
             else if (rdCredito.Checked)
             {
@@ -198,6 +212,11 @@ namespace ClubDeportivo_DSOO_PI
             {
                 MessageBox.Show("No hay ningún comprobante generado aún.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void cbCuotas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

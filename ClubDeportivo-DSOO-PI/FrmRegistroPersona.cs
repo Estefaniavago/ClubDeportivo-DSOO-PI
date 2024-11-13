@@ -19,7 +19,7 @@ namespace ClubDeportivo_DSOO_PI
         private void registroPersona_Load(object sender, EventArgs e)
         {
             // Cargar todos los usuarios cuando se abra el formulario
-            CargarUsuarios();
+            CargarPersona();
             //Carga el DNI por defecto en el combobox
             cboxTipoDocumento.SelectedItem = "DNI"; 
         }
@@ -86,7 +86,7 @@ namespace ClubDeportivo_DSOO_PI
                     MessageBox.Show($"Registro exitoso. Código de Usuario: {respuesta}.", 
                         "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     
-                    CargarUsuarios(); // Refrescar la lista de usuarios después del registro
+                    CargarPersona(); // Refrescar la lista de usuarios después del registro
                     botonPresionado = true;
                     btnPagarPrimerCuota.Enabled = true;
                 }
@@ -105,7 +105,7 @@ namespace ClubDeportivo_DSOO_PI
 
 
         // Método para cargar la lista de usuarios en el DataGridView
-        private void CargarUsuarios()
+        private void CargarPersona()
         {
             try
             {

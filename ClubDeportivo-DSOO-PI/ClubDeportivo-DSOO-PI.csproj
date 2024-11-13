@@ -102,13 +102,12 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Datos\NoSocio.cs" />
-    <Compile Include="Datos\Socio.cs" />
+    <Compile Include="Datos\Persona.cs" />
     <Compile Include="Datos\Conexion.cs" />
     <Compile Include="Datos\Usuarios.cs" />
     <Compile Include="Entidades\E_NoSocio.cs" />
     <Compile Include="Entidades\E_Socio.cs" />
     <Compile Include="Entidades\E_Persona.cs" />
-    <Compile Include="Entidades\Pago.cs" />
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>

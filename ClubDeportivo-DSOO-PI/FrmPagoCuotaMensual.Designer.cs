@@ -23,7 +23,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtNroRegistro = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbCuotas = new System.Windows.Forms.ComboBox();
             this.rdCredito = new System.Windows.Forms.RadioButton();
             this.rdDebito = new System.Windows.Forms.RadioButton();
             this.rdEfectivo = new System.Windows.Forms.RadioButton();
@@ -35,7 +35,7 @@
             // btnVolver
             // 
             this.btnVolver.Location = new System.Drawing.Point(431, 383);
-            this.btnVolver.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnVolver.Margin = new System.Windows.Forms.Padding(4);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(133, 48);
             this.btnVolver.TabIndex = 0;
@@ -46,7 +46,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Location = new System.Drawing.Point(89, 101);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(268, 263);
             this.pictureBox1.TabIndex = 1;
@@ -76,7 +76,7 @@
             // btnPagar
             // 
             this.btnPagar.Location = new System.Drawing.Point(179, 142);
-            this.btnPagar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPagar.Margin = new System.Windows.Forms.Padding(4);
             this.btnPagar.Name = "btnPagar";
             this.btnPagar.Size = new System.Drawing.Size(100, 28);
             this.btnPagar.TabIndex = 4;
@@ -98,7 +98,7 @@
             // 
             this.txtNroRegistro.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.txtNroRegistro.Location = new System.Drawing.Point(431, 177);
-            this.txtNroRegistro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNroRegistro.Margin = new System.Windows.Forms.Padding(4);
             this.txtNroRegistro.Name = "txtNroRegistro";
             this.txtNroRegistro.Size = new System.Drawing.Size(132, 34);
             this.txtNroRegistro.TabIndex = 6;
@@ -106,39 +106,40 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.cbCuotas);
             this.groupBox1.Controls.Add(this.rdCredito);
             this.groupBox1.Controls.Add(this.rdDebito);
             this.groupBox1.Controls.Add(this.btnPagar);
             this.groupBox1.Controls.Add(this.rdEfectivo);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(663, 158);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(336, 177);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
-            // comboBox1
+            // cbCuotas
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cbCuotas.FormattingEnabled = true;
+            this.cbCuotas.Items.AddRange(new object[] {
             "1 CUOTA",
             "3 CUOTAS",
             "6 CUOTAS"});
-            this.comboBox1.Location = new System.Drawing.Point(117, 90);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(160, 24);
-            this.comboBox1.TabIndex = 9;
+            this.cbCuotas.Location = new System.Drawing.Point(117, 90);
+            this.cbCuotas.Margin = new System.Windows.Forms.Padding(4);
+            this.cbCuotas.Name = "cbCuotas";
+            this.cbCuotas.Size = new System.Drawing.Size(160, 24);
+            this.cbCuotas.TabIndex = 9;
+            this.cbCuotas.SelectedIndexChanged += new System.EventHandler(this.cbCuotas_SelectedIndexChanged);
             // 
             // rdCredito
             // 
             this.rdCredito.AutoSize = true;
             this.rdCredito.Location = new System.Drawing.Point(24, 90);
-            this.rdCredito.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdCredito.Margin = new System.Windows.Forms.Padding(4);
             this.rdCredito.Name = "rdCredito";
             this.rdCredito.Size = new System.Drawing.Size(71, 20);
             this.rdCredito.TabIndex = 8;
@@ -150,7 +151,7 @@
             // 
             this.rdDebito.AutoSize = true;
             this.rdDebito.Location = new System.Drawing.Point(24, 62);
-            this.rdDebito.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdDebito.Margin = new System.Windows.Forms.Padding(4);
             this.rdDebito.Name = "rdDebito";
             this.rdDebito.Size = new System.Drawing.Size(68, 20);
             this.rdDebito.TabIndex = 7;
@@ -162,7 +163,7 @@
             // 
             this.rdEfectivo.AutoSize = true;
             this.rdEfectivo.Location = new System.Drawing.Point(24, 33);
-            this.rdEfectivo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdEfectivo.Margin = new System.Windows.Forms.Padding(4);
             this.rdEfectivo.Name = "rdEfectivo";
             this.rdEfectivo.Size = new System.Drawing.Size(76, 20);
             this.rdEfectivo.TabIndex = 6;
@@ -173,7 +174,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(780, 374);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(189, 64);
             this.button2.TabIndex = 9;
@@ -193,7 +194,7 @@
             this.Controls.Add(this.lblPagos);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnVolver);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmPagoCuotaMensual";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pago";
@@ -216,7 +217,7 @@
         private System.Windows.Forms.TextBox txtNroRegistro;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rdEfectivo;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbCuotas;
         private System.Windows.Forms.RadioButton rdCredito;
         private System.Windows.Forms.RadioButton rdDebito;
         private System.Windows.Forms.Button button2;
