@@ -21,28 +21,49 @@ apellido varchar(50),
 tipodoc varchar(25),
 nrodoc varchar(10),
 aptofisico boolean default false,
-condicion boolean default true,
+condicion boolean,
 constraint pk_persona primary key (idRegistro)
 
 ); 
+INSERT INTO persona (idRegistro, nombre, apellido, tipodoc, nrodoc, aptofisico, condicion) VALUES
+(100, 'Juan', 'Pérez', 'DNI', '12345678', true, true),
+(101, 'María', 'Gómez', 'DNI', '23456789', true, true),
+(102, 'Carlos', 'López', 'DNI', '34567890', true, false),
+(103, 'Ana', 'Martínez', 'DNI', '45678901', true, true),
+(104, 'Luis', 'Fernández', 'Pasaporte', '56789012', false, true),
+(105, 'Sofía', 'García', 'DNI', '67890123', true, true),
+(106, 'Jorge', 'Rodríguez', 'Pasaporte', '78901234', false, false),
+(107, 'Laura', 'Hernández', 'DNI', '89012345', true, true),
+(108, 'Marta', 'Ruiz', 'DNI', '90123456', true, false),
+(109, 'Pablo', 'Sánchez', 'Pasaporte', '01234567', false, true);
 
 CREATE TABLE vencimientos(
     idPago INT AUTO_INCREMENT,
     idRegistro INT,
     fechaPago DATE,
-    fechaVencimiento DATE,
+    fechaVencimiento date,
     medioPago VARCHAR(20),
     cuotas INT,
     CONSTRAINT pk_vencimientos PRIMARY KEY (idPago),
     FOREIGN KEY (idRegistro) REFERENCES persona(idRegistro)
 );
-
+INSERT INTO vencimientos (idRegistro, fechaPago, fechaVencimiento, medioPago, cuotas) VALUES
+(100, '2024-11-01', '2024-12-01', 'Tarjeta', 1),
+(101, '2024-11-02', '2024-12-02', 'Efectivo', 1),
+(103, '2024-11-03', '2024-12-03', 'Tarjeta', 6),
+(104, '2024-11-04', '2024-12-04', 'Tarjeta', 3),
+(105, '2024-11-05', '2024-12-05', 'Tarjeta', 3),
+(107, '2024-11-06', '2024-12-06', 'Efectivo', 1),
+(109, '2024-11-07', '2024-12-07', 'Tarjeta', 6);
 create table actividad(
 NActividad int,
 Nombre varchar(40),
 precio float,
 constraint pk_actividad primary key(NActividad)
 );
+
+/*create table nosocio-actividad*/
+/*agregar alguna*/
 
 insert into actividad values
 (1000,"Fútbol",5200),
@@ -130,4 +151,5 @@ END //
      DELIMITER ;
 
 select * from persona;
+select * from vencimientos;
 
