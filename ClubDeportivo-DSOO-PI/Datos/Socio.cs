@@ -10,5 +10,6 @@ namespace ClubDeportivo_DSOO_PI.Datos
     {
         //hereda E_Socio
         //llamar a la base datos la condicion de socio, tabla de vencimientos
+        //comprobar que sea socio para pagar la cuota mensual.
     }
 }

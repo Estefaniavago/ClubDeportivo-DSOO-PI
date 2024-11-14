@@ -34,11 +34,11 @@
             this.btnCarnet = new System.Windows.Forms.Button();
             this.btnListado = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnPagoActividad = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnGrillaPr = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnGrillaPr = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -50,7 +50,7 @@
             this.label1.Font = new System.Drawing.Font("Cambria", 24F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(57)))), ((int)(((byte)(80)))));
             this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(374, 29);
+            this.label1.Location = new System.Drawing.Point(508, 39);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(338, 47);
             this.label1.TabIndex = 5;
@@ -121,25 +121,25 @@
             this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button2
+            // btnPagoActividad
             // 
-            this.button2.BackColor = System.Drawing.Color.Aquamarine;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(0, 208);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(199, 36);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "PAGO ACTIVIDAD DIARIA";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            this.btnPagoActividad.BackColor = System.Drawing.Color.Aquamarine;
+            this.btnPagoActividad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPagoActividad.Location = new System.Drawing.Point(0, 208);
+            this.btnPagoActividad.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPagoActividad.Name = "btnPagoActividad";
+            this.btnPagoActividad.Size = new System.Drawing.Size(199, 36);
+            this.btnPagoActividad.TabIndex = 13;
+            this.btnPagoActividad.Text = "PAGO ACTIVIDAD DIARIA";
+            this.btnPagoActividad.UseVisualStyleBackColor = false;
+            this.btnPagoActividad.Click += new System.EventHandler(this.btnPagoActividad_Click);
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.btnGrillaPr);
             this.panel1.Controls.Add(this.btnRegistroSocio);
             this.panel1.Controls.Add(this.btnSalir);
-            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.btnPagoActividad);
             this.panel1.Controls.Add(this.btnCarnet);
             this.panel1.Controls.Add(this.btnListado);
             this.panel1.Controls.Add(this.btnPagoMensual);
@@ -148,6 +148,19 @@
             this.panel1.Size = new System.Drawing.Size(200, 465);
             this.panel1.TabIndex = 14;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // btnGrillaPr
+            // 
+            this.btnGrillaPr.BackColor = System.Drawing.Color.Aquamarine;
+            this.btnGrillaPr.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGrillaPr.Location = new System.Drawing.Point(1, 252);
+            this.btnGrillaPr.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGrillaPr.Name = "btnGrillaPr";
+            this.btnGrillaPr.Size = new System.Drawing.Size(199, 57);
+            this.btnGrillaPr.TabIndex = 14;
+            this.btnGrillaPr.Text = "PERSONAS REGISTRADAS";
+            this.btnGrillaPr.UseVisualStyleBackColor = false;
+            this.btnGrillaPr.Click += new System.EventHandler(this.btnGrillaPr_Click);
             // 
             // panel2
             // 
@@ -168,19 +181,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
-            // 
-            // btnGrillaPr
-            // 
-            this.btnGrillaPr.BackColor = System.Drawing.Color.Aquamarine;
-            this.btnGrillaPr.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGrillaPr.Location = new System.Drawing.Point(1, 252);
-            this.btnGrillaPr.Margin = new System.Windows.Forms.Padding(4);
-            this.btnGrillaPr.Name = "btnGrillaPr";
-            this.btnGrillaPr.Size = new System.Drawing.Size(199, 57);
-            this.btnGrillaPr.TabIndex = 14;
-            this.btnGrillaPr.Text = "PERSONAS REGISTRADAS";
-            this.btnGrillaPr.UseVisualStyleBackColor = false;
-            this.btnGrillaPr.Click += new System.EventHandler(this.btnGrillaPr_Click);
             // 
             // frmPrincipal
             // 
@@ -215,7 +215,7 @@
         private System.Windows.Forms.Button btnCarnet;
         private System.Windows.Forms.Button btnListado;
         private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnPagoActividad;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnGrillaPr;

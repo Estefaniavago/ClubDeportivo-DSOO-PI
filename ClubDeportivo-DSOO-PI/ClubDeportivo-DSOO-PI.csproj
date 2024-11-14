@@ -121,6 +121,12 @@
     <Compile Include="FrmMenuPrincipal.Designer.cs">
       <DependentUpon>FrmMenuPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPagoNoSocio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPagoNoSocio.Designer.cs">
+      <DependentUpon>frmPagoNoSocio.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmRegistroPersona.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -149,6 +155,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMenuPrincipal.resx">
       <DependentUpon>FrmMenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPagoNoSocio.resx">
+      <DependentUpon>frmPagoNoSocio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmRegistroPersona.resx">
       <DependentUpon>FrmRegistroPersona.cs</DependentUpon>

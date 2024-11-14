@@ -41,8 +41,6 @@ namespace ClubDeportivo_DSOO_PI
             MessageBox.Show("Hasta luego.");
             Application.Exit();
         }
-
-        private void button2_Click_1(object sender, EventArgs e) { }
         private void panel2_Paint(object sender, PaintEventArgs e) { }
         private void panel1_Paint(object sender, PaintEventArgs e) { }
 
@@ -80,6 +78,12 @@ namespace ClubDeportivo_DSOO_PI
         {
             PersonasRegistradas form2 = new PersonasRegistradas();
             form2.ShowDialog();
+        }
+
+        private void btnPagoActividad_Click(object sender, EventArgs e)
+        {
+            frmPagoNoSocio form3 = new frmPagoNoSocio();
+            form3.ShowDialog();
         }
     }
 }

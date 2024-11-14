@@ -93,11 +93,12 @@ Retorno: Devuelve el valor de res como una cadena. Si ocurre una excepción,
             try
             {
                 sqlCon.Open();
-                MySqlCommand comando = new MySqlCommand("DELETE FROM persona WHERE id = @idRegistro", sqlCon);
-                comando.Parameters.AddWithValue("@idRegistro", idRegistro);
+                MySqlCommand comando = new MySqlCommand("EliminarPersona", sqlCon);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("id", idRegistro);
 
                 int filasAfectadas = comando.ExecuteNonQuery();
-                return filasAfectadas > 0; // Retorna true si al menos una fila fue eliminada
+                return filasAfectadas > 0;
             }
             catch (Exception ex)
             {
