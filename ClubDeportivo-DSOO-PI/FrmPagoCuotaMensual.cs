@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -18,26 +19,15 @@ namespace ClubDeportivo_DSOO_PI
     {
         private string nroRegistro; // En la BBDD es idRegistro
         private string comprobante; // Para almacenar el comprobante generado
-        private decimal montoTotal = 1200; // Monto total de la cuota mensual para todos los socios
+        private decimal montoTotal = 30000; // Monto total de la cuota mensual para todos los socios
 
         public frmPagoCuotaMensual()
         {
             InitializeComponent();
+            btnPagar.Enabled = false;//desahilitado el pago hasta que este validado el registro
         }
 
-        private void registroPersona_Load(object sender, EventArgs e)
-        {
-            // Cargar todos los usuarios cuando se abra el formulario
-            CargarPersona();
-            //Carga el DNI por defecto en el combobox
-            cbCuotas.SelectedItem = "6 cuotas";
-        }
-
-        private void CargarPersona()
-        {
-
-        }
-
+               //eSTE BOTON NO TIENE SENTIDO SI EL FORMA ESTA DENTRO DEL MENU PRINCIPAL
         private void btnVolver_Click(object sender, EventArgs e)
         {
             Form principal = new frmPrincipal();
@@ -48,21 +38,26 @@ namespace ClubDeportivo_DSOO_PI
         private void txtNroRegistro_TextChanged(object sender, EventArgs e)
         {
             nroRegistro = txtNroRegistro.Text;
+            
         }
 
-        private void btnBuscar_Click(object sender, EventArgs e)
+        //Este boton valida si existe el numero de registro y si la cuota esta vencida o por vencerse(se puede pagar el mismo dia)
+
+        private void btnValidar_Click(object sender, EventArgs e)
         {
             if (int.TryParse(nroRegistro, out int registroId))
             {
-                buscarRegistro(registroId);
+                validarRegistro(registroId);
+                
             }
             else
             {
                 MessageBox.Show("Por favor, ingrese un número de registro válido.", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
-        private void buscarRegistro(int nroRegistro)
+        private void validarRegistro(int nroRegistro)
         {
             using (MySqlConnection connection = Conexion.getInstancia().CrearConexion())
             {
@@ -82,14 +77,24 @@ namespace ClubDeportivo_DSOO_PI
                                 {
                                     string nombre = reader["nombre"].ToString();
                                     string apellido = reader["apellido"].ToString();
-                                    MessageBox.Show($"Registro encontrado:\nNombre: {nombre}\nApellido: {apellido}");
+                                    string condicion = reader["condicion"].ToString();
+                                    MessageBox.Show($"Registro encontrado:\nNombre: {nombre}\nApellido: {apellido}\nCondicion: {condicion}");
+                                    if (condicion == "true")
+                                    {
+                                        // Consulta para obtener la fecha de vencimiento de un registro específico
+                                        //ESTO ES!
+                                    }     
+                                    //btnPagar.Enabled=true;
+                                   
                                 }
                             }
                             else
                             {
                                 MessageBox.Show("No se encontró el registro con el número especificado.", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
+
                         }
+               
                     }
                 }
                 catch (MySqlException ex)
@@ -98,12 +103,26 @@ namespace ClubDeportivo_DSOO_PI
                 }
             }
         }
-
+       
         private void btnPagar_Click(object sender, EventArgs e)
         {
+
+            //ACA DERIAMOS AGREGAR EL METODO DE PAGAR , 
             // Determina el medio de pago y el número de cuotas
             string medioPago = "";
-            int cuotas = 1; // Predeterminado a 1 cuota (efectivo)
+            string cantcuotas = cbCuotas.Text; 
+            short cuotas;
+            if (cantcuotas=="1 CUOTA")
+            {
+                cuotas = 1;
+            } else if(cantcuotas=="3 CUOTAS")
+            {
+                cuotas = 3;
+            }
+            else
+            {
+                cuotas = 6;
+            }
             decimal montoPorCuota = montoTotal; // Monto por cuota
 
             if (rdEfectivo.Checked)
@@ -114,14 +133,14 @@ namespace ClubDeportivo_DSOO_PI
             else if (rdCredito.Checked)
             {
                 medioPago = "Crédito";
-                cuotas = 3;
+                
                 montoPorCuota = montoTotal / cuotas;
 
             }
             else if (rdCredito.Checked)
             {
                 medioPago = "Crédito";
-                cuotas = 6;
+               
                 montoPorCuota = montoTotal / cuotas;
             }
 
@@ -173,7 +192,7 @@ namespace ClubDeportivo_DSOO_PI
                         command.ExecuteNonQuery();
                     }
 
-                    // Actualizar el cliente como socio en la tabla `persona`
+                    // Actualizar el cliente como socio en la tabla persona
                     string updateQuery = "UPDATE persona SET condicion = 1 WHERE idRegistro = @idRegistro";
                     using (MySqlCommand updateCommand = new MySqlCommand(updateQuery, connection))
                     {
@@ -218,5 +237,12 @@ namespace ClubDeportivo_DSOO_PI
         {
 
         }
+
+        private void frmPagoCuotaMensual_Load(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 }

@@ -102,10 +102,6 @@ namespace ClubDeportivo_DSOO_PI
             
         }
 
-
-
-        
-
         private void btnSalir_Click(object sender, EventArgs e)
         {
             MessageBox.Show($"Ustede volverá al menú principal");

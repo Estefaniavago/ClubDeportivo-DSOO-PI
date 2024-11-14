@@ -67,6 +67,9 @@ namespace ClubDeportivo_DSOO_PI
             else
             {
                 MessageBox.Show("Usuario y/o password incorrecto. Intente nuevamente");
+                txtUsuario.Text = "USUARIO";
+                txtPass.UseSystemPasswordChar = false;
+                txtPass.Text = "CONTRASEÑA";
             }
             
         }
