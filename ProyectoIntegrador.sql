@@ -55,34 +55,123 @@ INSERT INTO vencimientos (idRegistro, fechaPago, fechaVencimiento, medioPago, cu
 (105, '2024-11-05', '2024-12-05', 'Tarjeta', 3),
 (107, '2024-11-06', '2024-12-06', 'Efectivo', 1),
 (109, '2024-11-07', '2024-12-07', 'Tarjeta', 6);
-create table actividad(
-NActividad int,
-Nombre varchar(40),
-precio float,
-constraint pk_actividad primary key(NActividad)
-);
+
 
 /*create table nosocio-actividad*/
-/*agregar alguna*/
+CREATE TABLE no_socio (
+    idNoSocio INT AUTO_INCREMENT PRIMARY KEY,
+    idPersona INT,
+    actividadElegida VARCHAR(50),
+    precio FLOAT,
+    fechaPago DATE,
+    FOREIGN KEY (idPersona) REFERENCES persona(idRegistro)
+);
 
-insert into actividad values
-(1000,"Fútbol",5200),
-(1001,"Spinning",5000),
-(1002,"Crossfit",5000),
-(1003,"Natación",5500),
-(1004,"Pilates",5000),
-(1005,"Musculación",4000),
-(1006,"Tenis",5000),
-(1007,"Boxeo",4000),
-(1008,"Taekwondo",4000),
-(1009,"Hockey",5000),
-(1010,"Gimnasia Rítmica",4000),
-(1011,"Gimnasia Artistica",4000),
-(1012,"Futsal",5000),
-(1013,"Basquet",5000),
-(1014,"Volley",5000),
-(1015,"Handball",5000),
-(1016,"Atletismo",5500);
+CREATE TABLE actividad (
+    NActividad INT PRIMARY KEY,
+    Nombre VARCHAR(40),
+    precio FLOAT
+);
+
+CREATE TABLE actividad_horarios (
+    idHorario INT AUTO_INCREMENT PRIMARY KEY,
+    NActividad INT,
+    dia VARCHAR(20),
+    horario VARCHAR(20),
+    FOREIGN KEY (NActividad) REFERENCES actividad(NActividad)
+);
+
+INSERT INTO actividad (NActividad, Nombre, precio) VALUES
+(1000, "Fútbol", 5200),
+(1001, "Spinning", 5000),
+(1002, "Crossfit", 5000),
+(1003, "Natación", 5500),
+(1004, "Pilates", 5000),
+(1005, "Musculación", 4000),
+(1006, "Tenis", 5000),
+(1007, "Boxeo", 4000),
+(1008, "Taekwondo", 4000),
+(1009, "Hockey", 5000),
+(1010, "Gimnasia Rítmica", 4000),
+(1011, "Gimnasia Artística", 4000),
+(1012, "Futsal", 5000),
+(1013, "Basquet", 5000),
+(1014, "Volley", 5000),
+(1015, "Handball", 5000),
+(1016, "Atletismo", 5500);
+
+-- Insertar horarios
+INSERT INTO actividad_horarios (NActividad, dia, horario) VALUES
+-- Fútbol
+(1000, "Lunes", "08:00 AM - 09:00 AM"),
+(1000, "Miércoles", "05:00 PM - 06:00 PM"),
+(1000, "Viernes", "07:00 AM - 08:00 AM"),
+-- Spinning
+(1001, "Lunes", "06:00 AM - 07:00 AM"),
+(1001, "Miércoles", "08:00 AM - 09:00 AM"),
+(1001, "Viernes", "06:00 PM - 07:00 PM"),
+-- Crossfit
+(1002, "Martes", "09:00 AM - 10:00 AM"),
+(1002, "Jueves", "07:00 PM - 08:00 PM"),
+(1002, "Viernes", "10:00 AM - 11:00 AM"),
+-- Natación
+(1003, "Lunes", "07:00 PM - 08:00 PM"),
+(1003, "Miércoles", "06:00 AM - 07:00 AM"),
+(1003, "Viernes", "05:00 PM - 06:00 PM"),
+-- Pilates
+(1004, "Martes", "06:00 PM - 07:00 PM"),
+(1004, "Jueves", "09:00 AM - 10:00 AM"),
+(1004, "Viernes", "07:00 AM - 08:00 AM"),
+-- Musculación
+(1005, "Lunes", "10:00 AM - 11:00 AM"),
+(1005, "Miércoles", "06:00 PM - 07:00 PM"),
+(1005, "Viernes", "07:00 PM - 08:00 PM"),
+-- Tenis
+(1006, "Lunes", "05:00 PM - 06:00 PM"),
+(1006, "Martes", "07:00 AM - 08:00 AM"),
+(1006, "Jueves", "08:00 AM - 09:00 AM"),
+-- Boxeo
+(1007, "Martes", "09:00 AM - 10:00 AM"),
+(1007, "Miércoles", "05:00 PM - 06:00 PM"),
+(1007, "Viernes", "06:00 PM - 07:00 PM"),
+-- Taekwondo
+(1008, "Lunes", "06:00 PM - 07:00 PM"),
+(1008, "Miércoles", "09:00 AM - 10:00 AM"),
+(1008, "Viernes", "08:00 AM - 09:00 AM"),
+-- Hockey
+(1009, "Lunes", "07:00 AM - 08:00 AM"),
+(1009, "Martes", "05:00 PM - 06:00 PM"),
+(1009, "Jueves", "10:00 AM - 11:00 AM"),
+-- Gimnasia Rítmica
+(1010, "Martes", "08:00 AM - 09:00 AM"),
+(1010, "Jueves", "06:00 PM - 07:00 PM"),
+(1010, "Viernes", "09:00 AM - 10:00 AM"),
+-- Gimnasia Artística
+(1011, "Lunes", "09:00 AM - 10:00 AM"),
+(1011, "Miércoles", "06:00 AM - 07:00 AM"),
+(1011, "Viernes", "07:00 AM - 08:00 AM"),
+-- Futsal
+(1012, "Lunes", "06:00 AM - 07:00 AM"),
+(1012, "Martes", "07:00 PM - 08:00 PM"),
+(1012, "Jueves", "08:00 AM - 09:00 AM"),
+-- Basquet
+(1013, "Martes", "06:00 PM - 07:00 PM"),
+(1013, "Miércoles", "07:00 AM - 08:00 AM"),
+(1013, "Viernes", "10:00 AM - 11:00 AM"),
+-- Volley
+(1014, "Lunes", "08:00 AM - 09:00 AM"),
+(1014, "Miércoles", "05:00 PM - 06:00 PM"),
+(1014, "Jueves", "07:00 PM - 08:00 PM"),
+-- Handball
+(1015, "Lunes", "06:00 PM - 07:00 PM"),
+(1015, "Miércoles", "08:00 AM - 09:00 AM"),
+(1015, "Viernes", "07:00 AM - 08:00 AM"),
+-- Atletismo
+(1016, "Martes", "09:00 AM - 10:00 AM"),
+(1016, "Jueves", "06:00 AM - 07:00 AM"),
+(1016, "Viernes", "05:00 PM - 06:00 PM");
+
+
 
 insert into usuario(idUsuario,nombreUsuario,claveUsuario) values
 (1,'Vanesa','1234'),
@@ -152,4 +241,3 @@ END //
 
 select * from persona;
 select * from vencimientos;
-
