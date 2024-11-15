@@ -9,5 +9,6 @@ namespace ClubDeportivo_DSOO_PI.Entidades
     public class E_NoSocio : E_Persona
     {
         public string actividadElegida { get; set; }
+        public float precio { get; set; } // Precio de la actividad elegida
     }
 }
