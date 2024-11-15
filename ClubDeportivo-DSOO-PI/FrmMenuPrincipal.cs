@@ -77,13 +77,15 @@ namespace ClubDeportivo_DSOO_PI
         private void btnGrillaPr_Click(object sender, EventArgs e)
         {
             PersonasRegistradas form2 = new PersonasRegistradas();
-            form2.ShowDialog();
+            MostrarFormularioEnPanel(form2);
+            //form2.ShowDialog();
         }
 
         private void btnPagoActividad_Click(object sender, EventArgs e)
         {
-            frmPagoNoSocio form3 = new frmPagoNoSocio();
-            form3.ShowDialog();
+            frmPagoNoSocio form4 = new frmPagoNoSocio();
+            MostrarFormularioEnPanel(form4);
+            
         }
     }
 }

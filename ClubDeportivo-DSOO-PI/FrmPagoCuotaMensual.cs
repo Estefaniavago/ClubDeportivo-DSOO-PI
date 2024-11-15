@@ -24,77 +24,76 @@ namespace ClubDeportivo_DSOO_PI
         public frmPagoCuotaMensual()
         {
             InitializeComponent();
-            btnPagar.Enabled = false;//desahilitado el pago hasta que este validado el registro
-        }
-
-               //eSTE BOTON NO TIENE SENTIDO SI EL FORMA ESTA DENTRO DEL MENU PRINCIPAL
-        private void btnVolver_Click(object sender, EventArgs e)
-        {
-            Form principal = new frmPrincipal();
-            principal.Show();
-            this.Close();
+            btnPagar.Enabled = false; // Deshabilitado el pago hasta que esté validado el registro
         }
 
         private void txtNroRegistro_TextChanged(object sender, EventArgs e)
         {
             nroRegistro = txtNroRegistro.Text;
-            
         }
 
-        //Este boton valida si existe el numero de registro y si la cuota esta vencida o por vencerse(se puede pagar el mismo dia)
-
+        // Botón para validar el número de registro
         private void btnValidar_Click(object sender, EventArgs e)
         {
             if (int.TryParse(nroRegistro, out int registroId))
             {
-                validarRegistro(registroId);
-                
+                ValidarRegistro(registroId);
             }
             else
             {
                 MessageBox.Show("Por favor, ingrese un número de registro válido.", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
-        private void validarRegistro(int nroRegistro)
+        private void ValidarRegistro(int nroRegistro)
         {
             using (MySqlConnection connection = Conexion.getInstancia().CrearConexion())
             {
                 try
                 {
                     connection.Open();
-                    string query = "SELECT * FROM persona WHERE idRegistro = @nroRegistro";
+                    string query = @"
+                        SELECT p.nombre, p.apellido, v.fechaVencimiento
+                        FROM persona p
+                        LEFT JOIN vencimientos v ON p.idRegistro = v.idRegistro
+                        WHERE p.idRegistro = @nroRegistro
+                        ORDER BY v.fechaVencimiento DESC
+                        LIMIT 1;";
 
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@nroRegistro", nroRegistro);
+
                         using (MySqlDataReader reader = command.ExecuteReader())
                         {
-                            if (reader.HasRows)
+                            if (reader.Read())
                             {
-                                while (reader.Read())
+                                string nombre = reader["nombre"].ToString();
+                                string apellido = reader["apellido"].ToString();
+                                DateTime? fechaVencimiento = reader["fechaVencimiento"] != DBNull.Value
+                                    ? Convert.ToDateTime(reader["fechaVencimiento"])
+                                    : (DateTime?)null;
+
+                                if (fechaVencimiento == null || fechaVencimiento <= DateTime.Now)
                                 {
-                                    string nombre = reader["nombre"].ToString();
-                                    string apellido = reader["apellido"].ToString();
-                                    string condicion = reader["condicion"].ToString();
-                                    MessageBox.Show($"Registro encontrado:\nNombre: {nombre}\nApellido: {apellido}\nCondicion: {condicion}");
-                                    if (condicion == "true")
-                                    {
-                                        // Consulta para obtener la fecha de vencimiento de un registro específico
-                                        //ESTO ES!
-                                    }     
-                                    //btnPagar.Enabled=true;
-                                   
+                                    lblResultado.Text = $"{nombre} {apellido} debe pagar la cuota.";
+                                    lblResultado.ForeColor = Color.Red;
+                                    btnPagar.Enabled = true; // Habilitar el botón de pago
+                                }
+                                else
+                                {
+                                    lblResultado.Text = $"{nombre} {apellido} no necesita pagar la cuota. Vence el {fechaVencimiento.Value.ToShortDateString()}";
+                                    lblResultado.ForeColor = Color.Green;
+                                    btnPagar.Enabled = false; // Deshabilitar el botón de pago
                                 }
                             }
                             else
                             {
-                                MessageBox.Show("No se encontró el registro con el número especificado.", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                lblResultado.Text = "No se encontró el registro.";
+                                lblResultado.ForeColor = Color.Red;
+                                btnPagar.Enabled = false;
                             }
-
                         }
-               
                     }
                 }
                 catch (MySqlException ex)
@@ -103,59 +102,31 @@ namespace ClubDeportivo_DSOO_PI
                 }
             }
         }
-       
+
         private void btnPagar_Click(object sender, EventArgs e)
         {
-
-            //ACA DERIAMOS AGREGAR EL METODO DE PAGAR , 
-            // Determina el medio de pago y el número de cuotas
             string medioPago = "";
-            string cantcuotas = cbCuotas.Text; 
-            short cuotas;
-            if (cantcuotas=="1 CUOTA")
-            {
-                cuotas = 1;
-            } else if(cantcuotas=="3 CUOTAS")
-            {
-                cuotas = 3;
-            }
-            else
-            {
-                cuotas = 6;
-            }
-            decimal montoPorCuota = montoTotal; // Monto por cuota
+            short cuotas = cbCuotas.Text == "1 CUOTA" ? (short)1 : cbCuotas.Text == "3 CUOTAS" ? (short)3 : (short)6;
+            decimal montoPorCuota = montoTotal / cuotas;
 
             if (rdEfectivo.Checked)
             {
                 medioPago = "Efectivo";
-                cuotas = 1;
             }
             else if (rdCredito.Checked)
             {
                 medioPago = "Crédito";
-                
-                montoPorCuota = montoTotal / cuotas;
-
-            }
-            else if (rdCredito.Checked)
-            {
-                medioPago = "Crédito";
-               
-                montoPorCuota = montoTotal / cuotas;
             }
 
-            // Verifica que se haya seleccionado un medio de pago
             if (string.IsNullOrEmpty(medioPago))
             {
                 MessageBox.Show("Por favor, seleccione un medio de pago.", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Calcular la fecha del próximo vencimiento, siempre a un mes
             DateTime fechaActual = DateTime.Now;
             DateTime proximoVencimiento = fechaActual.AddMonths(1);
 
-            // Generar el comprobante de pago
             comprobante = $"Comprobante de Pago:\n" +
                           $"Número de Registro: {nroRegistro}\n" +
                           $"Medio de Pago: {medioPago}\n" +
@@ -165,7 +136,6 @@ namespace ClubDeportivo_DSOO_PI
                           $"Número de Cuotas: {cuotas}\n" +
                           $"Monto por Cuota: ${montoPorCuota}";
 
-            // Almacenar el pago en la base de datos en la tabla 'vencimientos'
             RegistrarVencimiento(nroRegistro, fechaActual, proximoVencimiento, medioPago, cuotas);
 
             MessageBox.Show("Pago realizado exitosamente. Comprobante generado.", "Confirmación de Pago", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -178,8 +148,7 @@ namespace ClubDeportivo_DSOO_PI
                 try
                 {
                     connection.Open();
-                    string query = "INSERT INTO vencimientos (idRegistro, fechaPago, fechaVencimiento, medioPago, cuotas) " +
-                                   "VALUES (@idRegistro, @fechaPago, @fechaVencimiento, @medioPago, @cuotas)";
+                    string query = "INSERT INTO vencimientos (idRegistro, fechaPago, fechaVencimiento, medioPago, cuotas) VALUES (@idRegistro, @fechaPago, @fechaVencimiento, @medioPago, @cuotas)";
 
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
@@ -190,14 +159,6 @@ namespace ClubDeportivo_DSOO_PI
                         command.Parameters.AddWithValue("@cuotas", cuotas);
 
                         command.ExecuteNonQuery();
-                    }
-
-                    // Actualizar el cliente como socio en la tabla persona
-                    string updateQuery = "UPDATE persona SET condicion = 1 WHERE idRegistro = @idRegistro";
-                    using (MySqlCommand updateCommand = new MySqlCommand(updateQuery, connection))
-                    {
-                        updateCommand.Parameters.AddWithValue("@idRegistro", idRegistro);
-                        updateCommand.ExecuteNonQuery();
                     }
                 }
                 catch (MySqlException ex)
@@ -211,10 +172,11 @@ namespace ClubDeportivo_DSOO_PI
         {
             if (!string.IsNullOrEmpty(comprobante))
             {
-                // Mostrar el comprobante en un modal con estilo de tarjeta (simulado)
-                Form comprobanteForm = new Form();
-                comprobanteForm.Text = "Comprobante de Pago";
-                comprobanteForm.Size = new Size(400, 300);
+                Form comprobanteForm = new Form
+                {
+                    Text = "Comprobante de Pago",
+                    Size = new Size(400, 300)
+                };
 
                 Label comprobanteLabel = new Label
                 {
@@ -235,14 +197,10 @@ namespace ClubDeportivo_DSOO_PI
 
         private void cbCuotas_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
 
         private void frmPagoCuotaMensual_Load(object sender, EventArgs e)
         {
-
         }
-
-       
     }
 }
