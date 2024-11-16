@@ -115,24 +115,29 @@ namespace ClubDeportivo_DSOO_PI
 
         private void btnComprobanteNoSocio_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(cbActividad.Text) && !string.IsNullOrEmpty(txtPrecioAct.Text) )
+            if (!string.IsNullOrEmpty(cbActividad.Text) && !string.IsNullOrEmpty(txtPrecioAct.Text) &&
+        !string.IsNullOrEmpty(txtNyANs.Text))
             {
-                string actividad = cbActividad.Text;
-                string precio = txtPrecioAct.Text;
-                string fechaPago = DateTime.Now.ToShortDateString();
+                ComprobanteNoSocio comprobanteForm = new ComprobanteNoSocio
+                {
+                    Nombre = txtNyANs.Text.Split(' ')[0],
+                    Apellido = txtNyANs.Text.Split(' ')[1],
+                    ActividadElegida = cbActividad.Text,
+                    Precio = txtPrecioAct.Text,
+                    FechaPago = DateTime.Now.ToShortDateString(),
+                    MedioPago = rdEfectivo.Checked ? "Efectivo" : rdCredito.Checked ? "Crédito" : "N/A"
+                };
+                MessageBox.Show($"Nombre: {comprobanteForm.Nombre}, Apellido: {comprobanteForm.Apellido}, Actividad: {comprobanteForm.ActividadElegida}, Precio: {comprobanteForm.Precio}, Fecha: {comprobanteForm.FechaPago}, Medio de Pago: {comprobanteForm.MedioPago}");
 
-                string comprobante = $"Comprobante de Pago:\n" +
-                                     $"Actividad: {actividad}\n" +
-                                     $"Precio: ${precio}\n" +
-                                     $"Fecha de Pago: {fechaPago}";
 
-                MessageBox.Show(comprobante, "Comprobante Generado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                comprobanteForm.ShowDialog();
             }
             else
             {
                 MessageBox.Show("Por favor, complete todos los campos antes de generar el comprobante.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+    
 
         private void txtNroRegistroNs_TextChanged(object sender, EventArgs e)
         {
@@ -235,6 +240,73 @@ namespace ClubDeportivo_DSOO_PI
 
         private void btnPagar_Click(object sender, EventArgs e)
         {
+            
+                // Validar que los campos requeridos estén completos
+                if (!string.IsNullOrEmpty(cbActividad.Text) &&
+                    !string.IsNullOrEmpty(txtPrecioAct.Text) &&
+                    !string.IsNullOrEmpty(txtNyANs.Text) &&
+                    !string.IsNullOrEmpty(txtNroRegistroNs.Text))
+                {
+                    // Capturar los datos del formulario
+                    int idPersona;
+                    if (!int.TryParse(txtNroRegistroNs.Text, out idPersona))
+                    {
+                        MessageBox.Show("El número de registro debe ser un valor numérico válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    string actividad = cbActividad.Text;
+                    string precio = txtPrecioAct.Text;
+                    string fechaPago = DateTime.Now.ToString("yyyy-MM-dd");
+
+                    // Registrar el pago en la tabla no_socio
+                    using (MySqlConnection connection = Conexion.getInstancia().CrearConexion())
+                    {
+                        try
+                        {
+                            connection.Open();
+
+                            // Query para insertar los datos en la tabla no_socio
+                            string query = @"INSERT INTO no_socio 
+                                 (idPersona, actividadElegida, precio, fechaPago) 
+                                 VALUES 
+                                 (@idPersona, @actividadElegida, @precio, @fechaPago)";
+
+                            using (MySqlCommand command = new MySqlCommand(query, connection))
+                            {
+                                // Agregar parámetros al comando
+                                command.Parameters.AddWithValue("@idPersona", idPersona);
+                                command.Parameters.AddWithValue("@actividadElegida", actividad);
+                                command.Parameters.AddWithValue("@precio", precio);
+                                command.Parameters.AddWithValue("@fechaPago", fechaPago);
+
+                                // Ejecutar la consulta
+                                int result = command.ExecuteNonQuery();
+
+                                if (result > 0)
+                                {
+                                    MessageBox.Show("El pago ha sido registrado correctamente.", "Pago Registrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                    // Habilitar el botón de comprobante
+                                    btnComprobanteNoSocio.Enabled = true;
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Ocurrió un error al registrar el pago. Por favor, intente nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error al registrar el pago: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Por favor, complete todos los campos antes de proceder con el pago.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            
 
         }
     }
