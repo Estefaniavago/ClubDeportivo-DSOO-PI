@@ -40,10 +40,10 @@ namespace ClubDeportivo_DSOO_PI
             
        }
     
-        private void textBox1_TextChanged(object sender, EventArgs e)
+       /* private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
-        }
+        }*/
      
        
         private void btnIngresar_Click(object sender, EventArgs e)
@@ -84,7 +84,7 @@ namespace ClubDeportivo_DSOO_PI
 
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+       private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }

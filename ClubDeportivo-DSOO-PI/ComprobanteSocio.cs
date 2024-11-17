@@ -12,48 +12,43 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-
-
 namespace ClubDeportivo_DSOO_PI
 {
-    public partial class ComprobanteNoSocio : Form
+    public partial class frmComprobanteSocio : Form
     {
-        // Propiedades públicas para recibir los datos
         public string Nombre { get; set; }
         public string Apellido { get; set; }
-        public string ActividadElegida { get; set; }
-        public string Precio { get; set; }
+        public string montocuota { get; set; }
         public string FechaPago { get; set; }
         public string MedioPago { get; set; }
+        public string Cuotas{ get; set; }
 
-        public ComprobanteNoSocio()
+        public frmComprobanteSocio()
         {
             InitializeComponent();
         }
 
-        private void ComprobanteNoSocio_Load_1(object sender, EventArgs e)
+        private void frmComprobanteSocio_Load(object sender, EventArgs e)
         {
-            
             try
             {
 
-                MessageBox.Show($"Nombre: {Nombre}, Apellido: {Apellido}, Actividad: {ActividadElegida}, Precio: {Precio}, Fecha: {FechaPago}, Medio de Pago: {MedioPago}");
                 
                 // Asignar los valores recibidos a los campos del formulario
-                txtNombreNoSocio.Text = Nombre;
-                txtApellidoNoSocio.Text = Apellido;
-                txtActividadElegida.Text = ActividadElegida;
-                txtPrecioActividad.Text = Precio;
-                txtFechaDePagoNoSocio.Text = FechaPago;
-                txtMedioDePago.Text = MedioPago;
+                txtNombreS.Text = Nombre;
+                txtApellidoS.Text = Apellido;
+                txtMontoS.Text = montocuota;
+                txtFechaS.Text = FechaPago;
+                txtMediodePagoS.Text = MedioPago;
+                txtCuotasS.Text = Cuotas;
 
                 // Configurar los TextBox como de solo lectura
-                txtNombreNoSocio.ReadOnly = true;
-                txtApellidoNoSocio.ReadOnly = true;
-                txtActividadElegida.ReadOnly = true;
-                txtPrecioActividad.ReadOnly = true;
-                txtFechaDePagoNoSocio.ReadOnly = true;
-                txtMedioDePago.ReadOnly = true;
+                txtNombreS.ReadOnly = true;
+                txtApellidoS.ReadOnly = true;
+                txtMontoS.ReadOnly = true;
+                txtFechaS.ReadOnly = true;
+                txtMediodePagoS.ReadOnly = true;
+                txtCuotasS.ReadOnly = true;
             }
             catch (Exception ex)
             {
@@ -62,54 +57,21 @@ namespace ClubDeportivo_DSOO_PI
             }
         }
 
-        private void btnImrpimirCompr_Click_1(object sender, EventArgs e)
+        private void btnImprimirComprobanteS_Click(object sender, EventArgs e)
         {
-
             /* Eliminamos el boton imprimir de la vista*/
-            btnImrpimirCompr.Visible = false;
+            btnImprimirComprobanteS.Visible = false;
             /* Creamos objeto para imprimir*/
             PrintDocument pd = new PrintDocument();
             pd.PrintPage += new PrintPageEventHandler(imprimirComprobanteNs);
             pd.Print();
-            btnImrpimirCompr.Visible = true; // visualizamos nuevamente el boton de imprimir
+            btnImprimirComprobanteS.Visible = true; // visualizamos nuevamente el boton de imprimir
 
 
             MessageBox.Show("Operaación existosa", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
             frmPrincipal principal = new frmPrincipal();
             principal.Show();
             this.Close();
-        }
-    
-    
-            
-        private void txtNombreNoSocio_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtApellidoNoSocio_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtActividadElegida_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtPrecioActividad_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtFechaDePagoNoSocio_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtMedioDePago_TextChanged(object sender, EventArgs e)
-        {
-
         }
         private void imprimirComprobanteNs(object o, PrintPageEventArgs e)
         {
@@ -123,7 +85,6 @@ namespace ClubDeportivo_DSOO_PI
             Point p = new Point(100, 100);
             e.Graphics.DrawImage(img, p);
         }
-
-
     }
-}
+    }
+         

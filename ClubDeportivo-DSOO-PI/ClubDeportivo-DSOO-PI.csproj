@@ -165,6 +165,12 @@
     <Compile Include="ComprobanteNoSocio.Designer.cs">
       <DependentUpon>ComprobanteNoSocio.cs</DependentUpon>
     </Compile>
+    <Compile Include="ComprobanteSocio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ComprobanteSocio.Designer.cs">
+      <DependentUpon>ComprobanteSocio.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -216,6 +222,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ComprobanteNoSocio.resx">
       <DependentUpon>ComprobanteNoSocio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ComprobanteSocio.resx">
+      <DependentUpon>ComprobanteSocio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.es-AR.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>

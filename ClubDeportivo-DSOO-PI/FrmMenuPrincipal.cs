@@ -26,8 +26,7 @@ namespace ClubDeportivo_DSOO_PI
         protected override void OnPaint(PaintEventArgs e)
         {
             // Fondo degradado
-            LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle,
-                Color.LightBlue, Color.White, 90F);
+            LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle,Color.LightBlue, Color.White, 90F);
             e.Graphics.FillRectangle(brush, this.ClientRectangle);
             base.OnPaint(e);
         }

@@ -47,7 +47,7 @@
             this.Comprobante.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Comprobante.Location = new System.Drawing.Point(150, 20);
             this.Comprobante.Name = "Comprobante";
-            this.Comprobante.Size = new System.Drawing.Size(142, 25);
+            this.Comprobante.Size = new System.Drawing.Size(117, 20);
             this.Comprobante.TabIndex = 0;
             this.Comprobante.Text = "Comprobante";
             // 
@@ -55,42 +55,42 @@
             // 
             this.txtNombreNoSocio.Location = new System.Drawing.Point(180, 60);
             this.txtNombreNoSocio.Name = "txtNombreNoSocio";
-            this.txtNombreNoSocio.Size = new System.Drawing.Size(200, 22);
+            this.txtNombreNoSocio.Size = new System.Drawing.Size(200, 20);
             this.txtNombreNoSocio.TabIndex = 1;
             // 
             // txtApellidoNoSocio
             // 
             this.txtApellidoNoSocio.Location = new System.Drawing.Point(180, 100);
             this.txtApellidoNoSocio.Name = "txtApellidoNoSocio";
-            this.txtApellidoNoSocio.Size = new System.Drawing.Size(200, 22);
+            this.txtApellidoNoSocio.Size = new System.Drawing.Size(200, 20);
             this.txtApellidoNoSocio.TabIndex = 2;
             // 
             // txtActividadElegida
             // 
             this.txtActividadElegida.Location = new System.Drawing.Point(180, 140);
             this.txtActividadElegida.Name = "txtActividadElegida";
-            this.txtActividadElegida.Size = new System.Drawing.Size(200, 22);
+            this.txtActividadElegida.Size = new System.Drawing.Size(200, 20);
             this.txtActividadElegida.TabIndex = 3;
             // 
             // txtPrecioActividad
             // 
             this.txtPrecioActividad.Location = new System.Drawing.Point(180, 180);
             this.txtPrecioActividad.Name = "txtPrecioActividad";
-            this.txtPrecioActividad.Size = new System.Drawing.Size(200, 22);
+            this.txtPrecioActividad.Size = new System.Drawing.Size(200, 20);
             this.txtPrecioActividad.TabIndex = 4;
             // 
             // txtFechaDePagoNoSocio
             // 
             this.txtFechaDePagoNoSocio.Location = new System.Drawing.Point(180, 220);
             this.txtFechaDePagoNoSocio.Name = "txtFechaDePagoNoSocio";
-            this.txtFechaDePagoNoSocio.Size = new System.Drawing.Size(200, 22);
+            this.txtFechaDePagoNoSocio.Size = new System.Drawing.Size(200, 20);
             this.txtFechaDePagoNoSocio.TabIndex = 5;
             // 
             // txtMedioDePago
             // 
             this.txtMedioDePago.Location = new System.Drawing.Point(180, 260);
             this.txtMedioDePago.Name = "txtMedioDePago";
-            this.txtMedioDePago.Size = new System.Drawing.Size(200, 22);
+            this.txtMedioDePago.Size = new System.Drawing.Size(200, 20);
             this.txtMedioDePago.TabIndex = 6;
             // 
             // lblNombreNoSocio
@@ -98,7 +98,7 @@
             this.lblNombreNoSocio.AutoSize = true;
             this.lblNombreNoSocio.Location = new System.Drawing.Point(80, 60);
             this.lblNombreNoSocio.Name = "lblNombreNoSocio";
-            this.lblNombreNoSocio.Size = new System.Drawing.Size(59, 16);
+            this.lblNombreNoSocio.Size = new System.Drawing.Size(47, 13);
             this.lblNombreNoSocio.TabIndex = 7;
             this.lblNombreNoSocio.Text = "Nombre:";
             // 
@@ -107,7 +107,7 @@
             this.lblApellidoNoSocio.AutoSize = true;
             this.lblApellidoNoSocio.Location = new System.Drawing.Point(80, 100);
             this.lblApellidoNoSocio.Name = "lblApellidoNoSocio";
-            this.lblApellidoNoSocio.Size = new System.Drawing.Size(60, 16);
+            this.lblApellidoNoSocio.Size = new System.Drawing.Size(47, 13);
             this.lblApellidoNoSocio.TabIndex = 8;
             this.lblApellidoNoSocio.Text = "Apellido:";
             // 
@@ -116,7 +116,7 @@
             this.lblActElegida.AutoSize = true;
             this.lblActElegida.Location = new System.Drawing.Point(80, 140);
             this.lblActElegida.Name = "lblActElegida";
-            this.lblActElegida.Size = new System.Drawing.Size(66, 16);
+            this.lblActElegida.Size = new System.Drawing.Size(54, 13);
             this.lblActElegida.TabIndex = 9;
             this.lblActElegida.Text = "Actividad:";
             // 
@@ -125,7 +125,7 @@
             this.lblPrecioActiv.AutoSize = true;
             this.lblPrecioActiv.Location = new System.Drawing.Point(80, 180);
             this.lblPrecioActiv.Name = "lblPrecioActiv";
-            this.lblPrecioActiv.Size = new System.Drawing.Size(49, 16);
+            this.lblPrecioActiv.Size = new System.Drawing.Size(40, 13);
             this.lblPrecioActiv.TabIndex = 10;
             this.lblPrecioActiv.Text = "Precio:";
             // 
@@ -134,7 +134,7 @@
             this.lblFechaPago.AutoSize = true;
             this.lblFechaPago.Location = new System.Drawing.Point(80, 220);
             this.lblFechaPago.Name = "lblFechaPago";
-            this.lblFechaPago.Size = new System.Drawing.Size(102, 16);
+            this.lblFechaPago.Size = new System.Drawing.Size(82, 13);
             this.lblFechaPago.TabIndex = 11;
             this.lblFechaPago.Text = "Fecha de pago:";
             // 
@@ -143,7 +143,7 @@
             this.lblMedioDePago.AutoSize = true;
             this.lblMedioDePago.Location = new System.Drawing.Point(80, 260);
             this.lblMedioDePago.Name = "lblMedioDePago";
-            this.lblMedioDePago.Size = new System.Drawing.Size(103, 16);
+            this.lblMedioDePago.Size = new System.Drawing.Size(82, 13);
             this.lblMedioDePago.TabIndex = 12;
             this.lblMedioDePago.Text = "Medio de Pago:";
             // 
@@ -155,6 +155,7 @@
             this.btnImrpimirCompr.TabIndex = 13;
             this.btnImrpimirCompr.Text = "Imprimir Comprobante";
             this.btnImrpimirCompr.UseVisualStyleBackColor = true;
+            this.btnImrpimirCompr.Click += new System.EventHandler(this.btnImrpimirCompr_Click_1);
             // 
             // ComprobanteNoSocio
             // 
@@ -175,6 +176,7 @@
             this.Controls.Add(this.Comprobante);
             this.Name = "ComprobanteNoSocio";
             this.Text = "ComprobanteNoSocio";
+            this.Load += new System.EventHandler(this.ComprobanteNoSocio_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();
 
