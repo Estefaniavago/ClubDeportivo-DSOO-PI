@@ -50,9 +50,10 @@
             this.label1.Font = new System.Drawing.Font("Cambria", 24F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(57)))), ((int)(((byte)(80)))));
             this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(508, 39);
+            this.label1.Location = new System.Drawing.Point(381, 32);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(338, 47);
+            this.label1.Size = new System.Drawing.Size(272, 37);
             this.label1.TabIndex = 5;
             this.label1.Text = "MENÚ PRINCIPAL";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -62,10 +63,9 @@
             // 
             this.btnRegistroSocio.BackColor = System.Drawing.Color.Aquamarine;
             this.btnRegistroSocio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistroSocio.Location = new System.Drawing.Point(4, 7);
-            this.btnRegistroSocio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRegistroSocio.Location = new System.Drawing.Point(3, 6);
             this.btnRegistroSocio.Name = "btnRegistroSocio";
-            this.btnRegistroSocio.Size = new System.Drawing.Size(192, 43);
+            this.btnRegistroSocio.Size = new System.Drawing.Size(144, 35);
             this.btnRegistroSocio.TabIndex = 7;
             this.btnRegistroSocio.Text = "REGISTRAR SOCIO";
             this.btnRegistroSocio.UseVisualStyleBackColor = false;
@@ -75,10 +75,9 @@
             // 
             this.btnPagoMensual.BackColor = System.Drawing.Color.Aquamarine;
             this.btnPagoMensual.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPagoMensual.Location = new System.Drawing.Point(1, 172);
-            this.btnPagoMensual.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPagoMensual.Location = new System.Drawing.Point(1, 140);
             this.btnPagoMensual.Name = "btnPagoMensual";
-            this.btnPagoMensual.Size = new System.Drawing.Size(196, 39);
+            this.btnPagoMensual.Size = new System.Drawing.Size(147, 32);
             this.btnPagoMensual.TabIndex = 8;
             this.btnPagoMensual.Text = "PAGO MENSUAL";
             this.btnPagoMensual.UseVisualStyleBackColor = false;
@@ -88,22 +87,21 @@
             // 
             this.btnCarnet.BackColor = System.Drawing.Color.Aquamarine;
             this.btnCarnet.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.btnCarnet.Location = new System.Drawing.Point(5, 263);
-            this.btnCarnet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCarnet.Location = new System.Drawing.Point(4, 214);
             this.btnCarnet.Name = "btnCarnet";
-            this.btnCarnet.Size = new System.Drawing.Size(192, 46);
+            this.btnCarnet.Size = new System.Drawing.Size(144, 37);
             this.btnCarnet.TabIndex = 9;
             this.btnCarnet.Text = "EMITIR CARNET";
             this.btnCarnet.UseVisualStyleBackColor = false;
+            this.btnCarnet.Click += new System.EventHandler(this.btnCarnet_Click);
             // 
             // btnListado
             // 
             this.btnListado.BackColor = System.Drawing.Color.Aquamarine;
             this.btnListado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnListado.Location = new System.Drawing.Point(1, 123);
-            this.btnListado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnListado.Location = new System.Drawing.Point(1, 100);
             this.btnListado.Name = "btnListado";
-            this.btnListado.Size = new System.Drawing.Size(199, 41);
+            this.btnListado.Size = new System.Drawing.Size(149, 33);
             this.btnListado.TabIndex = 10;
             this.btnListado.Text = "VENCIMIENTOS";
             this.btnListado.UseVisualStyleBackColor = false;
@@ -112,10 +110,9 @@
             // 
             this.btnSalir.BackColor = System.Drawing.Color.Aquamarine;
             this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.btnSalir.Location = new System.Drawing.Point(30, 414);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSalir.Location = new System.Drawing.Point(22, 336);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(133, 35);
+            this.btnSalir.Size = new System.Drawing.Size(100, 28);
             this.btnSalir.TabIndex = 11;
             this.btnSalir.Text = "SALIR";
             this.btnSalir.UseVisualStyleBackColor = false;
@@ -125,10 +122,9 @@
             // 
             this.btnPagoActividad.BackColor = System.Drawing.Color.Aquamarine;
             this.btnPagoActividad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPagoActividad.Location = new System.Drawing.Point(-3, 219);
-            this.btnPagoActividad.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPagoActividad.Location = new System.Drawing.Point(-2, 178);
             this.btnPagoActividad.Name = "btnPagoActividad";
-            this.btnPagoActividad.Size = new System.Drawing.Size(199, 36);
+            this.btnPagoActividad.Size = new System.Drawing.Size(149, 29);
             this.btnPagoActividad.TabIndex = 13;
             this.btnPagoActividad.Text = "PAGO ACTIVIDAD DIARIA";
             this.btnPagoActividad.UseVisualStyleBackColor = false;
@@ -143,21 +139,19 @@
             this.panel1.Controls.Add(this.btnCarnet);
             this.panel1.Controls.Add(this.btnListado);
             this.panel1.Controls.Add(this.btnPagoMensual);
-            this.panel1.Location = new System.Drawing.Point(3, 111);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Location = new System.Drawing.Point(2, 90);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 465);
+            this.panel1.Size = new System.Drawing.Size(150, 378);
             this.panel1.TabIndex = 14;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // btnGrillaPr
             // 
             this.btnGrillaPr.BackColor = System.Drawing.Color.Aquamarine;
             this.btnGrillaPr.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGrillaPr.Location = new System.Drawing.Point(1, 58);
-            this.btnGrillaPr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGrillaPr.Location = new System.Drawing.Point(1, 47);
             this.btnGrillaPr.Name = "btnGrillaPr";
-            this.btnGrillaPr.Size = new System.Drawing.Size(199, 57);
+            this.btnGrillaPr.Size = new System.Drawing.Size(149, 46);
             this.btnGrillaPr.TabIndex = 14;
             this.btnGrillaPr.Text = "PERSONAS REGISTRADAS";
             this.btnGrillaPr.UseVisualStyleBackColor = false;
@@ -165,38 +159,37 @@
             // 
             // panel2
             // 
-            this.panel2.Location = new System.Drawing.Point(208, 111);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel2.Location = new System.Drawing.Point(156, 90);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(946, 465);
+            this.panel2.Size = new System.Drawing.Size(710, 378);
             this.panel2.TabIndex = 15;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::ClubDeportivo_DSOO_PI.Properties.Resources.fitmoveRecurso_2_3x;
-            this.pictureBox1.Location = new System.Drawing.Point(16, 11);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 9);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(171, 75);
+            this.pictureBox1.Size = new System.Drawing.Size(128, 61);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
             // frmPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1156, 588);
+            this.ClientSize = new System.Drawing.Size(867, 478);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu Principal";

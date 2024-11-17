@@ -68,7 +68,7 @@ namespace ClubDeportivo_DSOO_PI
             btnImprimirComprobanteS.Visible = true; // visualizamos nuevamente el boton de imprimir
 
 
-            MessageBox.Show("Operaación existosa", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Operación existosa", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
             frmPrincipal principal = new frmPrincipal();
             principal.Show();
             this.Close();

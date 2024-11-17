@@ -17,10 +17,13 @@ namespace ClubDeportivo_DSOO_PI
         public frmPrincipal()
         {
             InitializeComponent();
-            this.StartPosition = FormStartPosition.Manual; // posición manual
-            this.Size = new Size(800, 450); // tamaño
-            this.Location = new Point(100, 100); // posición en la pantalla
-            this.Load += new System.EventHandler(this.Form2_Load);
+            
+
+            //ESTILOS, CHEQUEAR
+            //this.StartPosition = FormStartPosition.Manual; // posición manual
+            //this.Size = new Size(800, 450); // tamaño
+            //this.Location = new Point(100, 100); // posición en la pantalla
+            //this.Load += new System.EventHandler(this.Form2_Load);
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -40,8 +43,6 @@ namespace ClubDeportivo_DSOO_PI
             MessageBox.Show("Hasta luego.");
             Application.Exit();
         }
-        private void panel2_Paint(object sender, PaintEventArgs e) { }
-        private void panel1_Paint(object sender, PaintEventArgs e) { }
 
         // Método para cargar un formulario en panel2 sin bordes ni título
         private void MostrarFormularioEnPanel(Form formulario)
@@ -85,6 +86,13 @@ namespace ClubDeportivo_DSOO_PI
             frmPagoNoSocio form4 = new frmPagoNoSocio();
             MostrarFormularioEnPanel(form4);
             
+        }
+
+        private void btnCarnet_Click(object sender, EventArgs e)
+        {
+            // Instancia del formulario de pago de cuota mensual
+            CarnetSocio formulario = new CarnetSocio();
+            MostrarFormularioEnPanel(formulario);
         }
     }
 }

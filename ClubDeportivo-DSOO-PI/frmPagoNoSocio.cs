@@ -127,10 +127,7 @@ namespace ClubDeportivo_DSOO_PI
                     FechaPago = DateTime.Now.ToShortDateString(),
                     MedioPago = rdEfectivo.Checked ? "Efectivo" : rdCredito.Checked ? "Crédito" : "N/A"
                 };
-               // MessageBox.Show($"Nombre: {comprobanteForm.Nombre}, Apellido: {comprobanteForm.Apellido}, Actividad: {comprobanteForm.ActividadElegida}, Precio: {comprobanteForm.Precio}, Fecha: {comprobanteForm.FechaPago}, Medio de Pago: {comprobanteForm.MedioPago}");
-
-
-               //comprobanteForm.ShowDialog();
+               
             }
             else
             {

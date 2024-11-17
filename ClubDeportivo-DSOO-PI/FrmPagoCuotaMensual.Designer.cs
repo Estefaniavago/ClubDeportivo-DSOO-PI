@@ -25,12 +25,9 @@
             this.cbCuotas = new System.Windows.Forms.ComboBox();
             this.rdCredito = new System.Windows.Forms.RadioButton();
             this.rdEfectivo = new System.Windows.Forms.RadioButton();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnComprobanteS = new System.Windows.Forms.Button();
             this.btnValidar = new System.Windows.Forms.Button();
             this.lblResultado = new System.Windows.Forms.Label();
-            this.txtNombreS = new System.Windows.Forms.TextBox();
-            this.txtApellidoS = new System.Windows.Forms.TextBox();
-            this.txtValidoHastaS = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -140,15 +137,15 @@
             this.rdEfectivo.Text = "Efectivo";
             this.rdEfectivo.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnComprobanteS
             // 
-            this.button2.Location = new System.Drawing.Point(242, 336);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 39);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "COMPROBANTE";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.btnComprobante_Click);
+            this.btnComprobanteS.Location = new System.Drawing.Point(242, 336);
+            this.btnComprobanteS.Name = "btnComprobanteS";
+            this.btnComprobanteS.Size = new System.Drawing.Size(100, 39);
+            this.btnComprobanteS.TabIndex = 9;
+            this.btnComprobanteS.Text = "COMPROBANTE";
+            this.btnComprobanteS.UseVisualStyleBackColor = true;
+            this.btnComprobanteS.Click += new System.EventHandler(this.btnComprobante_Click);
             // 
             // btnValidar
             // 
@@ -169,38 +166,14 @@
             this.lblResultado.Size = new System.Drawing.Size(0, 13);
             this.lblResultado.TabIndex = 11;
             // 
-            // txtNombreS
-            // 
-            this.txtNombreS.Location = new System.Drawing.Point(565, 183);
-            this.txtNombreS.Name = "txtNombreS";
-            this.txtNombreS.Size = new System.Drawing.Size(100, 20);
-            this.txtNombreS.TabIndex = 12;
-            // 
-            // txtApellidoS
-            // 
-            this.txtApellidoS.Location = new System.Drawing.Point(565, 223);
-            this.txtApellidoS.Name = "txtApellidoS";
-            this.txtApellidoS.Size = new System.Drawing.Size(100, 20);
-            this.txtApellidoS.TabIndex = 13;
-            // 
-            // txtValidoHastaS
-            // 
-            this.txtValidoHastaS.Location = new System.Drawing.Point(565, 259);
-            this.txtValidoHastaS.Name = "txtValidoHastaS";
-            this.txtValidoHastaS.Size = new System.Drawing.Size(100, 20);
-            this.txtValidoHastaS.TabIndex = 14;
-            // 
             // frmPagoCuotaMensual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(677, 450);
-            this.Controls.Add(this.txtValidoHastaS);
-            this.Controls.Add(this.txtApellidoS);
-            this.Controls.Add(this.txtNombreS);
             this.Controls.Add(this.lblResultado);
             this.Controls.Add(this.btnValidar);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnComprobanteS);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtNroRegistro);
             this.Controls.Add(this.lblUsuario);
@@ -229,11 +202,8 @@
         private System.Windows.Forms.RadioButton rdEfectivo;
         private System.Windows.Forms.ComboBox cbCuotas;
         private System.Windows.Forms.RadioButton rdCredito;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnComprobanteS;
         private System.Windows.Forms.Button btnValidar;
         private System.Windows.Forms.Label lblResultado;
-        private System.Windows.Forms.TextBox txtNombreS;
-        private System.Windows.Forms.TextBox txtApellidoS;
-        private System.Windows.Forms.TextBox txtValidoHastaS;
     }
 }

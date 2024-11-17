@@ -57,10 +57,12 @@ namespace ClubDeportivo_DSOO_PI
                 string nombreUsuario = tablaLogin.Rows[0]["nombreUsuario"].ToString();
 
                 MessageBox.Show($"Ingreso exitoso. Bienvenid@ {nombreUsuario}");
+               
 
 
                 frmPrincipal form2 = new frmPrincipal();
                 form2.ShowDialog();
+                
 
 
             }

@@ -159,6 +159,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CarnetSocio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CarnetSocio.Designer.cs">
+      <DependentUpon>CarnetSocio.cs</DependentUpon>
+    </Compile>
     <Compile Include="ComprobanteNoSocio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -220,6 +226,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CarnetSocio.resx">
+      <DependentUpon>CarnetSocio.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ComprobanteNoSocio.resx">
       <DependentUpon>ComprobanteNoSocio.cs</DependentUpon>
     </EmbeddedResource>

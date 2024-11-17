@@ -18,8 +18,7 @@ namespace ClubDeportivo_DSOO_PI
     public partial class frmPagoCuotaMensual : Form
     {
         private string nroRegistro; // En la BBDD es idRegistro
-        private string comprobante; // Para almacenar el comprobante generado
-        private decimal montoTotal = 30000; // Monto total de la cuota mensual para todos los socios
+        decimal montoTotal = 30000; // Monto total de la cuota mensual para todos los socios
         string nombre;
         string apellido;
 
@@ -27,6 +26,7 @@ namespace ClubDeportivo_DSOO_PI
         {
             InitializeComponent();
             btnPagar.Enabled = false; // Deshabilitado el pago hasta que esté validado el registro
+            btnComprobanteS.Enabled = false;
         }
 
         private void txtNroRegistro_TextChanged(object sender, EventArgs e)
@@ -129,18 +129,19 @@ namespace ClubDeportivo_DSOO_PI
             DateTime fechaActual = DateTime.Now;
             DateTime proximoVencimiento = fechaActual.AddMonths(1);
 
-            comprobante = $"Comprobante de Pago:\n" +
+           /* comprobante = $"Comprobante de Pago:\n" +
                           $"Número de Registro: {nroRegistro}\n" +
                           $"Medio de Pago: {medioPago}\n" +
                           $"Fecha de Pago: {fechaActual.ToShortDateString()}\n" +
                           $"Próximo Vencimiento: {proximoVencimiento.ToShortDateString()}\n" +
                           $"Monto Total: ${montoTotal}\n" +
                           $"Número de Cuotas: {cuotas}\n" +
-                          $"Monto por Cuota: ${montoPorCuota}";
+                          $"Monto por Cuota: ${montoPorCuota}";*/
 
             RegistrarVencimiento(nroRegistro, fechaActual, proximoVencimiento, medioPago, cuotas);
 
             MessageBox.Show("Pago realizado exitosamente. Comprobante generado.", "Confirmación de Pago", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            btnComprobanteS.Enabled = true;
         }
 
         private void RegistrarVencimiento(string idRegistro, DateTime fechaPago, DateTime fechaVencimiento, string medioPago, int cuotas)
@@ -172,17 +173,22 @@ namespace ClubDeportivo_DSOO_PI
 
         private void btnComprobante_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(comprobante))
-            {
+           
+            
                 frmComprobanteSocio comprobanteForm = new frmComprobanteSocio
                 {
-                    
+                    Nombre = nombre,
+                    Apellido = apellido,
+                    //Montocuota=montoTotal,
+
+
                     FechaPago = DateTime.Now.ToShortDateString(),
-                    MedioPago = rdEfectivo.Checked ? "Efectivo" : rdCredito.Checked ? "Crédito" : "N/A"
+                    MedioPago = rdEfectivo.Checked ? "Efectivo" : rdCredito.Checked ? "Crédito" : "N/A",
+                    Cuotas = cbCuotas.Text
                 };
                //MessageBox.Show($"Nombre: {nombre}, Apellido: {apellido}, Fecha: {comprobanteForm.FechaPago}, Medio de Pago: {comprobanteForm.MedioPago}");
                 comprobanteForm.ShowDialog();
-            }
+            
         }
         private void cbCuotas_SelectedIndexChanged(object sender, EventArgs e)
         {
