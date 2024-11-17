@@ -18,7 +18,7 @@ namespace ClubDeportivo_DSOO_PI
     {
         public string Nombre { get; set; }
         public string Apellido { get; set; }
-        public string montocuota { get; set; }
+        public string Montocuota { get; set; }
         public string FechaPago { get; set; }
         public string MedioPago { get; set; }
         public string Cuotas{ get; set; }
@@ -37,7 +37,7 @@ namespace ClubDeportivo_DSOO_PI
                 // Asignar los valores recibidos a los campos del formulario
                 txtNombreS.Text = Nombre;
                 txtApellidoS.Text = Apellido;
-                txtMontoS.Text = montocuota;
+                txtMontoS.Text = Montocuota;
                 txtFechaS.Text = FechaPago;
                 txtMediodePagoS.Text = MedioPago;
                 txtCuotasS.Text = Cuotas;

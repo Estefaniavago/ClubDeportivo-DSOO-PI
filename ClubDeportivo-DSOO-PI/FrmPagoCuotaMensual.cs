@@ -20,6 +20,8 @@ namespace ClubDeportivo_DSOO_PI
         private string nroRegistro; // En la BBDD es idRegistro
         private string comprobante; // Para almacenar el comprobante generado
         private decimal montoTotal = 30000; // Monto total de la cuota mensual para todos los socios
+        string nombre;
+        string apellido;
 
         public frmPagoCuotaMensual()
         {
@@ -68,8 +70,8 @@ namespace ClubDeportivo_DSOO_PI
                         {
                             if (reader.Read())
                             {
-                                string nombre = reader["nombre"].ToString();
-                                string apellido = reader["apellido"].ToString();
+                                nombre = reader["nombre"].ToString();
+                                apellido = reader["apellido"].ToString();
                                 DateTime? fechaVencimiento = reader["fechaVencimiento"] != DBNull.Value
                                     ? Convert.ToDateTime(reader["fechaVencimiento"])
                                     : (DateTime?)null;
@@ -172,34 +174,21 @@ namespace ClubDeportivo_DSOO_PI
         {
             if (!string.IsNullOrEmpty(comprobante))
             {
-                Form comprobanteForm = new Form
+                frmComprobanteSocio comprobanteForm = new frmComprobanteSocio
                 {
-                    Text = "Comprobante de Pago",
-                    Size = new Size(400, 300)
+                    
+                    FechaPago = DateTime.Now.ToShortDateString(),
+                    MedioPago = rdEfectivo.Checked ? "Efectivo" : rdCredito.Checked ? "Crédito" : "N/A"
                 };
-
-                Label comprobanteLabel = new Label
-                {
-                    Text = comprobante,
-                    AutoSize = true,
-                    Font = new Font("Arial", 10, FontStyle.Bold),
-                    Location = new Point(20, 20)
-                };
-
-                comprobanteForm.Controls.Add(comprobanteLabel);
+               //MessageBox.Show($"Nombre: {nombre}, Apellido: {apellido}, Fecha: {comprobanteForm.FechaPago}, Medio de Pago: {comprobanteForm.MedioPago}");
                 comprobanteForm.ShowDialog();
             }
-            else
-            {
-                MessageBox.Show("No hay ningún comprobante generado aún.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
         }
-
         private void cbCuotas_SelectedIndexChanged(object sender, EventArgs e)
         {
         }
 
-        private void frmPagoCuotaMensual_Load(object sender, EventArgs e)
+       private void frmPagoCuotaMensual_Load(object sender, EventArgs e)
         {
         }
     }
