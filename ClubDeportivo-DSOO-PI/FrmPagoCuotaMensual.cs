@@ -21,6 +21,7 @@ namespace ClubDeportivo_DSOO_PI
         decimal montoTotal = 30000; // Monto total de la cuota mensual para todos los socios
         string nombre;
         string apellido;
+        public string NroRegistro { get; set; }
 
         public frmPagoCuotaMensual()
         {
@@ -129,14 +130,14 @@ namespace ClubDeportivo_DSOO_PI
             DateTime fechaActual = DateTime.Now;
             DateTime proximoVencimiento = fechaActual.AddMonths(1);
 
-           /* comprobante = $"Comprobante de Pago:\n" +
-                          $"Número de Registro: {nroRegistro}\n" +
-                          $"Medio de Pago: {medioPago}\n" +
-                          $"Fecha de Pago: {fechaActual.ToShortDateString()}\n" +
-                          $"Próximo Vencimiento: {proximoVencimiento.ToShortDateString()}\n" +
-                          $"Monto Total: ${montoTotal}\n" +
-                          $"Número de Cuotas: {cuotas}\n" +
-                          $"Monto por Cuota: ${montoPorCuota}";*/
+            /* comprobante = $"Comprobante de Pago:\n" +
+                           $"Número de Registro: {nroRegistro}\n" +
+                           $"Medio de Pago: {medioPago}\n" +
+                           $"Fecha de Pago: {fechaActual.ToShortDateString()}\n" +
+                           $"Próximo Vencimiento: {proximoVencimiento.ToShortDateString()}\n" +
+                           $"Monto Total: ${montoTotal}\n" +
+                           $"Número de Cuotas: {cuotas}\n" +
+                           $"Monto por Cuota: ${montoPorCuota}";*/
 
             RegistrarVencimiento(nroRegistro, fechaActual, proximoVencimiento, medioPago, cuotas);
 
@@ -151,6 +152,20 @@ namespace ClubDeportivo_DSOO_PI
                 try
                 {
                     connection.Open();
+
+                    // Verificar si ya existe un vencimiento activo
+                    string checkQuery = "SELECT COUNT(*) FROM vencimientos WHERE idRegistro = @idRegistro AND fechaVencimiento > CURDATE()";
+                    using (MySqlCommand checkCommand = new MySqlCommand(checkQuery, connection))
+                    {
+                        checkCommand.Parameters.AddWithValue("@idRegistro", idRegistro);
+                        int count = Convert.ToInt32(checkCommand.ExecuteScalar());
+
+                        if (count > 0)
+                        {
+                            MessageBox.Show("El socio ya tiene un vencimiento activo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                    }
                     string query = "INSERT INTO vencimientos (idRegistro, fechaPago, fechaVencimiento, medioPago, cuotas) VALUES (@idRegistro, @fechaPago, @fechaVencimiento, @medioPago, @cuotas)";
 
                     using (MySqlCommand command = new MySqlCommand(query, connection))
@@ -163,6 +178,14 @@ namespace ClubDeportivo_DSOO_PI
 
                         command.ExecuteNonQuery();
                     }
+                    // Actualizar la tabla persona para establecer condicion = 1
+                    string updateQuery = "UPDATE persona SET condicion = 1 WHERE idRegistro = @idRegistro";
+                    using (MySqlCommand updateCommand = new MySqlCommand(updateQuery, connection))
+                    {
+                        updateCommand.Parameters.AddWithValue("@idRegistro", idRegistro);
+                        updateCommand.ExecuteNonQuery();
+                    }
+                
                 }
                 catch (MySqlException ex)
                 {
@@ -173,29 +196,50 @@ namespace ClubDeportivo_DSOO_PI
 
         private void btnComprobante_Click(object sender, EventArgs e)
         {
-           
-            
-                frmComprobanteSocio comprobanteForm = new frmComprobanteSocio
-                {
-                    Nombre = nombre,
-                    Apellido = apellido,
-                    //Montocuota=montoTotal,
 
 
-                    FechaPago = DateTime.Now.ToShortDateString(),
-                    MedioPago = rdEfectivo.Checked ? "Efectivo" : rdCredito.Checked ? "Crédito" : "N/A",
-                    Cuotas = cbCuotas.Text
-                };
-               //MessageBox.Show($"Nombre: {nombre}, Apellido: {apellido}, Fecha: {comprobanteForm.FechaPago}, Medio de Pago: {comprobanteForm.MedioPago}");
-                comprobanteForm.ShowDialog();
-            
+            frmComprobanteSocio comprobanteForm = new frmComprobanteSocio
+            {
+                Nombre = nombre,
+                Apellido = apellido,
+                //Montocuota=montoTotal,
+
+
+                FechaPago = DateTime.Now.ToShortDateString(),
+                MedioPago = rdEfectivo.Checked ? "Efectivo" : rdCredito.Checked ? "Crédito" : "N/A",
+                Cuotas = cbCuotas.Text
+            };
+            //MessageBox.Show($"Nombre: {nombre}, Apellido: {apellido}, Fecha: {comprobanteForm.FechaPago}, Medio de Pago: {comprobanteForm.MedioPago}");
+            comprobanteForm.ShowDialog();
+
         }
         private void cbCuotas_SelectedIndexChanged(object sender, EventArgs e)
         {
         }
 
-       private void frmPagoCuotaMensual_Load(object sender, EventArgs e)
+        private void frmPagoCuotaMensual_Load(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(NroRegistro))
+            {
+                MessageBox.Show("No se recibió un número de registro válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close(); // Cierra el formulario si el valor no es válido
+                return;
+            }
+
+            // Muestra el número de registro en un label (opcional)
+            lblRegistro.Text = $"Número de Registro: {NroRegistro}";
+
+            // Valida el número de registro
+            if (int.TryParse(NroRegistro, out int registroId))
+            {
+                ValidarRegistro(registroId);
+            }
+            else
+            {
+                MessageBox.Show("El número de registro no es válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close(); // Cierra el formulario si el número no es válido
+            }
         }
     }
 }
+    

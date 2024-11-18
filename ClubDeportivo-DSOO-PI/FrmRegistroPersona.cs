@@ -4,6 +4,8 @@ using System;
 using System.Data;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using ClubDeportivo.Datos;
+using MySql.Data.MySqlClient;
 
 namespace ClubDeportivo_DSOO_PI
 {
@@ -63,7 +65,7 @@ namespace ClubDeportivo_DSOO_PI
                 tipodoc = tipoDoc,
                 nrodoc = nroDoc,
                 aptofisico = aptoFisico,
-                //condicion = esSocio
+                condicion = false
             };
 
             // Llamar al método de la clase Persona para registrar al nuevo usuario en la bbdd
@@ -102,8 +104,44 @@ namespace ClubDeportivo_DSOO_PI
             
         }
 
+        private void VerificarEstadoPago()
+        {
+            if (!botonPresionado) // Si no pagó, mover a "No Socio"
+            {
+                using (MySqlConnection connection = Conexion.getInstancia().CrearConexion())
+                {
+                    try
+                    {
+                        connection.Open();
+
+                        string query = @"INSERT INTO no_socio (idPersona) 
+                                 SELECT idRegistro 
+                                 FROM persona 
+                                 WHERE condicion = 0 AND idRegistro = @idRegistro";
+
+                        using (MySqlCommand command = new MySqlCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@idRegistro", txtNumero.Text);
+                            command.ExecuteNonQuery();
+                        }
+
+                        MessageBox.Show("El usuario ha sido movido a la tabla 'No Socio' por no haber pagado la cuota inicial.",
+                            "Estado Actualizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al mover el registro a No Socio: " + ex.Message,
+                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+
         private void btnSalir_Click(object sender, EventArgs e)
         {
+            // Verificar si el usuario no ha pagado antes de cerrar el formulario
+            VerificarEstadoPago();
             MessageBox.Show($"Ustede volverá al menú principal");
             this.Close(); // Cierra el formulario actual
         }
@@ -142,11 +180,17 @@ namespace ClubDeportivo_DSOO_PI
 
         private void btnPagarPrimerCuota_Click(object sender, EventArgs e)
         {
-            if (botonPresionado) { 
-                Form formulario = new frmPagoCuotaMensual();
-                formulario.Show(); //Llama al formulario de forma no modal
-                   }
-            
+            if (botonPresionado)
+            {
+                // Crear una nueva instancia del formulario de pago
+                frmPagoCuotaMensual formulario = new frmPagoCuotaMensual
+                {
+                    NroRegistro = txtNumero.Text // Pasar el número de registro
+                };
+
+                formulario.ShowDialog(); // Mostrar el formulario como modal
+            }
+
         }
 
         private void txtNombre_TextChanged(object sender, EventArgs e)

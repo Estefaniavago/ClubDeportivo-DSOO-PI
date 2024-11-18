@@ -218,6 +218,12 @@
     <Compile Include="FrmPagoCuotaMensual.Designer.cs">
       <DependentUpon>FrmPagoCuotaMensual.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmVencimientos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVencimientos.Designer.cs">
+      <DependentUpon>frmVencimientos.cs</DependentUpon>
+    </Compile>
     <Compile Include="PersonasRegistradas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -252,6 +258,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPagoCuotaMensual.resx">
       <DependentUpon>FrmPagoCuotaMensual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVencimientos.resx">
+      <DependentUpon>frmVencimientos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PersonasRegistradas.resx">
       <DependentUpon>PersonasRegistradas.cs</DependentUpon>

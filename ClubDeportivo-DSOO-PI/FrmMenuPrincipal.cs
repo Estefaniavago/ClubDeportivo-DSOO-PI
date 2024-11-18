@@ -69,16 +69,17 @@ namespace ClubDeportivo_DSOO_PI
 
         private void btnPagoMensual_Click(object sender, EventArgs e)
         {
-            // Instancia del formulario de pago de cuota mensual
-            frmPagoCuotaMensual formulario = new frmPagoCuotaMensual();
-            MostrarFormularioEnPanel(formulario);
-        }
+            // Obtén el número de registro si aplica
+            string nroRegistro = "100"; // Puedes ajustarlo según tu lógica actual
 
-        private void btnGrillaPr_Click(object sender, EventArgs e)
-        {
-            PersonasRegistradas form2 = new PersonasRegistradas();
-            MostrarFormularioEnPanel(form2);
-            //form2.ShowDialog();
+            // Crea una nueva instancia de frmPagoCuotaMensual y pasa el parámetro
+            frmPagoCuotaMensual pagoCuotaForm = new frmPagoCuotaMensual
+            {
+                NroRegistro = nroRegistro
+            };
+
+            // Carga el formulario en el panel
+            MostrarFormularioEnPanel(pagoCuotaForm);
         }
 
         private void btnPagoActividad_Click(object sender, EventArgs e)
@@ -93,6 +94,24 @@ namespace ClubDeportivo_DSOO_PI
             // Instancia del formulario de pago de cuota mensual
             CarnetSocio formulario = new CarnetSocio();
             MostrarFormularioEnPanel(formulario);
+        }
+
+        private void btnListado_Click(object sender, EventArgs e)
+        {
+            // Crear una nueva instancia del formulario frmVencimientos
+            frmVencimientos vencimientosForm = new frmVencimientos();
+
+            // Mostrar el formulario en el panel2
+            MostrarFormularioEnPanel(vencimientosForm);
+        }
+
+        private void btnGrillaPr_Click(object sender, EventArgs e)
+        {
+            // Crear una nueva instancia del formulario frmVencimientos
+            PersonasRegistradas PersonasRegistradasForm = new PersonasRegistradas();
+
+            // Mostrar el formulario en el panel2
+            MostrarFormularioEnPanel(PersonasRegistradasForm);
         }
     }
 }

@@ -12,8 +12,6 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-
-
 namespace ClubDeportivo_DSOO_PI
 {
     public partial class ComprobanteNoSocio : Form

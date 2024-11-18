@@ -186,7 +186,7 @@ namespace ClubDeportivo_DSOO_PI
                     try
                     {
                         connection.Open();
-                        string query = "SELECT nombre, apellido FROM persona WHERE idRegistro = @idRegistro";
+                        string query = "SELECT nombre, apellido FROM persona WHERE idRegistro = @idRegistro and condicion = 0";
 
                         using (MySqlCommand command = new MySqlCommand(query, connection))
                         {
