@@ -20,12 +20,13 @@ namespace ClubDeportivo_DSOO_PI
             
 
             //ESTILOS, CHEQUEAR
-            //this.StartPosition = FormStartPosition.Manual; // posición manual
-            //this.Size = new Size(800, 450); // tamaño
-            //this.Location = new Point(100, 100); // posición en la pantalla
+            this.StartPosition = FormStartPosition.Manual; // posición manual
+            this.Size = new Size(800, 450); // tamaño
+            this.Location = new Point(100, 100); // posición en la pantalla
             //this.Load += new System.EventHandler(this.Form2_Load);
         }
 
+        //ESTILOS, CHEQUEAR
         protected override void OnPaint(PaintEventArgs e)
         {
             // Fondo degradado
@@ -34,16 +35,70 @@ namespace ClubDeportivo_DSOO_PI
             base.OnPaint(e);
         }
 
-        private void Form2_Load(object sender, EventArgs e) { }
-        private void label1_Click(object sender, EventArgs e) { }
-        private void Form2_Load_1(object sender, EventArgs e) { }
+       
 
-        private void button2_Click(object sender, EventArgs e)
+        //BOTON PARA REGISTRAR PERSONAS
+        private void btnRegistro_Click(object sender, EventArgs e)
+        {
+            
+            registroPersona formRegistrarPersona = new registroPersona();// Instancia del formulario de registro de persona
+            MostrarFormularioEnPanel(formRegistrarPersona);//Muestra el formulario en el panel 2
+        }
+
+        //BOTON PARA VER LA GRILLA CON LAS PERSONAS REGISTRADAS
+        private void btnGrillaPr_Click(object sender, EventArgs e)
+        {
+            
+            PersonasRegistradas PersonasRegistradasForm = new PersonasRegistradas();
+            MostrarFormularioEnPanel(PersonasRegistradasForm);
+        }
+
+        //BOTON QUE MUESTRA EL LISTADO DE VENCIMIENTOS
+        private void btnListado_Click(object sender, EventArgs e)
+        {
+            frmVencimientos vencimientosForm = new frmVencimientos();
+            MostrarFormularioEnPanel(vencimientosForm);
+        }
+
+        //BOTON DE PAGO MENSUAL- Para pagar la cobrar la cuota a los socios
+        private void btnPagoMensual_Click(object sender, EventArgs e)
+        {
+            // Obtén el número de registro si aplica
+           string nroRegistro = "100"; // Puedes ajustarlo según tu lógica actual
+
+            // Crea una nueva instancia de frmPagoCuotaMensual y pasa el parámetro
+            frmPagoCuotaMensual pagoCuotaForm = new frmPagoCuotaMensual
+            {
+                NroRegistro = nroRegistro
+            };
+
+            MostrarFormularioEnPanel(pagoCuotaForm);
+        }
+
+        //BOTON PARA PAGAR ACTIVIDADES PARA LOS NO SOCIOS
+        private void btnPagoActividad_Click(object sender, EventArgs e)
+        {
+            frmPagoNoSocio formPagoActividades = new frmPagoNoSocio();
+            MostrarFormularioEnPanel(formPagoActividades);
+            
+        }
+
+        //BOTON PARA EMITIR CARNET PARA LOS SOCIOS
+        private void btnCarnet_Click(object sender, EventArgs e)
+        {
+            CarnetSocio formCarnet = new CarnetSocio();
+            MostrarFormularioEnPanel(formCarnet);
+        }
+
+         
+        //BOTON PARA SALIR DEL SISTEMA
+        private void btnSalir_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Hasta luego.");
             Application.Exit();
         }
-
+       
+        
         // Método para cargar un formulario en panel2 sin bordes ni título
         private void MostrarFormularioEnPanel(Form formulario)
         {
@@ -60,59 +115,6 @@ namespace ClubDeportivo_DSOO_PI
             formulario.Show();
         }
 
-        private void btnRegistroSocio_Click_1(object sender, EventArgs e)
-        {
-            // Instancia del formulario de registro de persona
-            registroPersona form3 = new registroPersona();
-            MostrarFormularioEnPanel(form3);
-        }
-
-        private void btnPagoMensual_Click(object sender, EventArgs e)
-        {
-            // Obtén el número de registro si aplica
-            string nroRegistro = "100"; // Puedes ajustarlo según tu lógica actual
-
-            // Crea una nueva instancia de frmPagoCuotaMensual y pasa el parámetro
-            frmPagoCuotaMensual pagoCuotaForm = new frmPagoCuotaMensual
-            {
-                NroRegistro = nroRegistro
-            };
-
-            // Carga el formulario en el panel
-            MostrarFormularioEnPanel(pagoCuotaForm);
-        }
-
-        private void btnPagoActividad_Click(object sender, EventArgs e)
-        {
-            frmPagoNoSocio form4 = new frmPagoNoSocio();
-            MostrarFormularioEnPanel(form4);
-            
-        }
-
-        private void btnCarnet_Click(object sender, EventArgs e)
-        {
-            // Instancia del formulario de pago de cuota mensual
-            CarnetSocio formulario = new CarnetSocio();
-            MostrarFormularioEnPanel(formulario);
-        }
-
-        private void btnListado_Click(object sender, EventArgs e)
-        {
-            // Crear una nueva instancia del formulario frmVencimientos
-            frmVencimientos vencimientosForm = new frmVencimientos();
-
-            // Mostrar el formulario en el panel2
-            MostrarFormularioEnPanel(vencimientosForm);
-        }
-
-        private void btnGrillaPr_Click(object sender, EventArgs e)
-        {
-            // Crear una nueva instancia del formulario frmVencimientos
-            PersonasRegistradas PersonasRegistradasForm = new PersonasRegistradas();
-
-            // Mostrar el formulario en el panel2
-            MostrarFormularioEnPanel(PersonasRegistradasForm);
-        }
     }
 }
 

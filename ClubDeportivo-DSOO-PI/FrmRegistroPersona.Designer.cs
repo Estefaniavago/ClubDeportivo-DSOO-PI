@@ -49,86 +49,77 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(276, 35);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(207, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(145, 16);
+            this.label1.Size = new System.Drawing.Size(118, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "REGISTRAR CLIENTE";
             // 
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(315, 82);
-            this.lblNombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNombre.Location = new System.Drawing.Point(236, 67);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(56, 16);
+            this.lblNombre.Size = new System.Drawing.Size(44, 13);
             this.lblNombre.TabIndex = 2;
             this.lblNombre.Text = "Nombre";
             // 
             // lblApellido
             // 
             this.lblApellido.AutoSize = true;
-            this.lblApellido.Location = new System.Drawing.Point(315, 130);
-            this.lblApellido.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblApellido.Location = new System.Drawing.Point(236, 106);
             this.lblApellido.Name = "lblApellido";
-            this.lblApellido.Size = new System.Drawing.Size(57, 16);
+            this.lblApellido.Size = new System.Drawing.Size(44, 13);
             this.lblApellido.TabIndex = 3;
             this.lblApellido.Text = "Apellido";
             // 
             // lblTipo
             // 
             this.lblTipo.AutoSize = true;
-            this.lblTipo.Location = new System.Drawing.Point(315, 177);
-            this.lblTipo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTipo.Location = new System.Drawing.Point(179, 144);
             this.lblTipo.Name = "lblTipo";
-            this.lblTipo.Size = new System.Drawing.Size(35, 16);
+            this.lblTipo.Size = new System.Drawing.Size(101, 13);
             this.lblTipo.TabIndex = 4;
-            this.lblTipo.Text = "Tipo";
+            this.lblTipo.Text = "Tipo de Documento";
             // 
             // lblNumero
             // 
             this.lblNumero.AutoSize = true;
-            this.lblNumero.Location = new System.Drawing.Point(540, 177);
-            this.lblNumero.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNumero.Location = new System.Drawing.Point(405, 144);
             this.lblNumero.Name = "lblNumero";
-            this.lblNumero.Size = new System.Drawing.Size(55, 16);
+            this.lblNumero.Size = new System.Drawing.Size(117, 13);
             this.lblNumero.TabIndex = 5;
-            this.lblNumero.Text = "Número";
+            this.lblNumero.Text = "Número de Documento";
             // 
             // lblAptofisico
             // 
             this.lblAptofisico.AutoSize = true;
-            this.lblAptofisico.Location = new System.Drawing.Point(315, 245);
-            this.lblAptofisico.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAptofisico.Location = new System.Drawing.Point(236, 199);
             this.lblAptofisico.Name = "lblAptofisico";
-            this.lblAptofisico.Size = new System.Drawing.Size(74, 16);
+            this.lblAptofisico.Size = new System.Drawing.Size(61, 13);
             this.lblAptofisico.TabIndex = 7;
             this.lblAptofisico.Text = "Apto Físico";
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(388, 82);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNombre.Location = new System.Drawing.Point(291, 67);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(111, 22);
+            this.txtNombre.Size = new System.Drawing.Size(84, 20);
             this.txtNombre.TabIndex = 8;
             this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
             // 
             // txtApellido
             // 
-            this.txtApellido.Location = new System.Drawing.Point(388, 127);
-            this.txtApellido.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtApellido.Location = new System.Drawing.Point(291, 103);
             this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(111, 22);
+            this.txtApellido.Size = new System.Drawing.Size(84, 20);
             this.txtApellido.TabIndex = 9;
             // 
             // txtNumero
             // 
-            this.txtNumero.Location = new System.Drawing.Point(617, 174);
-            this.txtNumero.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNumero.Location = new System.Drawing.Point(528, 142);
             this.txtNumero.Name = "txtNumero";
-            this.txtNumero.Size = new System.Drawing.Size(66, 22);
+            this.txtNumero.Size = new System.Drawing.Size(50, 20);
             this.txtNumero.TabIndex = 10;
             // 
             // cboxTipoDocumento
@@ -137,30 +128,28 @@
             this.cboxTipoDocumento.Items.AddRange(new object[] {
             "DNI",
             "Pasaporte"});
-            this.cboxTipoDocumento.Location = new System.Drawing.Point(388, 174);
-            this.cboxTipoDocumento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboxTipoDocumento.Location = new System.Drawing.Point(291, 141);
             this.cboxTipoDocumento.Name = "cboxTipoDocumento";
-            this.cboxTipoDocumento.Size = new System.Drawing.Size(111, 24);
+            this.cboxTipoDocumento.Size = new System.Drawing.Size(84, 21);
             this.cboxTipoDocumento.TabIndex = 11;
             this.cboxTipoDocumento.SelectedIndexChanged += new System.EventHandler(this.cboxTipoDocumento_SelectedIndexChanged);
             // 
             // chkAptoFisico
             // 
             this.chkAptoFisico.AutoSize = true;
-            this.chkAptoFisico.Location = new System.Drawing.Point(425, 245);
-            this.chkAptoFisico.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkAptoFisico.Location = new System.Drawing.Point(319, 199);
             this.chkAptoFisico.Name = "chkAptoFisico";
-            this.chkAptoFisico.Size = new System.Drawing.Size(18, 17);
+            this.chkAptoFisico.Size = new System.Drawing.Size(15, 14);
             this.chkAptoFisico.TabIndex = 14;
             this.chkAptoFisico.UseVisualStyleBackColor = true;
             this.chkAptoFisico.CheckedChanged += new System.EventHandler(this.chkAptoFisico_CheckedChanged);
             // 
             // btnRegistrar
             // 
-            this.btnRegistrar.Location = new System.Drawing.Point(260, 301);
-            this.btnRegistrar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRegistrar.Location = new System.Drawing.Point(195, 245);
+            this.btnRegistrar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnRegistrar.Name = "btnRegistrar";
-            this.btnRegistrar.Size = new System.Drawing.Size(125, 43);
+            this.btnRegistrar.Size = new System.Drawing.Size(94, 35);
             this.btnRegistrar.TabIndex = 15;
             this.btnRegistrar.Text = "Agregar Usuario";
             this.btnRegistrar.UseVisualStyleBackColor = true;
@@ -170,19 +159,17 @@
             // 
             this.pictureBox1.BackgroundImage = global::ClubDeportivo_DSOO_PI.Properties.Resources.crossfit_3180368_1280;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(61, 72);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Location = new System.Drawing.Point(46, 58);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(139, 272);
+            this.pictureBox1.Size = new System.Drawing.Size(104, 221);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(443, 301);
-            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLimpiar.Location = new System.Drawing.Point(332, 245);
             this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(118, 43);
+            this.btnLimpiar.Size = new System.Drawing.Size(88, 35);
             this.btnLimpiar.TabIndex = 18;
             this.btnLimpiar.Text = "LIMPIAR";
             this.btnLimpiar.UseVisualStyleBackColor = true;
@@ -190,10 +177,9 @@
             // 
             // btnPagarPrimerCuota
             // 
-            this.btnPagarPrimerCuota.Location = new System.Drawing.Point(602, 301);
-            this.btnPagarPrimerCuota.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPagarPrimerCuota.Location = new System.Drawing.Point(452, 245);
             this.btnPagarPrimerCuota.Name = "btnPagarPrimerCuota";
-            this.btnPagarPrimerCuota.Size = new System.Drawing.Size(147, 43);
+            this.btnPagarPrimerCuota.Size = new System.Drawing.Size(110, 35);
             this.btnPagarPrimerCuota.TabIndex = 19;
             this.btnPagarPrimerCuota.Text = "PAGAR PRIMER CUOTA";
             this.btnPagarPrimerCuota.UseVisualStyleBackColor = true;
@@ -201,10 +187,10 @@
             // 
             // registroPersona
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(859, 554);
+            this.ClientSize = new System.Drawing.Size(644, 450);
             this.Controls.Add(this.btnPagarPrimerCuota);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnRegistrar);
@@ -220,7 +206,6 @@
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "registroPersona";
             this.Text = "Registro Usuario";
             this.TransparencyKey = System.Drawing.Color.Salmon;
