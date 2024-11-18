@@ -38,14 +38,15 @@ namespace ClubDeportivo_DSOO_PI
         // Botón para validar el número de registro
         private void btnValidar_Click(object sender, EventArgs e)
         {
-            if (int.TryParse(nroRegistro, out int registroId))
-            {
-                ValidarRegistro(registroId);
-            }
-            else
+            nroRegistro = txtNroRegistro.Text;
+
+            if (string.IsNullOrEmpty(nroRegistro) || !int.TryParse(nroRegistro, out int registroId))
             {
                 MessageBox.Show("Por favor, ingrese un número de registro válido.", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+
+            ValidarRegistro(registroId);
         }
 
         private void ValidarRegistro(int nroRegistro)
@@ -56,12 +57,16 @@ namespace ClubDeportivo_DSOO_PI
                 {
                     connection.Open();
                     string query = @"
-                        SELECT p.nombre, p.apellido, v.fechaVencimiento
-                        FROM persona p
-                        LEFT JOIN vencimientos v ON p.idRegistro = v.idRegistro
-                        WHERE p.idRegistro = @nroRegistro
-                        ORDER BY v.fechaVencimiento DESC
-                        LIMIT 1;";
+                SELECT 
+                    p.nombre, 
+                    p.apellido, 
+                    p.condicion, 
+                    v.fechaVencimiento
+                FROM persona p
+                LEFT JOIN vencimientos v ON p.idRegistro = v.idRegistro
+                WHERE p.idRegistro = @nroRegistro
+                ORDER BY v.fechaVencimiento DESC
+                LIMIT 1;";
 
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
@@ -73,26 +78,36 @@ namespace ClubDeportivo_DSOO_PI
                             {
                                 nombre = reader["nombre"].ToString();
                                 apellido = reader["apellido"].ToString();
+                                bool esSocio = reader["condicion"] != DBNull.Value && Convert.ToBoolean(reader["condicion"]);
                                 DateTime? fechaVencimiento = reader["fechaVencimiento"] != DBNull.Value
                                     ? Convert.ToDateTime(reader["fechaVencimiento"])
                                     : (DateTime?)null;
 
-                                if (fechaVencimiento == null || fechaVencimiento <= DateTime.Now)
+                                if (esSocio)
                                 {
-                                    lblResultado.Text = $"{nombre} {apellido} debe pagar la cuota.";
-                                    lblResultado.ForeColor = Color.Red;
-                                    btnPagar.Enabled = true; // Habilitar el botón de pago
+                                    if (fechaVencimiento == null || fechaVencimiento <= DateTime.Now)
+                                    {
+                                        lblResultado.Text = $"{nombre} {apellido} debe pagar la cuota.";
+                                        lblResultado.ForeColor = Color.Red;
+                                        btnPagar.Enabled = true;
+                                    }
+                                    else
+                                    {
+                                        lblResultado.Text = $"{nombre} {apellido} no necesita pagar la cuota. Vence el {fechaVencimiento.Value.ToShortDateString()}";
+                                        lblResultado.ForeColor = Color.Green;
+                                        btnPagar.Enabled = false;
+                                    }
                                 }
                                 else
                                 {
-                                    lblResultado.Text = $"{nombre} {apellido} no necesita pagar la cuota. Vence el {fechaVencimiento.Value.ToShortDateString()}";
-                                    lblResultado.ForeColor = Color.Green;
-                                    btnPagar.Enabled = false; // Deshabilitar el botón de pago
+                                    lblResultado.Text = $"{nombre} {apellido} es un no socio. Puede pagar para convertirse en socio.";
+                                    lblResultado.ForeColor = Color.Blue;
+                                    btnPagar.Enabled = true;
                                 }
                             }
                             else
                             {
-                                lblResultado.Text = "No se encontró el registro.";
+                                lblResultado.Text = "No corresponde a un cliente registrado.";
                                 lblResultado.ForeColor = Color.Red;
                                 btnPagar.Enabled = false;
                             }
@@ -108,18 +123,7 @@ namespace ClubDeportivo_DSOO_PI
 
         private void btnPagar_Click(object sender, EventArgs e)
         {
-            string medioPago = "";
-            short cuotas = cbCuotas.Text == "1 CUOTA" ? (short)1 : cbCuotas.Text == "3 CUOTAS" ? (short)3 : (short)6;
-            decimal montoPorCuota = montoTotal / cuotas;
-
-            if (rdEfectivo.Checked)
-            {
-                medioPago = "Efectivo";
-            }
-            else if (rdCredito.Checked)
-            {
-                medioPago = "Crédito";
-            }
+            string medioPago = rdEfectivo.Checked ? "Efectivo" : rdCredito.Checked ? "Crédito" : "";
 
             if (string.IsNullOrEmpty(medioPago))
             {
@@ -130,19 +134,40 @@ namespace ClubDeportivo_DSOO_PI
             DateTime fechaActual = DateTime.Now;
             DateTime proximoVencimiento = fechaActual.AddMonths(1);
 
-            /* comprobante = $"Comprobante de Pago:\n" +
-                           $"Número de Registro: {nroRegistro}\n" +
-                           $"Medio de Pago: {medioPago}\n" +
-                           $"Fecha de Pago: {fechaActual.ToShortDateString()}\n" +
-                           $"Próximo Vencimiento: {proximoVencimiento.ToShortDateString()}\n" +
-                           $"Monto Total: ${montoTotal}\n" +
-                           $"Número de Cuotas: {cuotas}\n" +
-                           $"Monto por Cuota: ${montoPorCuota}";*/
+            using (MySqlConnection connection = Conexion.getInstancia().CrearConexion())
+            {
+                try
+                {
+                    connection.Open();
 
-            RegistrarVencimiento(nroRegistro, fechaActual, proximoVencimiento, medioPago, cuotas);
+                    string query = "INSERT INTO vencimientos (idRegistro, fechaPago, fechaVencimiento, medioPago, cuotas) VALUES (@idRegistro, @fechaPago, @fechaVencimiento, @medioPago, @cuotas)";
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@idRegistro", nroRegistro);
+                        command.Parameters.AddWithValue("@fechaPago", fechaActual);
+                        command.Parameters.AddWithValue("@fechaVencimiento", proximoVencimiento);
+                        command.Parameters.AddWithValue("@medioPago", medioPago);
+                        command.Parameters.AddWithValue("@cuotas", cbCuotas.SelectedIndex + 1);
 
-            MessageBox.Show("Pago realizado exitosamente. Comprobante generado.", "Confirmación de Pago", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            btnComprobanteS.Enabled = true;
+                        command.ExecuteNonQuery();
+                    }
+
+                    // Si no es socio, conviértelo en socio
+                    string updateQuery = "UPDATE persona SET condicion = 1 WHERE idRegistro = @idRegistro";
+                    using (MySqlCommand updateCommand = new MySqlCommand(updateQuery, connection))
+                    {
+                        updateCommand.Parameters.AddWithValue("@idRegistro", nroRegistro);
+                        updateCommand.ExecuteNonQuery();
+                    }
+
+                    MessageBox.Show("Pago realizado exitosamente.", "Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnComprobanteS.Enabled = true;
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show("Error al procesar el pago: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void RegistrarVencimiento(string idRegistro, DateTime fechaPago, DateTime fechaVencimiento, string medioPago, int cuotas)
@@ -219,26 +244,10 @@ namespace ClubDeportivo_DSOO_PI
 
         private void frmPagoCuotaMensual_Load(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(NroRegistro))
-            {
-                MessageBox.Show("No se recibió un número de registro válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.Close(); // Cierra el formulario si el valor no es válido
-                return;
-            }
-
-            // Muestra el número de registro en un label (opcional)
-            lblRegistro.Text = $"Número de Registro: {NroRegistro}";
-
-            // Valida el número de registro
-            if (int.TryParse(NroRegistro, out int registroId))
-            {
-                ValidarRegistro(registroId);
-            }
-            else
-            {
-                MessageBox.Show("El número de registro no es válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.Close(); // Cierra el formulario si el número no es válido
-            }
+            // No realiza ninguna validación automática al cargar
+            lblResultado.Text = "Ingrese el número de registro y presione Validar.";
+            lblResultado.ForeColor = Color.Black;
+            btnPagar.Enabled = false;
         }
     }
 }

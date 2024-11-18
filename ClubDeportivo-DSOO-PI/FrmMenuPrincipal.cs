@@ -63,15 +63,7 @@ namespace ClubDeportivo_DSOO_PI
         //BOTON DE PAGO MENSUAL- Para pagar la cobrar la cuota a los socios
         private void btnPagoMensual_Click(object sender, EventArgs e)
         {
-            // Obtén el número de registro si aplica
-           string nroRegistro = "100"; // Puedes ajustarlo según tu lógica actual
-
-            // Crea una nueva instancia de frmPagoCuotaMensual y pasa el parámetro
-            frmPagoCuotaMensual pagoCuotaForm = new frmPagoCuotaMensual
-            {
-                NroRegistro = nroRegistro
-            };
-
+            frmPagoCuotaMensual pagoCuotaForm = new frmPagoCuotaMensual();
             MostrarFormularioEnPanel(pagoCuotaForm);
         }
 

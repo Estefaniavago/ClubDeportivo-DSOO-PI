@@ -17,13 +17,14 @@ namespace ClubDeportivo_DSOO_PI
             InitializeComponent();
             CargarVencimientos();
         }
+
         private void frmVencimientos_Load(object sender, EventArgs e)
         {
-            // Lógica para cargar datos en la grilla al abrir el formulario
-            CargarVencimientos();
+            // Configurar el DateTimePicker para mostrar desde la fecha actual
+            dtpFiltroFecha.Value = DateTime.Now;
         }
 
-        private void CargarVencimientos()
+        private void CargarVencimientos(DateTime? fechaFiltro = null)
         {
             using (MySqlConnection connection = Conexion.getInstancia().CrearConexion())
             {
@@ -32,55 +33,77 @@ namespace ClubDeportivo_DSOO_PI
                     connection.Open();
 
                     string query = @"
-                SELECT 
-                    p.idRegistro, 
-                    p.nombre, 
-                    p.apellido, 
-                    v.fechaVencimiento, 
-                    CASE
-                        WHEN v.fechaVencimiento < CURDATE() THEN 'Vencido'
-                        WHEN DATEDIFF(v.fechaVencimiento, CURDATE()) <= 7 THEN 'Por Vencer'
-                        ELSE 'Pendiente'
-                    END AS Estado
-                FROM persona p
-                JOIN vencimientos v ON p.idRegistro = v.idRegistro
-                WHERE p.condicion = 1
-                ORDER BY v.fechaVencimiento";
+                        SELECT 
+                            p.idRegistro, 
+                            p.nombre, 
+                            p.apellido, 
+                            v.fechaVencimiento
+                        FROM persona p
+                        JOIN vencimientos v ON p.idRegistro = v.idRegistro
+                        WHERE p.condicion = 1
+                        AND v.fechaVencimiento BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 30 DAY)";
+
+                    if (fechaFiltro.HasValue)
+                    {
+                        query += " AND v.fechaVencimiento = @fechaFiltro";
+                    }
+
+                    query += " ORDER BY v.fechaVencimiento";
 
                     using (MySqlCommand command = new MySqlCommand(query, connection))
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                     {
-                        vencimientosTable = new DataTable();
-                        adapter.Fill(vencimientosTable);
-
-                        dtgvVencimientos.DataSource = vencimientosTable;
-                        dtgvVencimientos.Columns["idRegistro"].HeaderText = "Nro Registro";
-                        dtgvVencimientos.Columns["nombre"].HeaderText = "Nombre";
-                        dtgvVencimientos.Columns["apellido"].HeaderText = "Apellido";
-                        dtgvVencimientos.Columns["fechaVencimiento"].HeaderText = "Fecha Vencimiento";
-                        dtgvVencimientos.Columns["Estado"].HeaderText = "Estado";
-
-                        // Ajustar diseño de la grilla
-                        dtgvVencimientos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-                        // Aplicar colores a las filas según el estado
-                        foreach (DataGridViewRow row in dtgvVencimientos.Rows)
+                        if (fechaFiltro.HasValue)
                         {
-                            if (row.Cells["Estado"].Value != null)
+                            command.Parameters.AddWithValue("@fechaFiltro", fechaFiltro.Value.ToString("yyyy-MM-dd"));
+                        }
+
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                        {
+                            vencimientosTable = new DataTable();
+                            adapter.Fill(vencimientosTable);
+
+                            dtgvVencimientos.DataSource = vencimientosTable;
+                            dtgvVencimientos.Columns["idRegistro"].HeaderText = "Nro Registro";
+                            dtgvVencimientos.Columns["nombre"].HeaderText = "Nombre";
+                            dtgvVencimientos.Columns["apellido"].HeaderText = "Apellido";
+                            dtgvVencimientos.Columns["fechaVencimiento"].HeaderText = "Fecha Vencimiento";
+
+                            // Ajustar diseño de la grilla
+                            dtgvVencimientos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                            // Mostrar mensaje si no hay datos
+                            if (vencimientosTable.Rows.Count == 0)
                             {
-                                string estado = row.Cells["Estado"].Value.ToString();
-                                if (estado == "Vencido")
+                                lblMensaje.Text = fechaFiltro.HasValue
+                                    ? $"No hay registros para la fecha seleccionada: {fechaFiltro.Value.ToShortDateString()}"
+                                    : "No hay registros para mostrar.";
+                                lblMensaje.Visible = true;
+                            }
+                            else
+                            {
+                                lblMensaje.Visible = false;
+                            }
+
+
+                            // Aplicar colores a las filas
+                            foreach (DataGridViewRow row in dtgvVencimientos.Rows)
+                            {
+                                if (row.Cells["fechaVencimiento"].Value != null)
                                 {
-                                    row.DefaultCellStyle.BackColor = Color.Red;
-                                    row.DefaultCellStyle.ForeColor = Color.White;
-                                }
-                                else if (estado == "Por Vencer")
-                                {
-                                    row.DefaultCellStyle.BackColor = Color.Yellow;
-                                }
-                                else
-                                {
-                                    row.DefaultCellStyle.BackColor = Color.LightGreen;
+                                    DateTime fechaVencimiento = Convert.ToDateTime(row.Cells["fechaVencimiento"].Value);
+                                    if (fechaVencimiento < DateTime.Now)
+                                    {
+                                        row.DefaultCellStyle.BackColor = Color.Red;
+                                        row.DefaultCellStyle.ForeColor = Color.White;
+                                    }
+                                    else if ((fechaVencimiento - DateTime.Now).TotalDays <= 7)
+                                    {
+                                        row.DefaultCellStyle.BackColor = Color.Yellow;
+                                    }
+                                    else
+                                    {
+                                        row.DefaultCellStyle.BackColor = Color.LightGreen;
+                                    }
                                 }
                             }
                         }
@@ -93,66 +116,16 @@ namespace ClubDeportivo_DSOO_PI
             }
         }
 
-        private void btnValidarRegistroSocio_Click(object sender, EventArgs e)
+        private void dtpFiltroFecha_ValueChanged(object sender, EventArgs e)
         {
-            string nroRegistro = txtRegistroSocio.Text;
-
-            if (string.IsNullOrEmpty(nroRegistro))
-            {
-                MessageBox.Show("Por favor, ingrese un número de registro.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            var row = vencimientosTable.Select($"idRegistro = {nroRegistro}");
-
-            if (row.Length > 0)
-            {
-                dtgvVencimientos.ClearSelection();
-                foreach (DataGridViewRow dgvRow in dtgvVencimientos.Rows)
-                {
-                    if (dgvRow.Cells["idRegistro"].Value.ToString() == nroRegistro)
-                    {
-                        dgvRow.Selected = true;
-                        dtgvVencimientos.FirstDisplayedScrollingRowIndex = dgvRow.Index;
-
-                        if (dgvRow.Cells["Estado"].Value.ToString() == "Vencido" || dgvRow.Cells["Estado"].Value.ToString() == "Por Vencer")
-                        {
-                            btnPagarCuotaVencida.Enabled = true;
-                        }
-                        else
-                        {
-                            btnPagarCuotaVencida.Enabled = false;
-                        }
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("No se encontró el registro o no tiene cuotas próximas a vencer.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                btnPagarCuotaVencida.Enabled = false;
-            }
+            // Filtrar vencimientos por la fecha seleccionada en el DateTimePicker
+            CargarVencimientos(dtpFiltroFecha.Value);
         }
 
-        private void btnPagarCuotaVencida_Click(object sender, EventArgs e)
+        private void btnBorrarFiltro_Click(object sender, EventArgs e)
         {
-            string nroRegistro = txtRegistroSocio.Text; // Obtener el número de registro del TextBox
-
-            if (!string.IsNullOrEmpty(nroRegistro))
-            {
-                frmPagoCuotaMensual pagoForm = new frmPagoCuotaMensual();
-                pagoForm.NroRegistro = nroRegistro; // Asignar el número de registro
-                pagoForm.ShowDialog(); // Mostrar el formulario
-            }
-            else
-            {
-                MessageBox.Show("Por favor, ingrese un número de registro válido.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        private void txtSocioValidado_TextChanged(object sender, EventArgs e)
-        {
-
+            dtpFiltroFecha.Value = DateTime.Now; // Restablecer al valor actual
+            CargarVencimientos(); // Mostrar vencimientos próximos a partir de hoy
         }
     }
 }

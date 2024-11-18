@@ -113,7 +113,7 @@
             // 
             // btnComprobanteNoSocio
             // 
-            this.btnComprobanteNoSocio.Location = new System.Drawing.Point(149, 368);
+            this.btnComprobanteNoSocio.Location = new System.Drawing.Point(149, 377);
             this.btnComprobanteNoSocio.Name = "btnComprobanteNoSocio";
             this.btnComprobanteNoSocio.Size = new System.Drawing.Size(215, 39);
             this.btnComprobanteNoSocio.TabIndex = 7;
@@ -144,7 +144,7 @@
             "1 CUOTA",
             "3 CUOTAS",
             "6 CUOTAS"});
-            this.cbCuotas.Location = new System.Drawing.Point(118, 61);
+            this.cbCuotas.Location = new System.Drawing.Point(103, 60);
             this.cbCuotas.Margin = new System.Windows.Forms.Padding(4);
             this.cbCuotas.Name = "cbCuotas";
             this.cbCuotas.Size = new System.Drawing.Size(211, 24);
@@ -153,7 +153,7 @@
             // rdCredito
             // 
             this.rdCredito.AutoSize = true;
-            this.rdCredito.Location = new System.Drawing.Point(29, 61);
+            this.rdCredito.Location = new System.Drawing.Point(24, 61);
             this.rdCredito.Margin = new System.Windows.Forms.Padding(4);
             this.rdCredito.Name = "rdCredito";
             this.rdCredito.Size = new System.Drawing.Size(71, 20);
