@@ -11,21 +11,16 @@ namespace ClubDeportivo_DSOO_PI
 {
     public partial class registroPersona : Form
     {
-        bool botonPresionado = false;
+             
+        //Inicializo el formulario
         public registroPersona()
         {
             InitializeComponent();
-            btnPagarPrimerCuota.Enabled = false;
+            btnPagarPrimerCuota.Enabled = false;//Deshabilito el boton de pagar primer cuota 
+            cboxTipoDocumento.SelectedItem = "DNI";//al cargar el formulario por defecto aparece cargado el dni
         }
 
-        private void registroPersona_Load(object sender, EventArgs e)
-        {
-            // Cargar todos los usuarios cuando se abra el formulario
-            //CargarPersona();
-            //Carga el DNI por defecto en el combobox
-            cboxTipoDocumento.SelectedItem = "DNI"; 
-        }
-
+        //BOTON REGISTRAR 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
             // Validar que los campos obligatorios estén completos
@@ -37,27 +32,15 @@ namespace ClubDeportivo_DSOO_PI
                 return;
             }
 
-            //Toma los datos del formulario .
+            //Toma los datos cargados en el formulario .
             string nombre = txtNombre.Text;
             string apellido = txtApellido.Text;
-            string tipoDoc = cboxTipoDocumento.SelectedItem?.ToString() ?? string.Empty;
-            
-            //ESTO YA NO SE NECESITARIA PORQUE ESTA PUESTO POR DEFECTO DNI, NUNCA VA A ESTAR EMPTY.
-            /*if (string.IsNullOrEmpty(tipoDoc))
-            {
-                MessageBox.Show("Debe seleccionar un tipo de documento.", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }*/
-
-            int nroDoc = Convert.ToInt32(txtNumero.Text);
-            
+            string tipoDoc = cboxTipoDocumento.SelectedItem.ToString();         
+            int nroDoc = Convert.ToInt32(txtNumero.Text);//tendriamos que catchear el error de que ingrese cualquier cosa
             bool aptoFisico = chkAptoFisico.Checked;
 
-            // Determinar que el usuario no es socio por defecto, se hace socio al pagar la primer cuota
-            //bool esSocio = false;
-
-            
-            // Crear el objeto de tipo E_Persona
+                        
+            // Crear el objeto de tipo E_Persona 
             E_Persona nuevaPersona = new E_Persona()
             {
                 nombre = nombre,
@@ -71,9 +54,8 @@ namespace ClubDeportivo_DSOO_PI
             // Llamar al método de la clase Persona para registrar al nuevo usuario en la bbdd
             Persona datosPersona = new Persona();
             string respuesta = datosPersona.Nuevo_Registro(nuevaPersona);
-            // En respuesta se guarda si se pudo agregar o no
-            //Si la respuesta es 1, ya existe el usuario. si no existe devuelve un numero de registro y se
-            //convierte a int el string y refresca la 
+            /* En respuesta se guarda si se pudo agregar o no. Si la respuesta es 1, ya existe el usuario.
+            Si no existe devuelve un numero de registro (pk de la tabla persona autoincremental) */
 
 
             if (int.TryParse(respuesta, out int codigo))
@@ -87,9 +69,7 @@ namespace ClubDeportivo_DSOO_PI
                     
                     MessageBox.Show($"Registro exitoso. Código de Usuario: {respuesta}.", 
                         "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    
-                    //CargarPersona(); // Refrescar la lista de usuarios después del registro
-                    botonPresionado = true;
+                   
                     btnPagarPrimerCuota.Enabled = true;
                 }
             }
@@ -98,15 +78,30 @@ namespace ClubDeportivo_DSOO_PI
                 MessageBox.Show("Error al registrar al usuario.", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        // Método para manejar el evento CheckedChanged del checkbox chkAptoFisico
-        private void chkAptoFisico_CheckedChanged(object sender, EventArgs e)
+        
+              
+        private void btnLimpiar_Click(object sender, EventArgs e)
         {
-            
+            txtNombre.Text = "";
+            txtApellido.Text = "";
+            txtNumero.Text = "";
+            chkAptoFisico.Checked = false;
+            btnPagarPrimerCuota.Enabled = false;
         }
 
-        private void VerificarEstadoPago()
+        private void btnPagarPrimerCuota_Click(object sender, EventArgs e)
         {
-            if (!botonPresionado) // Si no pagó, mover a "No Socio"
+
+            // Crear una nueva instancia del formulario de pago
+            frmPagoCuotaMensual formulario = new frmPagoCuotaMensual();
+         
+            formulario.ShowDialog(); // Mostrar el formulario como modal
+            
+
+        }
+        /* private void VerificarEstadoPago()
+        {
+            if (!botonPresionado) // Si no pagó se registra como no socio
             {
                 using (MySqlConnection connection = Conexion.getInstancia().CrearConexion())
                 {
@@ -135,67 +130,8 @@ namespace ClubDeportivo_DSOO_PI
                     }
                 }
             }
-        }
-
-
-        private void btnSalir_Click(object sender, EventArgs e)
-        {
-            // Verificar si el usuario no ha pagado antes de cerrar el formulario
-            VerificarEstadoPago();
-            MessageBox.Show($"Ustede volverá al menú principal");
-            this.Close(); // Cierra el formulario actual
-        }
-
-        /*private void Socio_CheckedChanged(object sender, EventArgs e)
-        {
-            if (frmRegistroSocio.Checked)
-            {
-                rbNoSocio.Checked = false; // Desmarcar "No Socio" si se selecciona "Socio"
-            }
-
-        }
-
-        private void rbNoSocio_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rbNoSocio.Checked)
-            {
-                frmRegistroSocio.Checked = false; // Desmarcar "Socio" si se selecciona "No Socio"
-            }
-
         }*/
 
-        private void cboxTipoDocumento_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
 
-        }
-
-        private void btnLimpiar_Click(object sender, EventArgs e)
-        {
-            txtNombre.Text = "";
-            txtApellido.Text = "";
-            txtNumero.Text = "";
-            chkAptoFisico.Checked = false; 
-        }
-
-        private void btnPagarPrimerCuota_Click(object sender, EventArgs e)
-        {
-            if (botonPresionado)
-            {
-                // Crear una nueva instancia del formulario de pago
-                frmPagoCuotaMensual formulario = new frmPagoCuotaMensual
-                {
-                    NroRegistro = txtNumero.Text // Pasar el número de registro
-                };
-
-                formulario.ShowDialog(); // Mostrar el formulario como modal
-            }
-
-        }
-
-        private void txtNombre_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

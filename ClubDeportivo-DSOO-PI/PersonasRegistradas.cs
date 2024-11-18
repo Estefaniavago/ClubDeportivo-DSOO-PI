@@ -1,4 +1,5 @@
 ﻿using ClubDeportivo_DSOO_PI.Datos;
+using ClubDeportivo_DSOO_PI.Entidades; // Referencia a la carpeta de Entidades
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,14 +17,10 @@ namespace ClubDeportivo_DSOO_PI
         public PersonasRegistradas()
         {
             InitializeComponent();
-            CargarPersona();
+            CargarPersona();//Metodo mediante el cual se cargan todas las personas a la grilla
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+       
         private void dtgvRegistro_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -144,6 +141,13 @@ namespace ClubDeportivo_DSOO_PI
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        
+        private void btnAgregarCliente_Click(object sender, EventArgs e)
+        {
+           registroPersona frmRegistro = new registroPersona();
+           frmRegistro.ShowDialog();
         }
     }
 }

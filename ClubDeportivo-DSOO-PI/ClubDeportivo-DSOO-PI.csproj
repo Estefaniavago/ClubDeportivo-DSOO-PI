@@ -206,11 +206,11 @@
     <Compile Include="frmPagoNoSocio.Designer.cs">
       <DependentUpon>frmPagoNoSocio.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmRegistroPersona.cs">
+    <Compile Include="registroPersona.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmRegistroPersona.Designer.cs">
-      <DependentUpon>FrmRegistroPersona.cs</DependentUpon>
+    <Compile Include="registroPersona.Designer.cs">
+      <DependentUpon>registroPersona.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmPagoCuotaMensual.cs">
       <SubType>Form</SubType>
@@ -253,8 +253,8 @@
     <EmbeddedResource Include="frmPagoNoSocio.resx">
       <DependentUpon>frmPagoNoSocio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmRegistroPersona.resx">
-      <DependentUpon>FrmRegistroPersona.cs</DependentUpon>
+    <EmbeddedResource Include="registroPersona.resx">
+      <DependentUpon>registroPersona.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPagoCuotaMensual.resx">
       <DependentUpon>FrmPagoCuotaMensual.cs</DependentUpon>

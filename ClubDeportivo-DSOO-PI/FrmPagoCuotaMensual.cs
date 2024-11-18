@@ -21,7 +21,7 @@ namespace ClubDeportivo_DSOO_PI
         decimal montoTotal = 30000; // Monto total de la cuota mensual para todos los socios
         string nombre;
         string apellido;
-        public string NroRegistro { get; set; }
+        //public string NroRegistro { get; set; }
 
         public frmPagoCuotaMensual()
         {
@@ -49,6 +49,7 @@ namespace ClubDeportivo_DSOO_PI
             ValidarRegistro(registroId);
         }
 
+        //Método para validar el número de registro
         private void ValidarRegistro(int nroRegistro)
         {
             using (MySqlConnection connection = Conexion.getInstancia().CrearConexion())
@@ -152,7 +153,7 @@ namespace ClubDeportivo_DSOO_PI
                         command.ExecuteNonQuery();
                     }
 
-                    // Si no es socio, conviértelo en socio
+                    // Si no es socio, se convierte en socio
                     string updateQuery = "UPDATE persona SET condicion = 1 WHERE idRegistro = @idRegistro";
                     using (MySqlCommand updateCommand = new MySqlCommand(updateQuery, connection))
                     {
@@ -170,7 +171,7 @@ namespace ClubDeportivo_DSOO_PI
             }
         }
 
-        private void RegistrarVencimiento(string idRegistro, DateTime fechaPago, DateTime fechaVencimiento, string medioPago, int cuotas)
+       /* private void RegistrarVencimiento(string idRegistro, DateTime fechaPago, DateTime fechaVencimiento, string medioPago, int cuotas)
         {
             using (MySqlConnection connection = Conexion.getInstancia().CrearConexion())
             {
@@ -218,7 +219,7 @@ namespace ClubDeportivo_DSOO_PI
                 }
             }
         }
-
+       */
         private void btnComprobante_Click(object sender, EventArgs e)
         {
 
@@ -227,7 +228,7 @@ namespace ClubDeportivo_DSOO_PI
             {
                 Nombre = nombre,
                 Apellido = apellido,
-                //Montocuota=montoTotal,
+              // Montocuota=montoTotal,
 
 
                 FechaPago = DateTime.Now.ToShortDateString(),

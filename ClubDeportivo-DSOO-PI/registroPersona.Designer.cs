@@ -106,7 +106,6 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(84, 20);
             this.txtNombre.TabIndex = 8;
-            this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
             // 
             // txtApellido
             // 
@@ -132,7 +131,6 @@
             this.cboxTipoDocumento.Name = "cboxTipoDocumento";
             this.cboxTipoDocumento.Size = new System.Drawing.Size(84, 21);
             this.cboxTipoDocumento.TabIndex = 11;
-            this.cboxTipoDocumento.SelectedIndexChanged += new System.EventHandler(this.cboxTipoDocumento_SelectedIndexChanged);
             // 
             // chkAptoFisico
             // 
@@ -142,12 +140,11 @@
             this.chkAptoFisico.Size = new System.Drawing.Size(15, 14);
             this.chkAptoFisico.TabIndex = 14;
             this.chkAptoFisico.UseVisualStyleBackColor = true;
-            this.chkAptoFisico.CheckedChanged += new System.EventHandler(this.chkAptoFisico_CheckedChanged);
             // 
             // btnRegistrar
             // 
             this.btnRegistrar.Location = new System.Drawing.Point(195, 245);
-            this.btnRegistrar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnRegistrar.Margin = new System.Windows.Forms.Padding(2);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(94, 35);
             this.btnRegistrar.TabIndex = 15;
@@ -209,7 +206,6 @@
             this.Name = "registroPersona";
             this.Text = "Registro Usuario";
             this.TransparencyKey = System.Drawing.Color.Salmon;
-            this.Load += new System.EventHandler(this.registroPersona_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
