@@ -35,36 +35,43 @@
             // pictureBox1
             // 
             this.pictureBox1.ErrorImage = global::ClubDeportivo_DSOO_PI.Properties.Resources.crossfit_3180368_1280;
-            this.pictureBox1.Location = new System.Drawing.Point(31, 106);
+            this.pictureBox1.Location = new System.Drawing.Point(-42, 59);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(149, 214);
+            this.pictureBox1.Size = new System.Drawing.Size(162, 302);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
             // lblPagos
             // 
             this.lblPagos.AutoSize = true;
-            this.lblPagos.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.lblPagos.Location = new System.Drawing.Point(256, 29);
+            this.lblPagos.Font = new System.Drawing.Font("Cambria", 24F);
+            this.lblPagos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(57)))), ((int)(((byte)(80)))));
+            this.lblPagos.Location = new System.Drawing.Point(178, 9);
+            this.lblPagos.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblPagos.Name = "lblPagos";
-            this.lblPagos.Size = new System.Drawing.Size(231, 24);
+            this.lblPagos.Size = new System.Drawing.Size(425, 47);
             this.lblPagos.TabIndex = 2;
             this.lblPagos.Text = "PAGO CUOTA MENSUAL";
             // 
             // lblUsuario
             // 
             this.lblUsuario.AutoSize = true;
-            this.lblUsuario.Location = new System.Drawing.Point(224, 89);
+            this.lblUsuario.Font = new System.Drawing.Font("Cambria", 11F);
+            this.lblUsuario.Location = new System.Drawing.Point(143, 80);
+            this.lblUsuario.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(101, 13);
+            this.lblUsuario.Size = new System.Drawing.Size(172, 22);
             this.lblUsuario.TabIndex = 3;
             this.lblUsuario.Text = "Numero de Registro";
             // 
             // btnPagar
             // 
-            this.btnPagar.Location = new System.Drawing.Point(86, 109);
+            this.btnPagar.Font = new System.Drawing.Font("Cambria", 10F);
+            this.btnPagar.Location = new System.Drawing.Point(154, 118);
+            this.btnPagar.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnPagar.Name = "btnPagar";
-            this.btnPagar.Size = new System.Drawing.Size(86, 28);
+            this.btnPagar.Size = new System.Drawing.Size(144, 45);
             this.btnPagar.TabIndex = 4;
             this.btnPagar.Text = "PAGAR";
             this.btnPagar.UseVisualStyleBackColor = true;
@@ -73,18 +80,21 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 0);
+            this.label3.Font = new System.Drawing.Font("Cambria", 11F);
+            this.label3.Location = new System.Drawing.Point(10, 0);
+            this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 13);
+            this.label3.Size = new System.Drawing.Size(128, 22);
             this.label3.TabIndex = 5;
             this.label3.Text = "Medio de Pago";
             // 
             // txtNroRegistro
             // 
             this.txtNroRegistro.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.txtNroRegistro.Location = new System.Drawing.Point(226, 106);
+            this.txtNroRegistro.Location = new System.Drawing.Point(325, 80);
+            this.txtNroRegistro.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.txtNroRegistro.Name = "txtNroRegistro";
-            this.txtNroRegistro.Size = new System.Drawing.Size(155, 29);
+            this.txtNroRegistro.Size = new System.Drawing.Size(110, 34);
             this.txtNroRegistro.TabIndex = 6;
             this.txtNroRegistro.TextChanged += new System.EventHandler(this.txtNroRegistro_TextChanged);
             // 
@@ -95,9 +105,11 @@
             this.groupBox1.Controls.Add(this.btnPagar);
             this.groupBox1.Controls.Add(this.rdEfectivo);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(242, 170);
+            this.groupBox1.Location = new System.Drawing.Point(147, 124);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(252, 144);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.groupBox1.Size = new System.Drawing.Size(420, 207);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
@@ -109,18 +121,21 @@
             "1 CUOTA",
             "3 CUOTAS",
             "6 CUOTAS"});
-            this.cbCuotas.Location = new System.Drawing.Point(88, 56);
+            this.cbCuotas.Location = new System.Drawing.Point(131, 79);
+            this.cbCuotas.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.cbCuotas.Name = "cbCuotas";
-            this.cbCuotas.Size = new System.Drawing.Size(121, 21);
+            this.cbCuotas.Size = new System.Drawing.Size(199, 29);
             this.cbCuotas.TabIndex = 9;
             this.cbCuotas.SelectedIndexChanged += new System.EventHandler(this.cbCuotas_SelectedIndexChanged);
             // 
             // rdCredito
             // 
             this.rdCredito.AutoSize = true;
-            this.rdCredito.Location = new System.Drawing.Point(19, 56);
+            this.rdCredito.Font = new System.Drawing.Font("Cambria", 11F);
+            this.rdCredito.Location = new System.Drawing.Point(30, 79);
+            this.rdCredito.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.rdCredito.Name = "rdCredito";
-            this.rdCredito.Size = new System.Drawing.Size(58, 17);
+            this.rdCredito.Size = new System.Drawing.Size(91, 26);
             this.rdCredito.TabIndex = 8;
             this.rdCredito.TabStop = true;
             this.rdCredito.Text = "Crédito";
@@ -129,9 +144,11 @@
             // rdEfectivo
             // 
             this.rdEfectivo.AutoSize = true;
-            this.rdEfectivo.Location = new System.Drawing.Point(18, 27);
+            this.rdEfectivo.Font = new System.Drawing.Font("Cambria", 11F);
+            this.rdEfectivo.Location = new System.Drawing.Point(30, 43);
+            this.rdEfectivo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.rdEfectivo.Name = "rdEfectivo";
-            this.rdEfectivo.Size = new System.Drawing.Size(64, 17);
+            this.rdEfectivo.Size = new System.Drawing.Size(96, 26);
             this.rdEfectivo.TabIndex = 6;
             this.rdEfectivo.TabStop = true;
             this.rdEfectivo.Text = "Efectivo";
@@ -139,9 +156,11 @@
             // 
             // btnComprobanteS
             // 
-            this.btnComprobanteS.Location = new System.Drawing.Point(242, 336);
+            this.btnComprobanteS.Font = new System.Drawing.Font("Cambria", 10F);
+            this.btnComprobanteS.Location = new System.Drawing.Point(248, 319);
+            this.btnComprobanteS.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnComprobanteS.Name = "btnComprobanteS";
-            this.btnComprobanteS.Size = new System.Drawing.Size(100, 39);
+            this.btnComprobanteS.Size = new System.Drawing.Size(243, 42);
             this.btnComprobanteS.TabIndex = 9;
             this.btnComprobanteS.Text = "COMPROBANTE";
             this.btnComprobanteS.UseVisualStyleBackColor = true;
@@ -149,9 +168,10 @@
             // 
             // btnValidar
             // 
-            this.btnValidar.Location = new System.Drawing.Point(394, 106);
+            this.btnValidar.Location = new System.Drawing.Point(455, 80);
+            this.btnValidar.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnValidar.Name = "btnValidar";
-            this.btnValidar.Size = new System.Drawing.Size(100, 29);
+            this.btnValidar.Size = new System.Drawing.Size(119, 34);
             this.btnValidar.TabIndex = 10;
             this.btnValidar.Text = "Validar";
             this.btnValidar.UseVisualStyleBackColor = true;
@@ -160,17 +180,17 @@
             // lblResultado
             // 
             this.lblResultado.AutoSize = true;
-            this.lblResultado.Location = new System.Drawing.Point(314, 137);
-            this.lblResultado.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblResultado.Location = new System.Drawing.Point(339, 142);
+            this.lblResultado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblResultado.Name = "lblResultado";
-            this.lblResultado.Size = new System.Drawing.Size(0, 13);
+            this.lblResultado.Size = new System.Drawing.Size(0, 22);
             this.lblResultado.TabIndex = 11;
             // 
             // frmPagoCuotaMensual
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(677, 450);
+            this.ClientSize = new System.Drawing.Size(704, 472);
             this.Controls.Add(this.lblResultado);
             this.Controls.Add(this.btnValidar);
             this.Controls.Add(this.btnComprobanteS);
@@ -179,6 +199,8 @@
             this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.lblPagos);
             this.Controls.Add(this.pictureBox1);
+            this.Font = new System.Drawing.Font("Cambria", 11F);
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "frmPagoCuotaMensual";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pago";

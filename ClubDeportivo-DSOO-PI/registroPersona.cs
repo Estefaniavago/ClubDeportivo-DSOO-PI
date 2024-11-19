@@ -6,12 +6,13 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using ClubDeportivo.Datos;
 using MySql.Data.MySqlClient;
+using System.Drawing;
 
 namespace ClubDeportivo_DSOO_PI
 {
     public partial class registroPersona : Form
     {
-             
+
         //Inicializo el formulario
         public registroPersona()
         {
@@ -23,23 +24,41 @@ namespace ClubDeportivo_DSOO_PI
         //BOTON REGISTRAR 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
+            try 
+            
+            { 
+
             // Validar que los campos obligatorios estén completos
-            if (string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(txtApellido.Text) 
+            if (string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(txtApellido.Text)
                 || string.IsNullOrEmpty(txtNumero.Text))
             {
-                MessageBox.Show("Debe completar todos los campos requeridos (*)", 
+                MessageBox.Show("Debe completar todos los campos requeridos (*)",
                     "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            //Toma los datos cargados en el formulario .
-            string nombre = txtNombre.Text;
+            // Validar que el número de documento sea válido
+            if (!int.TryParse(txtNumero.Text, out int nroDoc))
+            {
+                    mensajeControl1.MostrarMensajeAnimado("Número de documento inválido.", Color.Red);
+                    return;
+                }
+
+            // Validar que el tipo de documento esté seleccionado
+            if (cboxTipoDocumento.SelectedItem == null)
+            {
+                    mensajeControl1.MostrarMensaje("Debe seleccionar un tipo de documento.", Color.Red);
+                    return;
+                }
+                mensajeControl1.OcultarMensaje();
+
+                //Toma los datos cargados en el formulario .
+                string nombre = txtNombre.Text;
             string apellido = txtApellido.Text;
-            string tipoDoc = cboxTipoDocumento.SelectedItem.ToString();         
-            int nroDoc = Convert.ToInt32(txtNumero.Text);//tendriamos que catchear el error de que ingrese cualquier cosa
+            string tipoDoc = cboxTipoDocumento.SelectedItem.ToString();
             bool aptoFisico = chkAptoFisico.Checked;
 
-                        
+
             // Crear el objeto de tipo E_Persona 
             E_Persona nuevaPersona = new E_Persona()
             {
@@ -62,14 +81,14 @@ namespace ClubDeportivo_DSOO_PI
             {
                 if (codigo == 1)
                 {
-                    MessageBox.Show("El usuario ya existe.", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                        mensajeControl1.MostrarMensaje("El usuario ya existe.", Color.Red);
+                    }
                 else
                 {
-                    
-                    MessageBox.Show($"Registro exitoso. Código de Usuario: {respuesta}.", 
+
+                    MessageBox.Show($"Registro exitoso. Código de Usuario: {respuesta}.",
                         "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                   
+
                     btnPagarPrimerCuota.Enabled = true;
                 }
             }
@@ -78,6 +97,12 @@ namespace ClubDeportivo_DSOO_PI
                 MessageBox.Show("Error al registrar al usuario.", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        catch(Exception ex)
+
+            {
+             MessageBox.Show($"Ocurrió un error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+}
         
               
         private void btnLimpiar_Click(object sender, EventArgs e)

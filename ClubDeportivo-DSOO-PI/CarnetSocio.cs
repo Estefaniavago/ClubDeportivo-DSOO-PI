@@ -118,20 +118,8 @@ namespace ClubDeportivo_DSOO_PI
 
         private void btnImprimirCarnet_Click(object sender, EventArgs e)
         {
-            /* Eliminamos el boton imprimir y validar de la vista que se va a imprimir*/
-            btnImprimirCarnet.Visible = false;
-            btnValidarSocio.Visible = false;
-            /* Creamos objeto para imprimir*/
-            PrintDocument pd = new PrintDocument();
-            pd.PrintPage += new PrintPageEventHandler(imprimirComprobanteNs);
-            pd.Print();
-            btnImprimirCarnet.Visible = true; // visualizamos nuevamente el boton de imprimir
-
-
-            MessageBox.Show("Operación existosa", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            frmPrincipal principal = new frmPrincipal();
-            principal.Show();
-            this.Close();
+            var vistaCarnet = new ModalVistaCarnet(nombre, apellido, dni, fechavencimiento);
+            vistaCarnet.ShowDialog();
         }
         private void imprimirComprobanteNs(object o, PrintPageEventArgs e)
         {
@@ -145,6 +133,8 @@ namespace ClubDeportivo_DSOO_PI
             Point p = new Point(100, 100);
             e.Graphics.DrawImage(img, p);
         }
+
+        
     }
     }
 

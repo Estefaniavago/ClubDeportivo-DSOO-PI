@@ -206,6 +206,18 @@
     <Compile Include="frmPagoNoSocio.Designer.cs">
       <DependentUpon>frmPagoNoSocio.cs</DependentUpon>
     </Compile>
+    <Compile Include="MensajeControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MensajeControl.Designer.cs">
+      <DependentUpon>MensajeControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModalVistaCarnet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModalVistaCarnet.Designer.cs">
+      <DependentUpon>ModalVistaCarnet.cs</DependentUpon>
+    </Compile>
     <Compile Include="registroPersona.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -253,6 +265,12 @@
     <EmbeddedResource Include="frmPagoNoSocio.resx">
       <DependentUpon>frmPagoNoSocio.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MensajeControl.resx">
+      <DependentUpon>MensajeControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModalVistaCarnet.resx">
+      <DependentUpon>ModalVistaCarnet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="registroPersona.resx">
       <DependentUpon>registroPersona.cs</DependentUpon>
     </EmbeddedResource>
@@ -291,7 +309,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\ClubDeportivoPOORecurso 1%403x.png" />
-    <Content Include="Assets\fitmoveRecurso 2%403x.png" />
+    <Content Include="Assets\fitmoveRecurso 2%403x.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="ILLink\ILLink.Descriptors.LibraryBuild.xml" />
     <None Include="Resources\crossfit-3180368_1280.png" />
   </ItemGroup>
