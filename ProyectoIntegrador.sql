@@ -43,12 +43,12 @@ CREATE TABLE vencimientos(
     fechaPago DATE,
     fechaVencimiento date,
     medioPago VARCHAR(20),
-    cuotas INT,
+    cuotas varchar(1),
     CONSTRAINT pk_vencimientos PRIMARY KEY (idPago),
     FOREIGN KEY (idRegistro) REFERENCES persona(idRegistro)
 );
 INSERT INTO vencimientos (idRegistro, fechaPago, fechaVencimiento, medioPago, cuotas) VALUES
-(100, '2024-11-01', '2024-12-01', 'Tarjeta', 1),
+(100, '2024-10-01', '2024-11-01', 'Tarjeta', 1),
 (101, '2024-11-02', '2024-12-02', 'Efectivo', 1),
 (103, '2024-11-03', '2024-12-03', 'Tarjeta', 6),
 (104, '2024-11-04', '2024-12-04', 'Tarjeta', 3),
