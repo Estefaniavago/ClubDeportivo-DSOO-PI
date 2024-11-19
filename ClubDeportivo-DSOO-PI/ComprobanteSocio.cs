@@ -85,6 +85,8 @@ namespace ClubDeportivo_DSOO_PI
             Point p = new Point(100, 100);
             e.Graphics.DrawImage(img, p);
         }
+
+        
     }
     }
          

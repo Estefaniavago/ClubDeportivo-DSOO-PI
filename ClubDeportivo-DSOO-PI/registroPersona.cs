@@ -37,26 +37,20 @@ namespace ClubDeportivo_DSOO_PI
                 return;
             }
 
-            // Validar que el número de documento sea válido
+            // Valida que el formato del número de documento sea válido
             if (!int.TryParse(txtNumero.Text, out int nroDoc))
             {
-                    mensajeControl1.MostrarMensajeAnimado("Número de documento inválido.", Color.Red);
+                    MessageBox.Show("El formato del número de documento ingresado no es válido. Intente nuevamente",
+                    "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-            // Validar que el tipo de documento esté seleccionado
-            if (cboxTipoDocumento.SelectedItem == null)
-            {
-                    mensajeControl1.MostrarMensaje("Debe seleccionar un tipo de documento.", Color.Red);
-                    return;
-                }
-                mensajeControl1.OcultarMensaje();
-
+            
                 //Toma los datos cargados en el formulario .
                 string nombre = txtNombre.Text;
-            string apellido = txtApellido.Text;
-            string tipoDoc = cboxTipoDocumento.SelectedItem.ToString();
-            bool aptoFisico = chkAptoFisico.Checked;
+                string apellido = txtApellido.Text;
+                string tipoDoc = cboxTipoDocumento.SelectedItem.ToString();
+                bool aptoFisico = chkAptoFisico.Checked;
 
 
             // Crear el objeto de tipo E_Persona 
@@ -81,14 +75,16 @@ namespace ClubDeportivo_DSOO_PI
             {
                 if (codigo == 1)
                 {
-                        mensajeControl1.MostrarMensaje("El usuario ya existe.", Color.Red);
+
+                        MessageBox.Show($"La persona ya existe en el sistema",
+                            "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 else
                 {
 
                     MessageBox.Show($"Registro exitoso. Código de Usuario: {respuesta}.",
                         "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                        //ACA PODRIAMOS AGREGAR LA ADVERTENCIA DE ENTREGAR APTO FISICO
                     btnPagarPrimerCuota.Enabled = true;
                 }
             }
@@ -124,39 +120,6 @@ namespace ClubDeportivo_DSOO_PI
             
 
         }
-        /* private void VerificarEstadoPago()
-        {
-            if (!botonPresionado) // Si no pagó se registra como no socio
-            {
-                using (MySqlConnection connection = Conexion.getInstancia().CrearConexion())
-                {
-                    try
-                    {
-                        connection.Open();
-
-                        string query = @"INSERT INTO no_socio (idPersona) 
-                                 SELECT idRegistro 
-                                 FROM persona 
-                                 WHERE condicion = 0 AND idRegistro = @idRegistro";
-
-                        using (MySqlCommand command = new MySqlCommand(query, connection))
-                        {
-                            command.Parameters.AddWithValue("@idRegistro", txtNumero.Text);
-                            command.ExecuteNonQuery();
-                        }
-
-                        MessageBox.Show("El usuario ha sido movido a la tabla 'No Socio' por no haber pagado la cuota inicial.",
-                            "Estado Actualizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error al mover el registro a No Socio: " + ex.Message,
-                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-        }*/
-
-
+       
     }
 }

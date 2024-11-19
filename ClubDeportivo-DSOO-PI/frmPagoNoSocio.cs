@@ -19,8 +19,10 @@ namespace ClubDeportivo_DSOO_PI
             dtgvActividad.ReadOnly = true; // Hace que el DataGridView sea de solo lectura
             dtgvActividad.SelectionMode = DataGridViewSelectionMode.FullRowSelect; // Seleccionar filas completas
             CargarActividades(); // Llamar al método para cargar actividades al abrir el formulario
+            btnPagar.Enabled = false;
         }
 
+        //Carga las actividades para que puedan seleccionarse del combobox, trayendolas de la bbdd
         private void CargarActividades()
         {
             using (MySqlConnection connection = Conexion.getInstancia().CrearConexion())
@@ -47,6 +49,8 @@ namespace ClubDeportivo_DSOO_PI
             }
         }
 
+        //Codigo que corresponde al evento de seleccionar una actividad de la lista
+        //Se autocompleta el precio de la actividad y se cargan los dias y horarios en la grilla
         private void cbActividad_SelectedIndexChanged(object sender, EventArgs e)
         {
             string actividadSeleccionada = cbActividad.SelectedItem?.ToString();
@@ -100,6 +104,7 @@ namespace ClubDeportivo_DSOO_PI
             }
         }
 
+        //Seleccionar dia y horario de la actividad
         private void dtgvActividad_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0) // Asegurarse de que no se está haciendo clic en el encabezado
@@ -140,6 +145,8 @@ namespace ClubDeportivo_DSOO_PI
             }
         }
 
+       
+        //Lee el numero de registro
         private void txtNroRegistroNs_TextChanged(object sender, EventArgs e)
         {
             string nroRegistro = txtNroRegistroNs.Text;
@@ -165,7 +172,7 @@ namespace ClubDeportivo_DSOO_PI
                                 }
                                 else
                                 {
-                                    txtNyANs.Text = "Registro no encontrado";
+                                    txtNyANs.Text = "Registro no encontrado o no válido";
                                 }
                             }
                         }
@@ -213,7 +220,7 @@ namespace ClubDeportivo_DSOO_PI
                                     if (esSocio)
                                     {
                                         txtNyANs.Text = $"{nombre} {apellido}";
-                                        MessageBox.Show("Este registro corresponde a un socio. No puede pagar como no socio.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                        MessageBox.Show("Este registro corresponde a un socio.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                         btnPagar.Enabled = false;
                                     }
                                     else
@@ -244,40 +251,19 @@ namespace ClubDeportivo_DSOO_PI
         }
 
 
-
-
-        private void txtPrecioAct_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void grbMedioPago_Enter(object sender, EventArgs e)
-        {
-        }
-
-        private void dtgvActividad_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-        }
-
         private void btnPagar_Click(object sender, EventArgs e)
         {
-            if (!btnPagar.Enabled)
-            {
-                MessageBox.Show("Debe validar el registro como no socio antes de proceder.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
+            
             if (!string.IsNullOrEmpty(cbActividad.Text) &&
                 !string.IsNullOrEmpty(txtPrecioAct.Text) &&
                 !string.IsNullOrEmpty(txtNyANs.Text) &&
-                !string.IsNullOrEmpty(txtNroRegistroNs.Text))
+                !string.IsNullOrEmpty(txtNroRegistroNs.Text)&&
+                (rdCredito.Checked|| rdEfectivo.Checked)
+                )
             {
                 // Capturar los datos del formulario
-                if (!int.TryParse(txtNroRegistroNs.Text, out int idPersona))
-                {
-                    MessageBox.Show("El número de registro debe ser un valor numérico válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
+                int.TryParse(txtNroRegistroNs.Text, out int idPersona);
+                                       
                 string actividad = cbActividad.Text;
                 string precio = txtPrecioAct.Text;
                 string fechaPago = DateTime.Now.ToString("yyyy-MM-dd");

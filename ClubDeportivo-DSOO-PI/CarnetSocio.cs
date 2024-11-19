@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
@@ -38,14 +39,24 @@ namespace ClubDeportivo_DSOO_PI
 
         private void btnValidarSocio_Click(object sender, EventArgs e)
         {
-            if (int.TryParse(nroRegistro, out int registroId))
-            {
-                ValidarRegistro(registroId);
-                MessageBox.Show("Validado");
+            if (!string.IsNullOrEmpty(txtNroSocio.Text)) {  
+                if (int.TryParse(nroRegistro, out int registroId))
+                {
+                     ValidarRegistro(registroId);
+
+                }
+                else
+                {
+                    MessageBox.Show("Por favor, ingrese un número de registro válido.", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtNroSocio.Text = "";//Limpia el textbox
+                }
+
+
             }
             else
             {
-                MessageBox.Show("Por favor, ingrese un número de registro válido.", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                MessageBox.Show("Por favor, ingrese un número de registro .", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void ValidarRegistro(int nroRegistro)
@@ -81,14 +92,12 @@ namespace ClubDeportivo_DSOO_PI
 
                                 if (fechaVencimiento == null || fechaVencimiento <= DateTime.Now)
                                 {
-                                    MessageBox.Show($"Ingreso fallido. Bienvenid@");
-                                    btnImprimirCarnet.Enabled = true; // Habilitar el btón par aimprimir el carnet una vez validado que es socio y tiene la cuota al dia
-
-                                }
+                                    MessageBox.Show($"No es socio. No se puede emitir carnet");
+                                    txtNroSocio.Text = "";//Limpia el textbox
+                                                                    }
                                 else
                                 {
                                    
-                                    MessageBox.Show($"Ingreso exitoso. Bienvenid@");
                                     btnImprimirCarnet.Enabled = true; // Habilitar el botón de pago
                                     // Asignar los valores recibidos a los campos del formulario
                                     txtNombreSocio.Text = nombre;
@@ -102,7 +111,7 @@ namespace ClubDeportivo_DSOO_PI
                                     txtApellidoSocio.ReadOnly = true;
                                     txtDniSocio.ReadOnly = true;
                                     txtFechaVencimientoSocio.ReadOnly = true;
-                                    MessageBox.Show($"Nombre: {nombre}, Apellido: {apellido}");
+                                    MessageBox.Show("Validado correctamente");
                                 }
                             }
                             

@@ -20,56 +20,12 @@ namespace ClubDeportivo_DSOO_PI
             CargarPersona();//Metodo mediante el cual se cargan todas las personas a la grilla
         }
 
-       
+
         private void dtgvRegistro_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
 
-        private void EliminarRegistro()
-        {
-            try
-            {
-                if (dtgvRegistro.SelectedRows.Count > 0)
-                {
-                    // Obtener el ID del registro seleccionado
-                    int idRegistro = Convert.ToInt32(dtgvRegistro.SelectedRows[0].Cells["idRegistro"].Value);
-
-                    // Confirmar eliminación
-                    DialogResult result = MessageBox.Show("¿Está seguro de que desea eliminar este registro?",
-                        "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                    if (result == DialogResult.Yes)
-                    {
-                        // Llamar al método de la clase Persona para eliminar el registro
-                        Persona personaDatos = new Persona();
-                        bool eliminado = personaDatos.EliminarRegistro(idRegistro);
-
-                        if (eliminado)
-                        {
-                            MessageBox.Show("Registro eliminado correctamente.", "Aviso",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            CargarPersona(); // Recargar la grilla después de eliminar
-                        }
-                        else
-                        {
-                            MessageBox.Show("No se pudo eliminar el registro.", "Error",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Por favor, seleccione un registro para eliminar.", "Aviso",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al eliminar el registro: {ex.Message}", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
         // Método para cargar la lista de usuarios en el DataGridView
         private void CargarPersona()
@@ -133,21 +89,8 @@ namespace ClubDeportivo_DSOO_PI
             }
         }
 
-        private void btnGrillaEliminar_Click(object sender, EventArgs e)
-        {
-            EliminarRegistro();
-        }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        
-        private void btnAgregarCliente_Click(object sender, EventArgs e)
-        {
-           registroPersona frmRegistro = new registroPersona();
-           frmRegistro.ShowDialog();
-        }
     }
+               
+        
 }

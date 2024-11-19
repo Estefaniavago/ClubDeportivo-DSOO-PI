@@ -18,34 +18,35 @@ namespace ClubDeportivo_DSOO_PI
     public partial class frmPagoCuotaMensual : Form
     {
         private string nroRegistro; // En la BBDD es idRegistro
-        decimal montoTotal = 30000; // Monto total de la cuota mensual para todos los socios
+        string montoTotal = "30000"; // Monto total de la cuota mensual para todos los socios
         string nombre;
         string apellido;
+        
+        
         //public string NroRegistro { get; set; }
 
         public frmPagoCuotaMensual()
         {
             InitializeComponent();
             btnPagar.Enabled = false; // Deshabilitado el pago hasta que esté validado el registro
-            btnComprobanteS.Enabled = false;
+            btnComprobanteS.Enabled = false;//Deshabilitado el comprobante hasta que esté pago
         }
 
-        private void txtNroRegistro_TextChanged(object sender, EventArgs e)
-        {
-            nroRegistro = txtNroRegistro.Text;
-        }
 
         // Botón para validar el número de registro
         private void btnValidar_Click(object sender, EventArgs e)
         {
+           //Lee numero de registro
             nroRegistro = txtNroRegistro.Text;
 
+            //Valida si el textbox está vacio o se ingresó un número no valido
             if (string.IsNullOrEmpty(nroRegistro) || !int.TryParse(nroRegistro, out int registroId))
             {
                 MessageBox.Show("Por favor, ingrese un número de registro válido.", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
+            //Método para validar el registro
             ValidarRegistro(registroId);
         }
 
@@ -124,14 +125,42 @@ namespace ClubDeportivo_DSOO_PI
 
         private void btnPagar_Click(object sender, EventArgs e)
         {
+                       
             string medioPago = rdEfectivo.Checked ? "Efectivo" : rdCredito.Checked ? "Crédito" : "";
 
+            //Valida que se haya seleccionado un metodo de pago
             if (string.IsNullOrEmpty(medioPago))
             {
                 MessageBox.Show("Por favor, seleccione un medio de pago.", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
+            //En caso de que elija efectivo se asegura que se guarde con 0 cuotas
+            if (rdEfectivo.Checked)
+            {
+                cbCuotas.SelectedItem = "0";
+                cbCuotas.Text = "";
+                
+            }
+            if (rdCredito.Checked)
+            {
+                if (cbCuotas.SelectedIndex==0)
+                {
+                    cbCuotas.Text = "1";
+                }else if (cbCuotas.SelectedIndex == 1)
+                {
+                    cbCuotas.Text = "3";
+                } else if (cbCuotas.SelectedIndex == 2)
+                {
+                    cbCuotas.Text = "6";
+                }
+                else
+                {
+                    cbCuotas.Text = "1";
+                }
+               
+            }
+            
             DateTime fechaActual = DateTime.Now;
             DateTime proximoVencimiento = fechaActual.AddMonths(1);
 
@@ -140,7 +169,8 @@ namespace ClubDeportivo_DSOO_PI
                 try
                 {
                     connection.Open();
-
+                    //Se completa la tabla de vencimientos en la bbdd
+                    //Se registra el pago en la bbdd
                     string query = "INSERT INTO vencimientos (idRegistro, fechaPago, fechaVencimiento, medioPago, cuotas) VALUES (@idRegistro, @fechaPago, @fechaVencimiento, @medioPago, @cuotas)";
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
@@ -148,7 +178,7 @@ namespace ClubDeportivo_DSOO_PI
                         command.Parameters.AddWithValue("@fechaPago", fechaActual);
                         command.Parameters.AddWithValue("@fechaVencimiento", proximoVencimiento);
                         command.Parameters.AddWithValue("@medioPago", medioPago);
-                        command.Parameters.AddWithValue("@cuotas", cbCuotas.SelectedIndex + 1);
+                        command.Parameters.AddWithValue("@cuotas", cbCuotas.Text);
 
                         command.ExecuteNonQuery();
                     }
@@ -171,77 +201,25 @@ namespace ClubDeportivo_DSOO_PI
             }
         }
 
-       /* private void RegistrarVencimiento(string idRegistro, DateTime fechaPago, DateTime fechaVencimiento, string medioPago, int cuotas)
-        {
-            using (MySqlConnection connection = Conexion.getInstancia().CrearConexion())
-            {
-                try
-                {
-                    connection.Open();
-
-                    // Verificar si ya existe un vencimiento activo
-                    string checkQuery = "SELECT COUNT(*) FROM vencimientos WHERE idRegistro = @idRegistro AND fechaVencimiento > CURDATE()";
-                    using (MySqlCommand checkCommand = new MySqlCommand(checkQuery, connection))
-                    {
-                        checkCommand.Parameters.AddWithValue("@idRegistro", idRegistro);
-                        int count = Convert.ToInt32(checkCommand.ExecuteScalar());
-
-                        if (count > 0)
-                        {
-                            MessageBox.Show("El socio ya tiene un vencimiento activo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
-                        }
-                    }
-                    string query = "INSERT INTO vencimientos (idRegistro, fechaPago, fechaVencimiento, medioPago, cuotas) VALUES (@idRegistro, @fechaPago, @fechaVencimiento, @medioPago, @cuotas)";
-
-                    using (MySqlCommand command = new MySqlCommand(query, connection))
-                    {
-                        command.Parameters.AddWithValue("@idRegistro", idRegistro);
-                        command.Parameters.AddWithValue("@fechaPago", fechaPago);
-                        command.Parameters.AddWithValue("@fechaVencimiento", fechaVencimiento);
-                        command.Parameters.AddWithValue("@medioPago", medioPago);
-                        command.Parameters.AddWithValue("@cuotas", cuotas);
-
-                        command.ExecuteNonQuery();
-                    }
-                    // Actualizar la tabla persona para establecer condicion = 1
-                    string updateQuery = "UPDATE persona SET condicion = 1 WHERE idRegistro = @idRegistro";
-                    using (MySqlCommand updateCommand = new MySqlCommand(updateQuery, connection))
-                    {
-                        updateCommand.Parameters.AddWithValue("@idRegistro", idRegistro);
-                        updateCommand.ExecuteNonQuery();
-                    }
-                
-                }
-                catch (MySqlException ex)
-                {
-                    MessageBox.Show("Error al registrar el vencimiento en la base de datos: " + ex.Message, "Error de Base de Datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-       */
+       
         private void btnComprobante_Click(object sender, EventArgs e)
         {
 
-
+            //Instancia al comprobante y le pasa los datos cargados
             frmComprobanteSocio comprobanteForm = new frmComprobanteSocio
             {
                 Nombre = nombre,
                 Apellido = apellido,
-              // Montocuota=montoTotal,
-
-
+                Montocuota=montoTotal,
                 FechaPago = DateTime.Now.ToShortDateString(),
                 MedioPago = rdEfectivo.Checked ? "Efectivo" : rdCredito.Checked ? "Crédito" : "N/A",
                 Cuotas = cbCuotas.Text
             };
-            //MessageBox.Show($"Nombre: {nombre}, Apellido: {apellido}, Fecha: {comprobanteForm.FechaPago}, Medio de Pago: {comprobanteForm.MedioPago}");
+            
             comprobanteForm.ShowDialog();
 
         }
-        private void cbCuotas_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
+        
 
         private void frmPagoCuotaMensual_Load(object sender, EventArgs e)
         {
