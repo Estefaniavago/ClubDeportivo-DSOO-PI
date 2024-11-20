@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClubDeportivo.Datos;
 using ClubDeportivo_DSOO_PI.Datos;
+using ClubDeportivo_DSOO_PI.Entidades;
 using MySql.Data.MySqlClient;
 
 namespace ClubDeportivo_DSOO_PI
@@ -22,7 +23,7 @@ namespace ClubDeportivo_DSOO_PI
         string nombre;
         string apellido;
         
-        
+
         //public string NroRegistro { get; set; }
 
         public frmPagoCuotaMensual()
@@ -52,75 +53,48 @@ namespace ClubDeportivo_DSOO_PI
 
         //Método para validar el número de registro
         private void ValidarRegistro(int nroRegistro)
+
         {
-            using (MySqlConnection connection = Conexion.getInstancia().CrearConexion())
+            
+            try
             {
-                try
+                E_Socio socio = Socio.ObtenerDatosSocio(nroRegistro);
+
+                if (socio != null)
                 {
-                    connection.Open();
-                    string query = @"
-                SELECT 
-                    p.nombre, 
-                    p.apellido, 
-                    p.condicion, 
-                    v.fechaVencimiento
-                FROM persona p
-                LEFT JOIN vencimientos v ON p.idRegistro = v.idRegistro
-                WHERE p.idRegistro = @nroRegistro
-                ORDER BY v.fechaVencimiento DESC
-                LIMIT 1;";
+                    // Asignar nombre y apellido al formulario actual
+                    this.nombre = socio.nombre;
+                    this.apellido = socio.apellido;
+                    lblResultado.Text = $"{socio.nombre} {socio.apellido} ";
 
-                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    if (socio.condicion) // Es un socio
                     {
-                        command.Parameters.AddWithValue("@nroRegistro", nroRegistro);
-
-                        using (MySqlDataReader reader = command.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                nombre = reader["nombre"].ToString();
-                                apellido = reader["apellido"].ToString();
-                                bool esSocio = reader["condicion"] != DBNull.Value && Convert.ToBoolean(reader["condicion"]);
-                                DateTime? fechaVencimiento = reader["fechaVencimiento"] != DBNull.Value
-                                    ? Convert.ToDateTime(reader["fechaVencimiento"])
-                                    : (DateTime?)null;
-
-                                if (esSocio)
-                                {
-                                    if (fechaVencimiento == null || fechaVencimiento <= DateTime.Now)
-                                    {
-                                        lblResultado.Text = $"{nombre} {apellido} debe pagar la cuota.";
-                                        lblResultado.ForeColor = Color.Red;
-                                        btnPagar.Enabled = true;
-                                    }
-                                    else
-                                    {
-                                        lblResultado.Text = $"{nombre} {apellido} no necesita pagar la cuota. Vence el {fechaVencimiento.Value.ToShortDateString()}";
-                                        lblResultado.ForeColor = Color.Green;
-                                        btnPagar.Enabled = false;
-                                    }
-                                }
-                                else
-                                {
-                                    lblResultado.Text = $"{nombre} {apellido} es un no socio. Puede pagar para convertirse en socio.";
-                                    lblResultado.ForeColor = Color.Blue;
-                                    btnPagar.Enabled = true;
-                                }
-                            }
-                            else
-                            {
-                                lblResultado.Text = "No corresponde a un cliente registrado.";
-                                lblResultado.ForeColor = Color.Red;
-                                btnPagar.Enabled = false;
-                            }
-                        }
+                        lblResultado.Text += socio.EstadoCuota;
+                        lblResultado.ForeColor = socio.fechaVencimiento == null || socio.fechaVencimiento <= DateTime.Now
+                            ? Color.Red
+                            : Color.Green;
+                        btnPagar.Enabled = socio.fechaVencimiento == null || socio.fechaVencimiento <= DateTime.Now;
+                    }
+                    else
+                    {
+                        lblResultado.Text += "es un no socio. Puede pagar para convertirse en socio.";
+                        lblResultado.ForeColor = Color.Blue;
+                        btnPagar.Enabled = true;
                     }
                 }
-                catch (MySqlException ex)
+                else
                 {
-                    MessageBox.Show("Error al acceder a la base de datos: " + ex.Message, "Error de Base de Datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    lblResultado.Text = "No corresponde a un cliente registrado.";
+                    lblResultado.ForeColor = Color.Red;
+                    btnPagar.Enabled = false;
                 }
+               
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al validar el registro: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void btnPagar_Click(object sender, EventArgs e)
@@ -204,18 +178,22 @@ namespace ClubDeportivo_DSOO_PI
        
         private void btnComprobante_Click(object sender, EventArgs e)
         {
-
+            
             //Instancia al comprobante y le pasa los datos cargados
             frmComprobanteSocio comprobanteForm = new frmComprobanteSocio
+
             {
-                Nombre = nombre,
-                Apellido = apellido,
-                Montocuota=montoTotal,
+                Nombre = this.nombre,
+                Apellido = this.apellido,
+                Montocuota = montoTotal,
                 FechaPago = DateTime.Now.ToShortDateString(),
                 MedioPago = rdEfectivo.Checked ? "Efectivo" : rdCredito.Checked ? "Crédito" : "N/A",
-                Cuotas = cbCuotas.Text
+                Cuotas = cbCuotas.Text,
+             
             };
-            
+            MessageBox.Show("su ingreso: SERVIDOR = " + this.nombre + " PUERTO= " + this.apellido + " USUARIO: ");
+
+                
             comprobanteForm.ShowDialog();
 
         }
