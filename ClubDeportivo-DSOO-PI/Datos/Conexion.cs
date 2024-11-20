@@ -4,6 +4,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms; 
+using Microsoft.VisualBasic;
 
 
 // Referencia a MySQL (se agrega como libreria)
@@ -23,11 +25,52 @@ namespace ClubDeportivo.Datos
         private static Conexion con = null;
         private Conexion() // asignamos valores a las variables de la conexion
         {
-            baseDatos = "proyecto";
-            servidor = "localhost";
-            puerto = "3306";
-            usuario = "root";
-            clave = "root";
+            // variables usadas para larepetición de líneas de código
+            bool correcto = false;
+            int mensaje;
+            // creamos las variables para recibir los datos desde el
+            //teclado
+
+
+            string T_servidor = "Servidor" ;
+            string T_puerto = "Puerto";
+            string T_usuario = "Usuario";
+            string T_clave = "Clave"; // se antepuso la T para indicar
+//que vienen desde TECLADO
+
+
+    while (correcto != true)
+    {
+                // Armamos los cuadros de dialogo para el ingreso de datos
+                T_servidor = CustomInputBox.Show("Ingrese servidor", "DATOS DE INSTALACIÓN MySQL");
+                T_puerto = CustomInputBox.Show("Ingrese puerto", "DATOS DE INSTALACIÓN MySQL");
+                T_usuario = CustomInputBox.Show("Ingrese usuario", "DATOS DE INSTALACIÓN MySQL");
+                T_clave = CustomInputBox.Show("Ingrese clave", "DATOS DE INSTALACIÓN MySQL");
+              
+                mensaje = (int)MessageBox.Show("su ingreso: SERVIDOR = " +
+            T_servidor + " PUERTO= " + T_puerto + " USUARIO: " +
+            T_usuario + " CLAVE: " + T_clave,
+            "AVISO DEL SISTEMA", MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question);
+        if (mensaje != 6) // el valor 6 corresponde al SI
+        {
+            MessageBox.Show("INGRESE NUEVAMENTE LOS DATOS");
+            correcto = false;
+        }
+        else
+        {
+            correcto = true;
+        }
+    }
+// reemplazamos los datos concretos que teniamos por las
+//variables
+            this.baseDatos = "proyecto";
+            this.servidor = T_servidor; // "localhost";
+            this.puerto = T_puerto; //"3306";
+            this.usuario = T_usuario; // "root";
+            this.clave = T_clave;
+
+
         }
         // proceso de interacción
         public MySqlConnection CrearConexion()
@@ -37,11 +80,11 @@ namespace ClubDeportivo.Datos
             // el bloque try permite controlar errores
             try
             {
-                cadena.ConnectionString = "datasource=" + servidor +
-                ";port=" + puerto +
-                ";username=" + usuario +
-                ";password=" + clave +
-                ";Database=" + baseDatos;
+                cadena.ConnectionString = "datasource=" + this.servidor +
+                ";port=" + this.puerto +
+                ";username=" + this.usuario +
+                ";password=" + this.clave +
+                ";Database=" + this.baseDatos;
             }
             catch (Exception ex)
             {

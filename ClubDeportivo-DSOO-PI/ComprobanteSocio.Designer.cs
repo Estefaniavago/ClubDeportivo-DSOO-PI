@@ -47,113 +47,136 @@
             // lblComprobanteS
             // 
             this.lblComprobanteS.AutoSize = true;
-            this.lblComprobanteS.Location = new System.Drawing.Point(267, 43);
+            this.lblComprobanteS.Font = new System.Drawing.Font("Cambria", 20F);
+            this.lblComprobanteS.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(57)))), ((int)(((byte)(80)))));
+            this.lblComprobanteS.Location = new System.Drawing.Point(70, 23);
+            this.lblComprobanteS.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblComprobanteS.Name = "lblComprobanteS";
-            this.lblComprobanteS.Size = new System.Drawing.Size(189, 13);
+            this.lblComprobanteS.Size = new System.Drawing.Size(561, 40);
             this.lblComprobanteS.TabIndex = 0;
-            this.lblComprobanteS.Text = "Comprobante de pago Cutota Mensual";
+            this.lblComprobanteS.Text = "Comprobante de pago Cuota Mensual";
             // 
             // lblNombreS
             // 
             this.lblNombreS.AutoSize = true;
-            this.lblNombreS.Location = new System.Drawing.Point(111, 82);
+            this.lblNombreS.Font = new System.Drawing.Font("Cambria", 10F);
+            this.lblNombreS.Location = new System.Drawing.Point(143, 101);
+            this.lblNombreS.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNombreS.Name = "lblNombreS";
-            this.lblNombreS.Size = new System.Drawing.Size(44, 13);
+            this.lblNombreS.Size = new System.Drawing.Size(68, 20);
             this.lblNombreS.TabIndex = 1;
             this.lblNombreS.Text = "Nombre";
             // 
             // lblApellidoS
             // 
             this.lblApellidoS.AutoSize = true;
-            this.lblApellidoS.Location = new System.Drawing.Point(111, 123);
+            this.lblApellidoS.Font = new System.Drawing.Font("Cambria", 10F);
+            this.lblApellidoS.Location = new System.Drawing.Point(143, 140);
+            this.lblApellidoS.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblApellidoS.Name = "lblApellidoS";
-            this.lblApellidoS.Size = new System.Drawing.Size(44, 13);
+            this.lblApellidoS.Size = new System.Drawing.Size(70, 20);
             this.lblApellidoS.TabIndex = 2;
             this.lblApellidoS.Text = "Apellido";
             // 
             // lblMontoS
             // 
             this.lblMontoS.AutoSize = true;
-            this.lblMontoS.Location = new System.Drawing.Point(111, 170);
+            this.lblMontoS.Font = new System.Drawing.Font("Cambria", 10F);
+            this.lblMontoS.Location = new System.Drawing.Point(143, 179);
+            this.lblMontoS.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMontoS.Name = "lblMontoS";
-            this.lblMontoS.Size = new System.Drawing.Size(40, 13);
+            this.lblMontoS.Size = new System.Drawing.Size(60, 20);
             this.lblMontoS.TabIndex = 3;
             this.lblMontoS.Text = "Monto ";
             // 
             // lblMediodePagoS
             // 
             this.lblMediodePagoS.AutoSize = true;
-            this.lblMediodePagoS.Location = new System.Drawing.Point(111, 248);
+            this.lblMediodePagoS.Font = new System.Drawing.Font("Cambria", 10F);
+            this.lblMediodePagoS.Location = new System.Drawing.Point(143, 256);
+            this.lblMediodePagoS.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMediodePagoS.Name = "lblMediodePagoS";
-            this.lblMediodePagoS.Size = new System.Drawing.Size(79, 13);
+            this.lblMediodePagoS.Size = new System.Drawing.Size(114, 20);
             this.lblMediodePagoS.TabIndex = 4;
             this.lblMediodePagoS.Text = "Medio de Pago";
             // 
             // lblFechaPagoS
             // 
             this.lblFechaPagoS.AutoSize = true;
-            this.lblFechaPagoS.Location = new System.Drawing.Point(111, 212);
+            this.lblFechaPagoS.Font = new System.Drawing.Font("Cambria", 10F);
+            this.lblFechaPagoS.Location = new System.Drawing.Point(143, 221);
+            this.lblFechaPagoS.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFechaPagoS.Name = "lblFechaPagoS";
-            this.lblFechaPagoS.Size = new System.Drawing.Size(79, 13);
+            this.lblFechaPagoS.Size = new System.Drawing.Size(109, 20);
             this.lblFechaPagoS.TabIndex = 5;
             this.lblFechaPagoS.Text = "Fecha de pago";
             // 
             // lblCuotaS
             // 
             this.lblCuotaS.AutoSize = true;
-            this.lblCuotaS.Location = new System.Drawing.Point(111, 299);
+            this.lblCuotaS.Font = new System.Drawing.Font("Cambria", 10F);
+            this.lblCuotaS.Location = new System.Drawing.Point(143, 299);
+            this.lblCuotaS.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCuotaS.Name = "lblCuotaS";
-            this.lblCuotaS.Size = new System.Drawing.Size(40, 13);
+            this.lblCuotaS.Size = new System.Drawing.Size(58, 20);
             this.lblCuotaS.TabIndex = 6;
             this.lblCuotaS.Text = "Cuotas";
             // 
             // txtNombreS
             // 
-            this.txtNombreS.Location = new System.Drawing.Point(249, 75);
+            this.txtNombreS.Location = new System.Drawing.Point(268, 101);
+            this.txtNombreS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNombreS.Name = "txtNombreS";
-            this.txtNombreS.Size = new System.Drawing.Size(100, 20);
+            this.txtNombreS.Size = new System.Drawing.Size(189, 22);
             this.txtNombreS.TabIndex = 7;
             // 
             // txtCuotasS
             // 
-            this.txtCuotasS.Location = new System.Drawing.Point(270, 292);
+            this.txtCuotasS.Location = new System.Drawing.Point(268, 299);
+            this.txtCuotasS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtCuotasS.Name = "txtCuotasS";
-            this.txtCuotasS.Size = new System.Drawing.Size(100, 20);
+            this.txtCuotasS.Size = new System.Drawing.Size(189, 22);
             this.txtCuotasS.TabIndex = 8;
             // 
             // txtMediodePagoS
             // 
-            this.txtMediodePagoS.Location = new System.Drawing.Point(260, 248);
+            this.txtMediodePagoS.Location = new System.Drawing.Point(270, 256);
+            this.txtMediodePagoS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtMediodePagoS.Name = "txtMediodePagoS";
-            this.txtMediodePagoS.Size = new System.Drawing.Size(100, 20);
+            this.txtMediodePagoS.Size = new System.Drawing.Size(187, 22);
             this.txtMediodePagoS.TabIndex = 9;
             // 
             // txtFechaS
             // 
-            this.txtFechaS.Location = new System.Drawing.Point(244, 205);
+            this.txtFechaS.Location = new System.Drawing.Point(268, 221);
+            this.txtFechaS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtFechaS.Name = "txtFechaS";
-            this.txtFechaS.Size = new System.Drawing.Size(100, 20);
+            this.txtFechaS.Size = new System.Drawing.Size(189, 22);
             this.txtFechaS.TabIndex = 10;
             // 
             // txtMontoS
             // 
-            this.txtMontoS.Location = new System.Drawing.Point(249, 167);
+            this.txtMontoS.Location = new System.Drawing.Point(268, 179);
+            this.txtMontoS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtMontoS.Name = "txtMontoS";
-            this.txtMontoS.Size = new System.Drawing.Size(100, 20);
+            this.txtMontoS.Size = new System.Drawing.Size(189, 22);
             this.txtMontoS.TabIndex = 11;
             // 
             // txtApellidoS
             // 
-            this.txtApellidoS.Location = new System.Drawing.Point(249, 123);
+            this.txtApellidoS.Location = new System.Drawing.Point(268, 140);
+            this.txtApellidoS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtApellidoS.Name = "txtApellidoS";
-            this.txtApellidoS.Size = new System.Drawing.Size(100, 20);
+            this.txtApellidoS.Size = new System.Drawing.Size(189, 22);
             this.txtApellidoS.TabIndex = 12;
             // 
             // btnImprimirComprobanteS
             // 
-            this.btnImprimirComprobanteS.Location = new System.Drawing.Point(268, 372);
+            this.btnImprimirComprobanteS.Font = new System.Drawing.Font("Cambria", 11F);
+            this.btnImprimirComprobanteS.Location = new System.Drawing.Point(240, 350);
+            this.btnImprimirComprobanteS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnImprimirComprobanteS.Name = "btnImprimirComprobanteS";
-            this.btnImprimirComprobanteS.Size = new System.Drawing.Size(75, 23);
+            this.btnImprimirComprobanteS.Size = new System.Drawing.Size(269, 28);
             this.btnImprimirComprobanteS.TabIndex = 13;
             this.btnImprimirComprobanteS.Text = "IMPRIMIR COMPROBANTE ";
             this.btnImprimirComprobanteS.UseVisualStyleBackColor = true;
@@ -161,9 +184,9 @@
             // 
             // frmComprobanteSocio
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.btnImprimirComprobanteS);
             this.Controls.Add(this.txtApellidoS);
             this.Controls.Add(this.txtMontoS);
@@ -178,6 +201,7 @@
             this.Controls.Add(this.lblApellidoS);
             this.Controls.Add(this.lblNombreS);
             this.Controls.Add(this.lblComprobanteS);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmComprobanteSocio";
             this.Text = "ComprobanteSocio";
             this.Load += new System.EventHandler(this.frmComprobanteSocio_Load);

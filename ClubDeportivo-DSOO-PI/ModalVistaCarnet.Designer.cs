@@ -28,10 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pbVistaPrevia = new System.Windows.Forms.PictureBox();
             this.btnImprimir = new System.Windows.Forms.Button();
+            this.pbVistaPrevia = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbVistaPrevia)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btnImprimir
+            // 
+            this.btnImprimir.Font = new System.Drawing.Font("Cambria", 11F);
+            this.btnImprimir.Location = new System.Drawing.Point(341, 356);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(145, 30);
+            this.btnImprimir.TabIndex = 1;
+            this.btnImprimir.Text = "Imprimir";
+            this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // pbVistaPrevia
             // 
@@ -41,16 +52,6 @@
             this.pbVistaPrevia.Size = new System.Drawing.Size(600, 300);
             this.pbVistaPrevia.TabIndex = 0;
             this.pbVistaPrevia.TabStop = false;
-            // 
-            // btnImprimir
-            // 
-            this.btnImprimir.Location = new System.Drawing.Point(350, 400);
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(100, 30);
-            this.btnImprimir.TabIndex = 1;
-            this.btnImprimir.Text = "Imprimir";
-            this.btnImprimir.UseVisualStyleBackColor = true;
-            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // ModalVistaCarnet
             // 

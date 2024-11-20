@@ -17,6 +17,10 @@ namespace ClubDeportivo_DSOO_PI
             InitializeComponent();
             txtPrecioAct.ReadOnly = true; // Establece el campo como de solo lectura
             dtgvActividad.ReadOnly = true; // Hace que el DataGridView sea de solo lectura
+            dtgvActividad.SelectionMode = DataGridViewSelectionMode.FullRowSelect; // Selección de filas completas
+            dtgvActividad.AllowUserToAddRows = false; // No permitir filas vacías
+            dtgvActividad.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; // Ajustar columnas al tamaño disponible
+
             dtgvActividad.SelectionMode = DataGridViewSelectionMode.FullRowSelect; // Seleccionar filas completas
             CargarActividades(); // Llamar al método para cargar actividades al abrir el formulario
             btnPagar.Enabled = false;
@@ -82,6 +86,7 @@ namespace ClubDeportivo_DSOO_PI
                                     txtPrecioAct.Text = horariosTable.Rows[0]["precio"].ToString();
 
                                     // Configurar y mostrar los horarios en el DataGridView
+                                    
                                     dtgvActividad.DataSource = horariosTable;
                                     dtgvActividad.Columns["dia"].HeaderText = "Día";
                                     dtgvActividad.Columns["horario"].HeaderText = "Horario";

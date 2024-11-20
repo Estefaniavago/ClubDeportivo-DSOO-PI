@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D; // Necesario para LinearGradientBrush
 using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
@@ -25,7 +26,9 @@ namespace ClubDeportivo_DSOO_PI
             this.nombre = nombre;
             this.apellido = apellido;
             this.dni = dni;
-            this.fechavencimiento = fechavencimiento;
+
+            // Formatear la fecha de vencimiento para mostrar solo la fecha sin la hora
+            this.fechavencimiento = DateTime.Parse(fechavencimiento).ToString("dd/MM/yyyy");
 
             GenerarVistaPrevia();
         }
@@ -35,13 +38,21 @@ namespace ClubDeportivo_DSOO_PI
             Bitmap carnet = new Bitmap(pbVistaPrevia.Width, pbVistaPrevia.Height);
             using (Graphics g = Graphics.FromImage(carnet))
             {
-                g.Clear(Color.White);
+                // **1. Fondo con degradado vertical**
+                using (LinearGradientBrush gradiente = new LinearGradientBrush(
+                    new Rectangle(0, 0, carnet.Width, carnet.Height),
+                    Color.LightBlue, // Color inicial
+                    Color.White,     // Color final
+                    LinearGradientMode.Vertical)) // Dirección del degradado
+                {
+                    g.FillRectangle(gradiente, 0, 0, carnet.Width, carnet.Height);
+                }
 
-                // Dibujar borde
-                Pen borderPen = new Pen(Color.Black, 2);
+                // **2. Dibujar borde decorativo**
+                Pen borderPen = new Pen(Color.DarkBlue, 3);
                 g.DrawRectangle(borderPen, 0, 0, carnet.Width - 1, carnet.Height - 1);
 
-                // Agregar logo
+                // **3. Agregar logo**
                 try
                 {
                     Image logo = Image.FromFile("./Assets/fitmoveRecurso 2@3x.png");
@@ -52,26 +63,31 @@ namespace ClubDeportivo_DSOO_PI
                     g.DrawString("LOGO", new Font("Arial", 10, FontStyle.Bold), Brushes.Gray, new PointF(10, 10));
                 }
 
-                // Título
-                Font titleFont = new Font("Arial", 16, FontStyle.Bold);
-                g.DrawString("CARNET DE SOCIO", titleFont, Brushes.Black, new PointF(100, 10));
+                // **4. Título estilizado y centrado**
+                Font titleFont = new Font("Segoe UI", 18, FontStyle.Bold);
 
-                // Información del socio
-                Font infoFont = new Font("Arial", 12);
-                g.DrawString($"Nombre: {nombre}", infoFont, Brushes.Black, new PointF(10, 100));
-                g.DrawString($"Apellido: {apellido}", infoFont, Brushes.Black, new PointF(10, 130));
-                g.DrawString($"DNI: {dni}", infoFont, Brushes.Black, new PointF(10, 160));
-                g.DrawString($"Válido hasta: {fechavencimiento}", infoFont, Brushes.Black, new PointF(10, 190));
+                // Calcular posición centrada para el título
+                string titulo = "CARNET DE SOCIO";
+                SizeF tituloSize = g.MeasureString(titulo, titleFont);
+                float tituloX = (carnet.Width - tituloSize.Width) / 2; // Centrar horizontalmente
+                g.DrawString(titulo, titleFont, Brushes.DarkBlue, new PointF(tituloX, 20));
 
-                // Agregar firma
+                // **5. Información del socio con diseño**
+                Font infoFont = new Font("Segoe UI", 12);
+                g.DrawString($"Nombre: {nombre}", infoFont, Brushes.Black, new PointF(20, 110));
+                g.DrawString($"Apellido: {apellido}", infoFont, Brushes.Black, new PointF(20, 140));
+                g.DrawString($"DNI: {dni}", infoFont, Brushes.Black, new PointF(20, 170));
+                g.DrawString($"Válido hasta: {fechavencimiento}", infoFont, Brushes.Black, new PointF(20, 200));
+
+                // **6. Agregar firma o marcador para firma**
                 try
                 {
                     Image firma = Image.FromFile("./Assets/firma.png");
-                    g.DrawImage(firma, 300, 200, 120, 50);
+                    g.DrawImage(firma, 250, 250, 120, 50);
                 }
                 catch
                 {
-                    g.DrawString("FIRMA", new Font("Arial", 10, FontStyle.Bold), Brushes.Gray, new PointF(300, 200));
+                    g.DrawString("FIRMA", new Font("Segoe UI", 10, FontStyle.Italic), Brushes.Gray, new PointF(250, 250));
                 }
             }
 

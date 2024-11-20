@@ -36,31 +36,34 @@
             // dtgvRegistro
             // 
             this.dtgvRegistro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvRegistro.Location = new System.Drawing.Point(43, 94);
-            this.dtgvRegistro.Margin = new System.Windows.Forms.Padding(2);
+            this.dtgvRegistro.Location = new System.Drawing.Point(38, 116);
+            this.dtgvRegistro.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtgvRegistro.Name = "dtgvRegistro";
             this.dtgvRegistro.RowHeadersWidth = 51;
-            this.dtgvRegistro.Size = new System.Drawing.Size(482, 202);
+            this.dtgvRegistro.Size = new System.Drawing.Size(726, 315);
             this.dtgvRegistro.TabIndex = 17;
             this.dtgvRegistro.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvRegistro_CellContentClick);
             // 
             // lblPersonasRegistradas
             // 
             this.lblPersonasRegistradas.AutoSize = true;
-            this.lblPersonasRegistradas.Location = new System.Drawing.Point(286, 28);
+            this.lblPersonasRegistradas.Font = new System.Drawing.Font("Cambria", 24F);
+            this.lblPersonasRegistradas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(57)))), ((int)(((byte)(80)))));
+            this.lblPersonasRegistradas.Location = new System.Drawing.Point(188, 42);
+            this.lblPersonasRegistradas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPersonasRegistradas.Name = "lblPersonasRegistradas";
-            this.lblPersonasRegistradas.Size = new System.Drawing.Size(146, 13);
+            this.lblPersonasRegistradas.Size = new System.Drawing.Size(463, 47);
             this.lblPersonasRegistradas.TabIndex = 22;
             this.lblPersonasRegistradas.Text = "PERSONAS REGISTRADAS";
             // 
             // PersonasRegistradas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(671, 445);
+            this.ClientSize = new System.Drawing.Size(895, 548);
             this.Controls.Add(this.lblPersonasRegistradas);
             this.Controls.Add(this.dtgvRegistro);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "PersonasRegistradas";
             this.Text = "PersonasRegistradas";
             ((System.ComponentModel.ISupportInitialize)(this.dtgvRegistro)).EndInit();

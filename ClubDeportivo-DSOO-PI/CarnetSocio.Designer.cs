@@ -117,7 +117,7 @@
             // 
             // txtFechaVencimientoSocio
             // 
-            this.txtFechaVencimientoSocio.Location = new System.Drawing.Point(259, 240);
+            this.txtFechaVencimientoSocio.Location = new System.Drawing.Point(258, 240);
             this.txtFechaVencimientoSocio.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.txtFechaVencimientoSocio.Name = "txtFechaVencimientoSocio";
             this.txtFechaVencimientoSocio.Size = new System.Drawing.Size(164, 26);

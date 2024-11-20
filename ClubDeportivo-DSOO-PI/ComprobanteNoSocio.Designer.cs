@@ -44,10 +44,11 @@
             // Comprobante
             // 
             this.Comprobante.AutoSize = true;
-            this.Comprobante.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Comprobante.Location = new System.Drawing.Point(150, 20);
+            this.Comprobante.Font = new System.Drawing.Font("Cambria", 20F, System.Drawing.FontStyle.Bold);
+            this.Comprobante.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(57)))), ((int)(((byte)(80)))));
+            this.Comprobante.Location = new System.Drawing.Point(142, 9);
             this.Comprobante.Name = "Comprobante";
-            this.Comprobante.Size = new System.Drawing.Size(117, 20);
+            this.Comprobante.Size = new System.Drawing.Size(229, 40);
             this.Comprobante.TabIndex = 0;
             this.Comprobante.Text = "Comprobante";
             // 
@@ -55,101 +56,108 @@
             // 
             this.txtNombreNoSocio.Location = new System.Drawing.Point(180, 60);
             this.txtNombreNoSocio.Name = "txtNombreNoSocio";
-            this.txtNombreNoSocio.Size = new System.Drawing.Size(200, 20);
+            this.txtNombreNoSocio.Size = new System.Drawing.Size(200, 22);
             this.txtNombreNoSocio.TabIndex = 1;
             // 
             // txtApellidoNoSocio
             // 
             this.txtApellidoNoSocio.Location = new System.Drawing.Point(180, 100);
             this.txtApellidoNoSocio.Name = "txtApellidoNoSocio";
-            this.txtApellidoNoSocio.Size = new System.Drawing.Size(200, 20);
+            this.txtApellidoNoSocio.Size = new System.Drawing.Size(200, 22);
             this.txtApellidoNoSocio.TabIndex = 2;
             // 
             // txtActividadElegida
             // 
             this.txtActividadElegida.Location = new System.Drawing.Point(180, 140);
             this.txtActividadElegida.Name = "txtActividadElegida";
-            this.txtActividadElegida.Size = new System.Drawing.Size(200, 20);
+            this.txtActividadElegida.Size = new System.Drawing.Size(200, 22);
             this.txtActividadElegida.TabIndex = 3;
             // 
             // txtPrecioActividad
             // 
             this.txtPrecioActividad.Location = new System.Drawing.Point(180, 180);
             this.txtPrecioActividad.Name = "txtPrecioActividad";
-            this.txtPrecioActividad.Size = new System.Drawing.Size(200, 20);
+            this.txtPrecioActividad.Size = new System.Drawing.Size(200, 22);
             this.txtPrecioActividad.TabIndex = 4;
             // 
             // txtFechaDePagoNoSocio
             // 
             this.txtFechaDePagoNoSocio.Location = new System.Drawing.Point(180, 220);
             this.txtFechaDePagoNoSocio.Name = "txtFechaDePagoNoSocio";
-            this.txtFechaDePagoNoSocio.Size = new System.Drawing.Size(200, 20);
+            this.txtFechaDePagoNoSocio.Size = new System.Drawing.Size(200, 22);
             this.txtFechaDePagoNoSocio.TabIndex = 5;
             // 
             // txtMedioDePago
             // 
             this.txtMedioDePago.Location = new System.Drawing.Point(180, 260);
             this.txtMedioDePago.Name = "txtMedioDePago";
-            this.txtMedioDePago.Size = new System.Drawing.Size(200, 20);
+            this.txtMedioDePago.Size = new System.Drawing.Size(200, 22);
             this.txtMedioDePago.TabIndex = 6;
             // 
             // lblNombreNoSocio
             // 
             this.lblNombreNoSocio.AutoSize = true;
+            this.lblNombreNoSocio.Font = new System.Drawing.Font("Cambria", 10F);
             this.lblNombreNoSocio.Location = new System.Drawing.Point(80, 60);
             this.lblNombreNoSocio.Name = "lblNombreNoSocio";
-            this.lblNombreNoSocio.Size = new System.Drawing.Size(47, 13);
+            this.lblNombreNoSocio.Size = new System.Drawing.Size(72, 20);
             this.lblNombreNoSocio.TabIndex = 7;
             this.lblNombreNoSocio.Text = "Nombre:";
             // 
             // lblApellidoNoSocio
             // 
             this.lblApellidoNoSocio.AutoSize = true;
+            this.lblApellidoNoSocio.Font = new System.Drawing.Font("Cambria", 10F);
             this.lblApellidoNoSocio.Location = new System.Drawing.Point(80, 100);
             this.lblApellidoNoSocio.Name = "lblApellidoNoSocio";
-            this.lblApellidoNoSocio.Size = new System.Drawing.Size(47, 13);
+            this.lblApellidoNoSocio.Size = new System.Drawing.Size(74, 20);
             this.lblApellidoNoSocio.TabIndex = 8;
             this.lblApellidoNoSocio.Text = "Apellido:";
             // 
             // lblActElegida
             // 
             this.lblActElegida.AutoSize = true;
+            this.lblActElegida.Font = new System.Drawing.Font("Cambria", 10F);
             this.lblActElegida.Location = new System.Drawing.Point(80, 140);
             this.lblActElegida.Name = "lblActElegida";
-            this.lblActElegida.Size = new System.Drawing.Size(54, 13);
+            this.lblActElegida.Size = new System.Drawing.Size(83, 20);
             this.lblActElegida.TabIndex = 9;
             this.lblActElegida.Text = "Actividad:";
             // 
             // lblPrecioActiv
             // 
             this.lblPrecioActiv.AutoSize = true;
+            this.lblPrecioActiv.Font = new System.Drawing.Font("Cambria", 10F);
             this.lblPrecioActiv.Location = new System.Drawing.Point(80, 180);
             this.lblPrecioActiv.Name = "lblPrecioActiv";
-            this.lblPrecioActiv.Size = new System.Drawing.Size(40, 13);
+            this.lblPrecioActiv.Size = new System.Drawing.Size(60, 20);
             this.lblPrecioActiv.TabIndex = 10;
             this.lblPrecioActiv.Text = "Precio:";
             // 
             // lblFechaPago
             // 
             this.lblFechaPago.AutoSize = true;
+            this.lblFechaPago.Font = new System.Drawing.Font("Cambria", 10F);
             this.lblFechaPago.Location = new System.Drawing.Point(80, 220);
             this.lblFechaPago.Name = "lblFechaPago";
-            this.lblFechaPago.Size = new System.Drawing.Size(82, 13);
+            this.lblFechaPago.Size = new System.Drawing.Size(113, 20);
             this.lblFechaPago.TabIndex = 11;
             this.lblFechaPago.Text = "Fecha de pago:";
             // 
             // lblMedioDePago
             // 
             this.lblMedioDePago.AutoSize = true;
+            this.lblMedioDePago.Font = new System.Drawing.Font("Cambria", 10F);
             this.lblMedioDePago.Location = new System.Drawing.Point(80, 260);
             this.lblMedioDePago.Name = "lblMedioDePago";
-            this.lblMedioDePago.Size = new System.Drawing.Size(82, 13);
+            this.lblMedioDePago.Size = new System.Drawing.Size(118, 20);
             this.lblMedioDePago.TabIndex = 12;
             this.lblMedioDePago.Text = "Medio de Pago:";
             // 
             // btnImrpimirCompr
             // 
-            this.btnImrpimirCompr.Location = new System.Drawing.Point(150, 300);
+            this.btnImrpimirCompr.Font = new System.Drawing.Font("Cambria", 10F);
+            this.btnImrpimirCompr.Location = new System.Drawing.Point(180, 300);
             this.btnImrpimirCompr.Name = "btnImrpimirCompr";
             this.btnImrpimirCompr.Size = new System.Drawing.Size(150, 30);
             this.btnImrpimirCompr.TabIndex = 13;

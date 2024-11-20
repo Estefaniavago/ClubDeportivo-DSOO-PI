@@ -180,6 +180,7 @@
     <Compile Include="CustomButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Datos\CustomInputBox.cs" />
     <Compile Include="Datos\Socio.cs" />
     <Compile Include="Datos\NoSocio.cs" />
     <Compile Include="Datos\Persona.cs" />

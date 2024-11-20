@@ -41,7 +41,7 @@ namespace ClubDeportivo_DSOO_PI
                         FROM persona p
                         JOIN vencimientos v ON p.idRegistro = v.idRegistro
                         WHERE p.condicion = 1
-                        AND v.fechaVencimiento BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 30 DAY)";
+                        AND v.fechaVencimiento <= DATE_ADD(CURDATE(), INTERVAL 30 DAY)";
 
                     if (fechaFiltro.HasValue)
                     {
@@ -61,7 +61,7 @@ namespace ClubDeportivo_DSOO_PI
                         {
                             vencimientosTable = new DataTable();
                             adapter.Fill(vencimientosTable);
-
+                            dtgvVencimientos.AllowUserToAddRows = false;
                             dtgvVencimientos.DataSource = vencimientosTable;
                             dtgvVencimientos.Columns["idRegistro"].HeaderText = "Nro Registro";
                             dtgvVencimientos.Columns["nombre"].HeaderText = "Nombre";

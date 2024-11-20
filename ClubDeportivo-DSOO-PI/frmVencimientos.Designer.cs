@@ -38,36 +38,39 @@
             // 
             // lblTituloVencimientos
             // 
-            this.lblTituloVencimientos.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloVencimientos.Location = new System.Drawing.Point(256, 35);
+            this.lblTituloVencimientos.Font = new System.Drawing.Font("Cambria", 20F);
+            this.lblTituloVencimientos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(57)))), ((int)(((byte)(80)))));
+            this.lblTituloVencimientos.Location = new System.Drawing.Point(163, 22);
             this.lblTituloVencimientos.Name = "lblTituloVencimientos";
-            this.lblTituloVencimientos.Size = new System.Drawing.Size(561, 41);
+            this.lblTituloVencimientos.Size = new System.Drawing.Size(528, 41);
             this.lblTituloVencimientos.TabIndex = 0;
             this.lblTituloVencimientos.Text = "Vencimientos de Cuotas Mensuales";
             // 
             // dtgvVencimientos
             // 
             this.dtgvVencimientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvVencimientos.Location = new System.Drawing.Point(289, 120);
+            this.dtgvVencimientos.Location = new System.Drawing.Point(106, 149);
             this.dtgvVencimientos.Name = "dtgvVencimientos";
             this.dtgvVencimientos.RowHeadersWidth = 51;
             this.dtgvVencimientos.RowTemplate.Height = 24;
-            this.dtgvVencimientos.Size = new System.Drawing.Size(582, 305);
+            this.dtgvVencimientos.Size = new System.Drawing.Size(648, 235);
             this.dtgvVencimientos.TabIndex = 4;
             // 
             // dtpFiltroFecha
             // 
-            this.dtpFiltroFecha.Location = new System.Drawing.Point(59, 120);
+            this.dtpFiltroFecha.CalendarFont = new System.Drawing.Font("Cambria", 10F);
+            this.dtpFiltroFecha.Location = new System.Drawing.Point(118, 92);
             this.dtpFiltroFecha.Name = "dtpFiltroFecha";
-            this.dtpFiltroFecha.Size = new System.Drawing.Size(200, 22);
+            this.dtpFiltroFecha.Size = new System.Drawing.Size(261, 22);
             this.dtpFiltroFecha.TabIndex = 5;
             this.dtpFiltroFecha.ValueChanged += new System.EventHandler(this.dtpFiltroFecha_ValueChanged);
             // 
             // btnBorrarFiltro
             // 
-            this.btnBorrarFiltro.Location = new System.Drawing.Point(71, 190);
+            this.btnBorrarFiltro.Font = new System.Drawing.Font("Cambria", 11F);
+            this.btnBorrarFiltro.Location = new System.Drawing.Point(420, 88);
             this.btnBorrarFiltro.Name = "btnBorrarFiltro";
-            this.btnBorrarFiltro.Size = new System.Drawing.Size(138, 23);
+            this.btnBorrarFiltro.Size = new System.Drawing.Size(138, 31);
             this.btnBorrarFiltro.TabIndex = 6;
             this.btnBorrarFiltro.Text = "Borrar Filtro";
             this.btnBorrarFiltro.UseVisualStyleBackColor = true;

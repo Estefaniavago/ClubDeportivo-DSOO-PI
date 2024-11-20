@@ -50,7 +50,7 @@
             this.label1.Font = new System.Drawing.Font("Cambria", 24F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(57)))), ((int)(((byte)(80)))));
             this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(508, 39);
+            this.label1.Location = new System.Drawing.Point(461, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(338, 47);
             this.label1.TabIndex = 5;
@@ -61,10 +61,10 @@
             // 
             this.btnRegistroSocio.BackColor = System.Drawing.Color.Aquamarine;
             this.btnRegistroSocio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistroSocio.Location = new System.Drawing.Point(4, 33);
+            this.btnRegistroSocio.Location = new System.Drawing.Point(3, 28);
             this.btnRegistroSocio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnRegistroSocio.Name = "btnRegistroSocio";
-            this.btnRegistroSocio.Size = new System.Drawing.Size(192, 43);
+            this.btnRegistroSocio.Size = new System.Drawing.Size(192, 48);
             this.btnRegistroSocio.TabIndex = 7;
             this.btnRegistroSocio.Text = "REGISTRAR SOCIO";
             this.btnRegistroSocio.UseVisualStyleBackColor = false;
@@ -74,10 +74,10 @@
             // 
             this.btnPagoMensual.BackColor = System.Drawing.Color.Aquamarine;
             this.btnPagoMensual.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPagoMensual.Location = new System.Drawing.Point(4, 184);
+            this.btnPagoMensual.Location = new System.Drawing.Point(4, 194);
             this.btnPagoMensual.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnPagoMensual.Name = "btnPagoMensual";
-            this.btnPagoMensual.Size = new System.Drawing.Size(191, 39);
+            this.btnPagoMensual.Size = new System.Drawing.Size(191, 49);
             this.btnPagoMensual.TabIndex = 8;
             this.btnPagoMensual.Text = "PAGO MENSUAL";
             this.btnPagoMensual.UseVisualStyleBackColor = false;
@@ -87,10 +87,10 @@
             // 
             this.btnCarnet.BackColor = System.Drawing.Color.Aquamarine;
             this.btnCarnet.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.btnCarnet.Location = new System.Drawing.Point(5, 275);
+            this.btnCarnet.Location = new System.Drawing.Point(4, 313);
             this.btnCarnet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCarnet.Name = "btnCarnet";
-            this.btnCarnet.Size = new System.Drawing.Size(191, 46);
+            this.btnCarnet.Size = new System.Drawing.Size(191, 50);
             this.btnCarnet.TabIndex = 9;
             this.btnCarnet.Text = "EMITIR CARNET";
             this.btnCarnet.UseVisualStyleBackColor = false;
@@ -103,7 +103,7 @@
             this.btnListado.Location = new System.Drawing.Point(4, 135);
             this.btnListado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnListado.Name = "btnListado";
-            this.btnListado.Size = new System.Drawing.Size(191, 41);
+            this.btnListado.Size = new System.Drawing.Size(191, 51);
             this.btnListado.TabIndex = 10;
             this.btnListado.Text = "VENCIMIENTOS";
             this.btnListado.UseVisualStyleBackColor = false;
@@ -113,10 +113,10 @@
             // 
             this.btnSalir.BackColor = System.Drawing.Color.Aquamarine;
             this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.btnSalir.Location = new System.Drawing.Point(29, 385);
+            this.btnSalir.Location = new System.Drawing.Point(29, 395);
             this.btnSalir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(133, 34);
+            this.btnSalir.Size = new System.Drawing.Size(151, 40);
             this.btnSalir.TabIndex = 11;
             this.btnSalir.Text = "SALIR";
             this.btnSalir.UseVisualStyleBackColor = false;
@@ -126,10 +126,10 @@
             // 
             this.btnPagoActividad.BackColor = System.Drawing.Color.Aquamarine;
             this.btnPagoActividad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPagoActividad.Location = new System.Drawing.Point(4, 231);
+            this.btnPagoActividad.Location = new System.Drawing.Point(4, 251);
             this.btnPagoActividad.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnPagoActividad.Name = "btnPagoActividad";
-            this.btnPagoActividad.Size = new System.Drawing.Size(192, 36);
+            this.btnPagoActividad.Size = new System.Drawing.Size(192, 54);
             this.btnPagoActividad.TabIndex = 13;
             this.btnPagoActividad.Text = "PAGO ACTIVIDAD DIARIA";
             this.btnPagoActividad.UseVisualStyleBackColor = false;
@@ -198,7 +198,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Menu Principal";
+            this.Text = "git pul";
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
