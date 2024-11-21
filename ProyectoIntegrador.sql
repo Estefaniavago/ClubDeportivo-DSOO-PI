@@ -1,4 +1,4 @@
-drop database if exists proyecto;
+rop database if exists proyecto;
 
 create database proyecto;
 use proyecto;
@@ -56,22 +56,22 @@ INSERT INTO vencimientos (idRegistro, fechaPago, fechaVencimiento, medioPago, cu
 (107, '2024-11-06', '2024-12-06', 'Efectivo', 1),
 (109, '2024-11-07', '2024-12-07', 'Tarjeta', 6);
 
-
-/*create table nosocio-actividad*/
-CREATE TABLE no_socio (
-    idNoSocio INT AUTO_INCREMENT PRIMARY KEY,
-    idPersona INT,
-    actividadElegida VARCHAR(50),
-    precio FLOAT,
-    fechaPago DATE,
-    FOREIGN KEY (idPersona) REFERENCES persona(idRegistro)
-);
-
 CREATE TABLE actividad (
     NActividad INT PRIMARY KEY,
     Nombre VARCHAR(40),
     precio FLOAT
 );
+/*create table nosocio-actividad*/
+CREATE TABLE no_socio (
+    idNoSocio INT AUTO_INCREMENT PRIMARY KEY,
+    idPersona INT,
+    actividadElegida INT,
+    fechaPago DATE,
+    FOREIGN KEY (idPersona) REFERENCES persona(idRegistro),
+	FOREIGN KEY (actividadElegida) REFERENCES actividad (NActividad)
+);
+
+
 
 CREATE TABLE actividad_horarios (
     idHorario INT AUTO_INCREMENT PRIMARY KEY,
@@ -229,6 +229,15 @@ si los datos de los parametros NO EXISTEN la consulta arroja 0 FILAS
 	  else
 		 set res = existe;
       end if;	
+      
+	end //
+    
+    DELIMITER //
+
+
+select * from persona;
+select * from vencimientos;
+select * from no_socio;
       
 	end //
     
