@@ -138,11 +138,12 @@ namespace ClubDeportivo_DSOO_PI
             DateTime fechaActual = DateTime.Now;
             DateTime proximoVencimiento = fechaActual.AddMonths(1);
 
-            // instancia de la clase Socio
-            Socio socio = new Socio();
+            // instancia de la clase Vencimientos
+            Vencimientos vencimiento = new Vencimientos
+                ();
 
             // llama al método InsertarVencimiento
-            socio.InsertarVencimiento(
+            vencimiento.InsertarVencimiento(
                 int.Parse(nroRegistro), // convierte nroRegistro a int
                 fechaActual,
                 proximoVencimiento,
