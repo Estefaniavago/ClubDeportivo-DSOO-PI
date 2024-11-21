@@ -1,4 +1,4 @@
-rop database if exists proyecto;
+drop database if exists proyecto;
 
 create database proyecto;
 use proyecto;
