@@ -18,25 +18,14 @@ namespace ClubDeportivo_DSOO_PI
         {
             InitializeComponent();
             
-
             //ESTILOS, CHEQUEAR
             this.StartPosition = FormStartPosition.Manual; // posición manual
             this.Size = new Size(800, 450); // tamaño
             this.Location = new Point(100, 100); // posición en la pantalla
-            //this.Load += new System.EventHandler(this.Form2_Load);
+            
         }
 
-        //ESTILOS, CHEQUEAR
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            // Fondo degradado
-            LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle,Color.LightBlue, Color.White, 90F);
-            e.Graphics.FillRectangle(brush, this.ClientRectangle);
-            base.OnPaint(e);
-        }
-
-       
-
+     
         //BOTON PARA REGISTRAR PERSONAS
         private void btnRegistro_Click(object sender, EventArgs e)
         {

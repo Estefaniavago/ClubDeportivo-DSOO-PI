@@ -26,9 +26,7 @@ namespace ClubDeportivo_DSOO_PI
             this.nombre = nombre;
             this.apellido = apellido;
             this.dni = dni;
-
-            // Formatear la fecha de vencimiento para mostrar solo la fecha sin la hora
-            this.fechavencimiento = DateTime.Parse(fechavencimiento).ToString("dd/MM/yyyy");
+            this.fechavencimiento = fechavencimiento;
 
             GenerarVistaPrevia();
         }

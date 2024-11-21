@@ -35,6 +35,10 @@ namespace ClubDeportivo_DSOO_PI
                 dtgvVencimientos.Columns["idRegistro"].HeaderText = "Nro Registro";
                 dtgvVencimientos.Columns["fechaVencimiento"].HeaderText = "Fecha Vencimiento";
 
+                dtgvVencimientos.Columns["fechaPago"].Visible = false;
+                dtgvVencimientos.Columns["medioPago"].Visible = false;
+                dtgvVencimientos.Columns["cuotas"].Visible = false;
+
                 dtgvVencimientos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
                 lblMensaje.Visible = listaVencimientos.Count == 0;

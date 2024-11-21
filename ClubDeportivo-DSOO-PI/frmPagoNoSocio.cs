@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 using ClubDeportivo.Datos;
+using ClubDeportivo_DSOO_PI.Datos;
+using ClubDeportivo_DSOO_PI.Entidades;
 using MySql.Data.MySqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -29,27 +32,12 @@ namespace ClubDeportivo_DSOO_PI
         //Carga las actividades para que puedan seleccionarse del combobox, trayendolas de la bbdd
         private void CargarActividades()
         {
-            using (MySqlConnection connection = Conexion.getInstancia().CrearConexion())
-            {
-                try
-                {
-                    connection.Open();
-                    string query = "SELECT Nombre FROM actividad";
+            List<string> actividades = Actividad.CargarActividades();
+            cbActividad.Items.Clear(); // Limpiar el ComboBox antes de agregar nuevas actividades
 
-                    using (MySqlCommand command = new MySqlCommand(query, connection))
-                    using (MySqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            // Agregar el nombre de la actividad al ComboBox
-                            cbActividad.Items.Add(reader["Nombre"].ToString());
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al cargar actividades: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            foreach (string actividad in actividades)
+            {
+                cbActividad.Items.Add(actividad);
             }
         }
 
@@ -61,53 +49,28 @@ namespace ClubDeportivo_DSOO_PI
 
             if (!string.IsNullOrEmpty(actividadSeleccionada))
             {
-                using (MySqlConnection connection = Conexion.getInstancia().CrearConexion())
+                // Llamamos al método estático ObtenerDetallesActividad de la clase Actividad
+                DataTable horariosTable = Actividad.ObtenerDetallesActividad(actividadSeleccionada);
+
+                if (horariosTable.Rows.Count > 0)
                 {
-                    try
-                    {
-                        connection.Open();
-                        string query = @"SELECT a.precio, h.dia, h.horario 
-                                        FROM actividad a
-                                        JOIN actividad_horarios h ON a.NActividad = h.NActividad
-                                        WHERE a.Nombre = @Nombre";
+                    // Mostrar el precio en el TextBox txtPrecioAct (solo la primera fila)
+                    txtPrecioAct.Text = horariosTable.Rows[0]["precio"].ToString();
 
-                        using (MySqlCommand command = new MySqlCommand(query, connection))
-                        {
-                            command.Parameters.AddWithValue("@Nombre", actividadSeleccionada);
-
-                            using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                            {
-                                DataTable horariosTable = new DataTable();
-                                adapter.Fill(horariosTable);
-
-                                if (horariosTable.Rows.Count > 0)
-                                {
-                                    // Mostrar el precio en el TextBox txtPrecioAct (solo la primera fila)
-                                    txtPrecioAct.Text = horariosTable.Rows[0]["precio"].ToString();
-
-                                    // Configurar y mostrar los horarios en el DataGridView
-                                    
-                                    dtgvActividad.DataSource = horariosTable;
-                                    dtgvActividad.Columns["dia"].HeaderText = "Día";
-                                    dtgvActividad.Columns["horario"].HeaderText = "Horario";
-                                    dtgvActividad.Columns["precio"].Visible = false; // Ocultar la columna del precio
-                                }
-                                else
-                                {
-                                    MessageBox.Show("No se encontraron horarios para la actividad seleccionada.",
-                                        "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                }
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error al obtener los detalles de la actividad: " + ex.Message,
-                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    // Configurar y mostrar los horarios en el DataGridView
+                    dtgvActividad.DataSource = horariosTable;
+                    dtgvActividad.Columns["dia"].HeaderText = "Día";
+                    dtgvActividad.Columns["horario"].HeaderText = "Horario";
+                    dtgvActividad.Columns["precio"].Visible = false; // Ocultar la columna del precio
+                }
+                else
+                {
+                    MessageBox.Show("No se encontraron horarios para la actividad seleccionada.",
+                                     "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
+
 
         //Seleccionar dia y horario de la actividad
         private void dtgvActividad_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -150,44 +113,30 @@ namespace ClubDeportivo_DSOO_PI
             }
         }
 
-       
-        //Lee el numero de registro
+
         private void txtNroRegistroNs_TextChanged(object sender, EventArgs e)
         {
             string nroRegistro = txtNroRegistroNs.Text;
 
             if (!string.IsNullOrEmpty(nroRegistro))
             {
-                using (MySqlConnection connection = Conexion.getInstancia().CrearConexion())
+                try
                 {
-                    try
-                    {
-                        connection.Open();
-                        string query = "SELECT nombre, apellido FROM persona WHERE idRegistro = @idRegistro";
+                    // Llama al método de la clase Persona
+                    string resultado = Persona.ObtenerNombreYApellido(nroRegistro);
 
-                        using (MySqlCommand command = new MySqlCommand(query, connection))
-                        {
-                            command.Parameters.AddWithValue("@idRegistro", nroRegistro);
-
-                            using (MySqlDataReader reader = command.ExecuteReader())
-                            {
-                                if (reader.Read())
-                                {
-                                    txtNyANs.Text = reader["nombre"].ToString() + " " + reader["apellido"].ToString();
-                                }
-                                else
-                                {
-                                    txtNyANs.Text = "Registro no encontrado o no válido";
-                                }
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error al buscar el registro: " + ex.Message,
-                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    // Muestra el resultado en el campo de texto
+                    txtNyANs.Text = resultado;
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al buscar el registro: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                // Limpia el campo si el número de registro está vacío
+                txtNyANs.Text = string.Empty;
             }
         }
 
@@ -197,56 +146,36 @@ namespace ClubDeportivo_DSOO_PI
 
             if (!string.IsNullOrEmpty(nroRegistro))
             {
-                using (MySqlConnection connection = Conexion.getInstancia().CrearConexion())
+                try
                 {
-                    try
+                    // Llama al método de la clase Persona para validar el registro
+                    E_Persona ePersona = Persona.ValidarRegistro(nroRegistro);
+
+                    if (ePersona != null)
                     {
-                        connection.Open();
-                        string query = @"
-                    SELECT 
-                        nombre, 
-                        apellido, 
-                        condicion 
-                    FROM persona 
-                    WHERE idRegistro = @idRegistro";
+                        // Accede a las propiedades Nombre y Apellido de la instancia de E_Persona
+                        txtNyANs.Text = $"{ePersona.nombre} {ePersona.apellido}";
 
-                        using (MySqlCommand command = new MySqlCommand(query, connection))
+                        if (ePersona.EsSocio)
                         {
-                            command.Parameters.AddWithValue("@idRegistro", nroRegistro);
-
-                            using (MySqlDataReader reader = command.ExecuteReader())
-                            {
-                                if (reader.Read())
-                                {
-                                    string nombre = reader["nombre"].ToString();
-                                    string apellido = reader["apellido"].ToString();
-                                    bool esSocio = Convert.ToBoolean(reader["condicion"]);
-
-                                    if (esSocio)
-                                    {
-                                        txtNyANs.Text = $"{nombre} {apellido}";
-                                        MessageBox.Show("Este registro corresponde a un socio.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                        btnPagar.Enabled = false;
-                                    }
-                                    else
-                                    {
-                                        txtNyANs.Text = $"{nombre} {apellido}";
-                                        MessageBox.Show("Registro validado exitosamente.", "Validación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                        btnPagar.Enabled = true;
-                                    }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Registro no encontrado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                    btnPagar.Enabled = false;
-                                }
-                            }
+                            MessageBox.Show("Este registro corresponde a un socio.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            btnPagar.Enabled = false;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Registro validado exitosamente.", "Validación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            btnPagar.Enabled = true;
                         }
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show("Error al validar el registro: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Registro no encontrado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        btnPagar.Enabled = false;
                     }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al validar el registro: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -258,57 +187,30 @@ namespace ClubDeportivo_DSOO_PI
 
         private void btnPagar_Click(object sender, EventArgs e)
         {
-            
+            // Verificar si los campos están completos
             if (!string.IsNullOrEmpty(cbActividad.Text) &&
                 !string.IsNullOrEmpty(txtPrecioAct.Text) &&
                 !string.IsNullOrEmpty(txtNyANs.Text) &&
-                !string.IsNullOrEmpty(txtNroRegistroNs.Text)&&
-                (rdCredito.Checked|| rdEfectivo.Checked)
-                )
+                !string.IsNullOrEmpty(txtNroRegistroNs.Text) &&
+                (rdCredito.Checked || rdEfectivo.Checked))
             {
                 // Capturar los datos del formulario
                 int.TryParse(txtNroRegistroNs.Text, out int idPersona);
-                                       
-                string actividad = cbActividad.Text;
-                string precio = txtPrecioAct.Text;
+                string actividadSeleccionada = cbActividad.Text;
+                string precio = txtPrecioAct.Text;  // Usamos el precio que ya está en el TextBox
                 string fechaPago = DateTime.Now.ToString("yyyy-MM-dd");
 
-                // Registrar el pago en la tabla no_socio
-                using (MySqlConnection connection = Conexion.getInstancia().CrearConexion())
+                // Llamar al método estático de la clase NoSocio para registrar el pago
+                bool pagoRegistrado = NoSocio.RegistrarPagoNoSocio(idPersona, actividadSeleccionada, precio, fechaPago);
+
+                if (pagoRegistrado)
                 {
-                    try
-                    {
-                        connection.Open();
-
-                        string query = @"INSERT INTO no_socio 
-                                 (idPersona, actividadElegida, precio, fechaPago) 
-                                 VALUES 
-                                 (@idPersona, @actividadElegida, @precio, @fechaPago)";
-
-                        using (MySqlCommand command = new MySqlCommand(query, connection))
-                        {
-                            command.Parameters.AddWithValue("@idPersona", idPersona);
-                            command.Parameters.AddWithValue("@actividadElegida", actividad);
-                            command.Parameters.AddWithValue("@precio", precio);
-                            command.Parameters.AddWithValue("@fechaPago", fechaPago);
-
-                            int result = command.ExecuteNonQuery();
-
-                            if (result > 0)
-                            {
-                                MessageBox.Show("El pago ha sido registrado correctamente.", "Pago Registrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                btnComprobanteNoSocio.Enabled = true;
-                            }
-                            else
-                            {
-                                MessageBox.Show("Ocurrió un error al registrar el pago. Por favor, intente nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error al registrar el pago: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    MessageBox.Show("El pago ha sido registrado correctamente.", "Pago Registrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnComprobanteNoSocio.Enabled = true;
+                }
+                else
+                {
+                    MessageBox.Show("Ocurrió un error al registrar el pago. Por favor, intente nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -316,5 +218,8 @@ namespace ClubDeportivo_DSOO_PI
                 MessageBox.Show("Por favor, complete todos los campos antes de proceder con el pago.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        
+
     }
 }

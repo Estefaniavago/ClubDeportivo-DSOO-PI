@@ -77,7 +77,7 @@ namespace ClubDeportivo_DSOO_PI
                 }
 
 
-                // Ocultar la columna original "condicion" para evitar confusiones
+                // Ocultar la columna original "condicion" 
                 if (dtgvRegistro.Columns.Contains("condicion"))
                 {
                     dtgvRegistro.Columns["condicion"].Visible = false;

@@ -73,6 +73,7 @@ namespace ClubDeportivo_DSOO_PI.Datos
             return listaVencimientos;
         }
 
+        //Este seria el metodo de pago del socio
         public void InsertarVencimiento(int nroRegistro, DateTime fechaActual, DateTime proximoVencimiento, string medioPago, string cuotas, Button btnComprobanteS)
         {
             using (MySqlConnection connection = Conexion.getInstancia().CrearConexion())

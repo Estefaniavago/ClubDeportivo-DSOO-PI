@@ -180,6 +180,7 @@
     <Compile Include="CustomButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Datos\Actividad.cs" />
     <Compile Include="Datos\CustomInputBox.cs" />
     <Compile Include="Datos\Socio.cs" />
     <Compile Include="Datos\NoSocio.cs" />
@@ -187,6 +188,7 @@
     <Compile Include="Datos\Conexion.cs" />
     <Compile Include="Datos\Usuarios.cs" />
     <Compile Include="Datos\Vencimientos.cs" />
+    <Compile Include="Entidades\E_Actividad.cs" />
     <Compile Include="Entidades\E_NoSocio.cs" />
     <Compile Include="Entidades\E_Socio.cs" />
     <Compile Include="Entidades\E_Persona.cs" />

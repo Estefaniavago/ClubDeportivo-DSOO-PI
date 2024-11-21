@@ -109,5 +109,100 @@ Retorno: Devuelve el valor de res como una cadena. Si ocurre una excepción,
                 if (sqlCon.State == ConnectionState.Open) sqlCon.Close();
             }
         }
+
+        /// <summary>
+        /// Obtiene el nombre y apellido de una persona basado en su número de registro.
+        /// </summary>
+        /// <param name="nroRegistro">Número de registro</param>
+        /// <returns>Cadena con el nombre y apellido concatenados, o un mensaje si no se encuentra.</returns>
+        public static string ObtenerNombreYApellido(string nroRegistro)
+        {
+            if (string.IsNullOrEmpty(nroRegistro))
+                throw new ArgumentException("El número de registro no puede estar vacío.");
+
+            string resultado = "Registro no encontrado o no válido";
+
+            using (MySqlConnection connection = Conexion.getInstancia().CrearConexion())
+            {
+                try
+                {
+                    connection.Open();
+                    string query = "SELECT nombre, apellido FROM persona WHERE idRegistro = @idRegistro";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@idRegistro", nroRegistro);
+
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                string nombre = reader["nombre"].ToString();
+                                string apellido = reader["apellido"].ToString();
+                                resultado = $"{nombre} {apellido}";
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error al obtener el registro: " + ex.Message);
+                }
+            }
+
+            return resultado;
+        }
+
+        /// <summary>
+        /// Valida un registro en la base de datos y devuelve una instancia de E_Persona.
+        /// </summary>
+        /// <param name="nroRegistro">Número de registro</param>
+        /// <returns>Instancia de E_Persona con los datos de la persona, o null si no se encuentra el registro.</returns>
+        public static E_Persona ValidarRegistro(string nroRegistro)
+        {
+            if (string.IsNullOrEmpty(nroRegistro))
+                throw new ArgumentException("El número de registro no puede estar vacío.");
+
+            E_Persona ePersona = null;
+
+            using (MySqlConnection connection = Conexion.getInstancia().CrearConexion())
+            {
+                try
+                {
+                    connection.Open();
+                    string query = @"
+                    SELECT 
+                        nombre, 
+                        apellido, 
+                        condicion 
+                    FROM persona 
+                    WHERE idRegistro = @idRegistro";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@idRegistro", nroRegistro);
+
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                ePersona = new E_Persona
+                                {
+                                    nombre = reader["nombre"].ToString(),
+                                    apellido = reader["apellido"].ToString(),
+                                    EsSocio = Convert.ToBoolean(reader["condicion"])
+                                };
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error al validar el registro: " + ex.Message);
+                }
+            }
+
+            return ePersona;
+        }
     }
 }

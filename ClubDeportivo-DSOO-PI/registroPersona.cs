@@ -99,8 +99,7 @@ namespace ClubDeportivo_DSOO_PI
              MessageBox.Show($"Ocurrió un error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 }
-        
-              
+                     
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             txtNombre.Text = "";
@@ -116,7 +115,7 @@ namespace ClubDeportivo_DSOO_PI
             // Crear una nueva instancia del formulario de pago
             frmPagoCuotaMensual formulario = new frmPagoCuotaMensual();
          
-            formulario.ShowDialog(); // Mostrar el formulario como modal
+            formulario.Show(); // Mostrar el formulario como modal
             
 
         }

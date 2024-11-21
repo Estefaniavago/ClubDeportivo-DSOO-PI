@@ -79,36 +79,7 @@ namespace ClubDeportivo_DSOO_PI
         }
     
     
-            
-        private void txtNombreNoSocio_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtApellidoNoSocio_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtActividadElegida_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtPrecioActividad_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtFechaDePagoNoSocio_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtMedioDePago_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+       
         private void imprimirComprobanteNs(object o, PrintPageEventArgs e)
         {
             int x = SystemInformation.WorkingArea.X;

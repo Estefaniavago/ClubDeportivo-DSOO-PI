@@ -29,17 +29,7 @@ namespace ClubDeportivo_DSOO_PI
             this.Location = new Point(100, 100); // posición en la pantalla
         }
 
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            //ESTILOS
-           // fondo degradado
-            LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle,
-                Color.LightBlue, Color.White, 90F);
-            e.Graphics.FillRectangle(brush, this.ClientRectangle);
-            base.OnPaint(e);
-        }
-
-      
+           
         //Se ejecuta cuando el usuario hace click en el boton INGRESAR
         private void btnIngresar_Click(object sender, EventArgs e)
         {
@@ -62,9 +52,6 @@ namespace ClubDeportivo_DSOO_PI
                 frmPrincipal form2 = new frmPrincipal();
                 form2.ShowDialog();
                
-                this.Close();//POR QUE NO LO ESTA CERRANDO???????????
-
-
             }
             else
             {

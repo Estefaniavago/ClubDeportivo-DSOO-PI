@@ -54,8 +54,7 @@ namespace ClubDeportivo_DSOO_PI
         //Método para validar el número de registro
         private void ValidarRegistro(int nroRegistro)
 
-        {
-            
+        {            
             try
             {
                 E_Socio socio = Socio.ObtenerDatosSocio(nroRegistro);
@@ -139,8 +138,7 @@ namespace ClubDeportivo_DSOO_PI
             DateTime proximoVencimiento = fechaActual.AddMonths(1);
 
             // instancia de la clase Vencimientos
-            Vencimientos vencimiento = new Vencimientos
-                ();
+            Vencimientos vencimiento = new Vencimientos();
 
             // llama al método InsertarVencimiento
             vencimiento.InsertarVencimiento(
@@ -177,10 +175,18 @@ namespace ClubDeportivo_DSOO_PI
 
         private void frmPagoCuotaMensual_Load(object sender, EventArgs e)
         {
-            // No realiza ninguna validación automática al cargar
             lblResultado.Text = "Ingrese el número de registro y presione Validar.";
             lblResultado.ForeColor = Color.Black;
             btnPagar.Enabled = false;
+        }
+
+   
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            frmPrincipal formPrincipal = new frmPrincipal();
+            formPrincipal.Show();
+            this.Close();
+
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using ClubDeportivo.Datos;
+using ClubDeportivo_DSOO_PI.Datos;
+using ClubDeportivo_DSOO_PI.Entidades;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -18,10 +20,10 @@ namespace ClubDeportivo_DSOO_PI
 
     {
         private string nroRegistro;
-        string nombre;
-        string apellido;
-        string dni;
-        string fechavencimiento;
+       // string nombre;
+        //string apellido;
+       // string dni;
+        //string fechavencimiento;
         public CarnetSocio()
         {
             InitializeComponent();
@@ -37,6 +39,7 @@ namespace ClubDeportivo_DSOO_PI
             btnImprimirCarnet.Enabled = false;
         }
 
+        //Verifica que el campo no este vacio y tenga un numero de registro valido
         private void btnValidarSocio_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtNroSocio.Text)) {  
@@ -48,104 +51,62 @@ namespace ClubDeportivo_DSOO_PI
                 else
                 {
                     MessageBox.Show("Por favor, ingrese un número de registro válido.", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtNroSocio.Text = "";//Limpia el textbox
+                    
                 }
-
 
             }
             else
             {
 
                 MessageBox.Show("Por favor, ingrese un número de registro .", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtNroSocio.Text = "";//Limpia el textbox
             }
         }
         private void ValidarRegistro(int nroRegistro)
         {
-            using (MySqlConnection connection = Conexion.getInstancia().CrearConexion())
+            try
             {
-                try
+                // Obtener datos del socio
+                E_Socio socio = Socio.ObtenerDatosSocio(nroRegistro);
+
+                if (!Socio.ValidarSocio(socio))
                 {
-                    connection.Open();
-                    string query = @"
-                        SELECT p.nombre, p.apellido, p.nrodoc, v.fechaVencimiento
-                        FROM persona p
-                        LEFT JOIN vencimientos v ON p.idRegistro = v.idRegistro
-                        WHERE p.idRegistro = @nroRegistro
-                        ORDER BY v.fechaVencimiento DESC
-                        LIMIT 1;";
-
-                    using (MySqlCommand command = new MySqlCommand(query, connection))
-                    {
-                        command.Parameters.AddWithValue("@nroRegistro", nroRegistro);
-
-                        using (MySqlDataReader reader = command.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                nombre = reader["nombre"].ToString();
-                                apellido = reader["apellido"].ToString();
-                                dni= reader["nrodoc"].ToString();
-                                DateTime? fechaVencimiento = reader["fechaVencimiento"] != DBNull.Value
-                                    ? Convert.ToDateTime(reader["fechaVencimiento"])
-                                    : (DateTime?)null;
-                                fechavencimiento = reader["fechaVencimiento"].ToString();
-
-                                if (fechaVencimiento == null || fechaVencimiento <= DateTime.Now)
-                                {
-                                    MessageBox.Show($"No es socio. No se puede emitir carnet");
-                                    txtNroSocio.Text = "";//Limpia el textbox
-                                                                    }
-                                else
-                                {
-                                   
-                                    btnImprimirCarnet.Enabled = true; // Habilitar el botón de pago
-                                    // Asignar los valores recibidos a los campos del formulario
-                                    txtNombreSocio.Text = nombre;
-                                    txtApellidoSocio.Text = apellido;
-                                    txtDniSocio.Text = dni;
-                                    txtFechaVencimientoSocio.Text = fechavencimiento;
-
-
-                                    // Configurar los TextBox como de solo lectura
-                                    txtNombreSocio.ReadOnly = true;
-                                    txtApellidoSocio.ReadOnly = true;
-                                    txtDniSocio.ReadOnly = true;
-                                    txtFechaVencimientoSocio.ReadOnly = true;
-                                    MessageBox.Show("Validado correctamente");
-                                }
-                            }
-                            
-                        }
-                    }
+                    MessageBox.Show($"La persona no es socia o posee su cuota vencida. No se puede emitir carnet");
+                    txtNroSocio.Text = ""; // Limpia el textbox
+                    return;
                 }
-                catch (MySqlException ex)
-                {
-                    MessageBox.Show("Error al acceder a la base de datos: " + ex.Message, "Error de Base de Datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+
+                // Socio válido: actualizar campos del formulario
+                txtNombreSocio.Text = socio.nombre;
+                txtApellidoSocio.Text = socio.apellido;
+                txtDniSocio.Text = socio.nrodoc.ToString();
+                txtFechaVencimientoSocio.Text = socio.fechaVencimiento?.ToShortDateString();
+
+                // Configurar los TextBox como de solo lectura
+                txtNombreSocio.ReadOnly = true;
+                txtApellidoSocio.ReadOnly = true;
+                txtDniSocio.ReadOnly = true;
+                txtFechaVencimientoSocio.ReadOnly = true;
+
+                btnImprimirCarnet.Enabled = true; // Habilitar el botón
+                MessageBox.Show("Validado correctamente");
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Error al acceder a la base de datos: " + ex.Message, "Error de Base de Datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+    
 
-        private void btnImprimirCarnet_Click(object sender, EventArgs e)
+       private void btnImprimirCarnet_Click(object sender, EventArgs e)
         {
-            var vistaCarnet = new ModalVistaCarnet(nombre, apellido, dni, fechavencimiento);
+            var vistaCarnet = new ModalVistaCarnet(txtNombreSocio.Text,txtApellidoSocio.Text,txtDniSocio.Text,txtFechaVencimientoSocio.Text);
             vistaCarnet.ShowDialog();
         }
-        private void imprimirComprobanteNs(object o, PrintPageEventArgs e)
-        {
-            int x = SystemInformation.WorkingArea.X;
-            int y = SystemInformation.WorkingArea.Y;
-            int ancho = this.Width;
-            int alto = this.Height;
-            Rectangle bounds = new Rectangle(x, y, ancho, alto);
-            Bitmap img = new Bitmap(ancho, alto);
-            this.DrawToBitmap(img, bounds);
-            Point p = new Point(100, 100);
-            e.Graphics.DrawImage(img, p);
-        }
-
+       
         
-    }
-    }
+    }}
+    
 
         
     

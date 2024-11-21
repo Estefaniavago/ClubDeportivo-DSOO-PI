@@ -16,5 +16,7 @@ namespace ClubDeportivo_DSOO_PI.Entidades
         public bool aptofisico { get; set; }
         public bool condicion { get; set; }
 
+        public bool EsSocio { get; set; }
+
     }
 }
