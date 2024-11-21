@@ -109,7 +109,7 @@ namespace ClubDeportivo_DSOO_PI
                 return;
             }
 
-            //En caso de que elija efectivo se asegura que se guarde con 0 cuotas
+            //en caso de elegir efectivo se asegura que se guarde con 0 cuotas
             if (rdEfectivo.Checked)
             {
                 cbCuotas.SelectedItem = "0";
@@ -138,41 +138,18 @@ namespace ClubDeportivo_DSOO_PI
             DateTime fechaActual = DateTime.Now;
             DateTime proximoVencimiento = fechaActual.AddMonths(1);
 
-            using (MySqlConnection connection = Conexion.getInstancia().CrearConexion())
-            {
-                try
-                {
-                    connection.Open();
-                    //Se completa la tabla de vencimientos en la bbdd
-                    //Se registra el pago en la bbdd
-                    string query = "INSERT INTO vencimientos (idRegistro, fechaPago, fechaVencimiento, medioPago, cuotas) VALUES (@idRegistro, @fechaPago, @fechaVencimiento, @medioPago, @cuotas)";
-                    using (MySqlCommand command = new MySqlCommand(query, connection))
-                    {
-                        command.Parameters.AddWithValue("@idRegistro", nroRegistro);
-                        command.Parameters.AddWithValue("@fechaPago", fechaActual);
-                        command.Parameters.AddWithValue("@fechaVencimiento", proximoVencimiento);
-                        command.Parameters.AddWithValue("@medioPago", medioPago);
-                        command.Parameters.AddWithValue("@cuotas", cbCuotas.Text);
+            // instancia de la clase Socio
+            Socio socio = new Socio();
 
-                        command.ExecuteNonQuery();
-                    }
-
-                    // Si no es socio, se convierte en socio
-                    string updateQuery = "UPDATE persona SET condicion = 1 WHERE idRegistro = @idRegistro";
-                    using (MySqlCommand updateCommand = new MySqlCommand(updateQuery, connection))
-                    {
-                        updateCommand.Parameters.AddWithValue("@idRegistro", nroRegistro);
-                        updateCommand.ExecuteNonQuery();
-                    }
-
-                    MessageBox.Show("Pago realizado exitosamente.", "Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    btnComprobanteS.Enabled = true;
-                }
-                catch (MySqlException ex)
-                {
-                    MessageBox.Show("Error al procesar el pago: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+            // llama al método InsertarVencimiento
+            socio.InsertarVencimiento(
+                int.Parse(nroRegistro), // convierte nroRegistro a int
+                fechaActual,
+                proximoVencimiento,
+                medioPago,
+                cbCuotas.Text,
+                btnComprobanteS
+            );
         }
 
        
@@ -191,9 +168,7 @@ namespace ClubDeportivo_DSOO_PI
                 Cuotas = cbCuotas.Text,
              
             };
-            MessageBox.Show("su ingreso: SERVIDOR = " + this.nombre + " PUERTO= " + this.apellido + " USUARIO: ");
-
-                
+                           
             comprobanteForm.ShowDialog();
 
         }
