@@ -110,11 +110,10 @@ Retorno: Devuelve el valor de res como una cadena. Si ocurre una excepción,
             }
         }
 
-        /// <summary>
+       
         /// Obtiene el nombre y apellido de una persona basado en su número de registro.
-        /// </summary>
-        /// <param name="nroRegistro">Número de registro</param>
-        /// <returns>Cadena con el nombre y apellido concatenados, o un mensaje si no se encuentra.</returns>
+       
+      
         public static string ObtenerNombreYApellido(string nroRegistro)
         {
             if (string.IsNullOrEmpty(nroRegistro))
@@ -153,11 +152,8 @@ Retorno: Devuelve el valor de res como una cadena. Si ocurre una excepción,
             return resultado;
         }
 
-        /// <summary>
         /// Valida un registro en la base de datos y devuelve una instancia de E_Persona.
-        /// </summary>
-        /// <param name="nroRegistro">Número de registro</param>
-        /// <returns>Instancia de E_Persona con los datos de la persona, o null si no se encuentra el registro.</returns>
+        
         public static E_Persona ValidarRegistro(string nroRegistro)
         {
             if (string.IsNullOrEmpty(nroRegistro))
