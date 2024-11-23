@@ -37,10 +37,10 @@
             this.txtPrecioAct = new System.Windows.Forms.TextBox();
             this.btnComprobanteNoSocio = new System.Windows.Forms.Button();
             this.grbMedioPago = new System.Windows.Forms.GroupBox();
-            this.rdCredito = new System.Windows.Forms.RadioButton();
             this.btnPagar = new System.Windows.Forms.Button();
-            this.rdEfectivo = new System.Windows.Forms.RadioButton();
             this.lblMedioDePago = new System.Windows.Forms.Label();
+            this.rdCredito = new System.Windows.Forms.RadioButton();
+            this.rdEfectivo = new System.Windows.Forms.RadioButton();
             this.txtNyANs = new System.Windows.Forms.TextBox();
             this.lblNyANs = new System.Windows.Forms.Label();
             this.dtgvActividad = new System.Windows.Forms.DataGridView();
@@ -58,6 +58,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(456, 47);
             this.label1.TabIndex = 0;
+            this.label1.Tag = "tituloForm";
             this.label1.Text = "PAGO ACTIVIDAD DIARIA";
             // 
             // label2
@@ -143,6 +144,26 @@
             this.grbMedioPago.TabIndex = 8;
             this.grbMedioPago.TabStop = false;
             // 
+            // btnPagar
+            // 
+            this.btnPagar.Location = new System.Drawing.Point(100, 97);
+            this.btnPagar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnPagar.Name = "btnPagar";
+            this.btnPagar.Size = new System.Drawing.Size(112, 35);
+            this.btnPagar.TabIndex = 4;
+            this.btnPagar.Text = "PAGAR";
+            this.btnPagar.UseVisualStyleBackColor = true;
+            this.btnPagar.Click += new System.EventHandler(this.btnPagar_Click);
+            // 
+            // lblMedioDePago
+            // 
+            this.lblMedioDePago.Font = new System.Drawing.Font("Cambria", 10F);
+            this.lblMedioDePago.Location = new System.Drawing.Point(-4, 0);
+            this.lblMedioDePago.Name = "lblMedioDePago";
+            this.lblMedioDePago.Size = new System.Drawing.Size(129, 38);
+            this.lblMedioDePago.TabIndex = 10;
+            this.lblMedioDePago.Text = "Medio de Pago";
+            // 
             // rdCredito
             // 
             this.rdCredito.AutoSize = true;
@@ -155,17 +176,6 @@
             this.rdCredito.Text = "Crédito";
             this.rdCredito.UseVisualStyleBackColor = true;
             // 
-            // btnPagar
-            // 
-            this.btnPagar.Location = new System.Drawing.Point(100, 97);
-            this.btnPagar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnPagar.Name = "btnPagar";
-            this.btnPagar.Size = new System.Drawing.Size(112, 35);
-            this.btnPagar.TabIndex = 4;
-            this.btnPagar.Text = "PAGAR";
-            this.btnPagar.UseVisualStyleBackColor = true;
-            this.btnPagar.Click += new System.EventHandler(this.btnPagar_Click);
-            // 
             // rdEfectivo
             // 
             this.rdEfectivo.AutoSize = true;
@@ -177,15 +187,6 @@
             this.rdEfectivo.TabStop = true;
             this.rdEfectivo.Text = "Efectivo";
             this.rdEfectivo.UseVisualStyleBackColor = true;
-            // 
-            // lblMedioDePago
-            // 
-            this.lblMedioDePago.Font = new System.Drawing.Font("Cambria", 10F);
-            this.lblMedioDePago.Location = new System.Drawing.Point(-4, 0);
-            this.lblMedioDePago.Name = "lblMedioDePago";
-            this.lblMedioDePago.Size = new System.Drawing.Size(129, 38);
-            this.lblMedioDePago.TabIndex = 10;
-            this.lblMedioDePago.Text = "Medio de Pago";
             // 
             // txtNyANs
             // 

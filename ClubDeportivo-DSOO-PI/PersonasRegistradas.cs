@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace ClubDeportivo_DSOO_PI
 {
-    public partial class PersonasRegistradas : Form
+    public partial class PersonasRegistradas : BaseForm
     {
         public PersonasRegistradas()
         {

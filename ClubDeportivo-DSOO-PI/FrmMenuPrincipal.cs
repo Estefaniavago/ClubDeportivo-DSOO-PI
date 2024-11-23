@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace ClubDeportivo_DSOO_PI
 {
-    public partial class frmPrincipal : Form
+    public partial class frmPrincipal : BaseForm
     {
         public frmPrincipal()
         {
@@ -20,7 +20,7 @@ namespace ClubDeportivo_DSOO_PI
             
             //ESTILOS, CHEQUEAR
             this.StartPosition = FormStartPosition.Manual; // posición manual
-            this.Size = new Size(800, 450); // tamaño
+            this.Size = new Size(850, 450); // tamaño
             this.Location = new Point(100, 100); // posición en la pantalla
             
         }

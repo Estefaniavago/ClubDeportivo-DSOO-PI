@@ -113,7 +113,6 @@ Retorno: Devuelve el valor de res como una cadena. Si ocurre una excepción,
        
         /// Obtiene el nombre y apellido de una persona basado en su número de registro.
        
-      
         public static string ObtenerNombreYApellido(string nroRegistro)
         {
             if (string.IsNullOrEmpty(nroRegistro))

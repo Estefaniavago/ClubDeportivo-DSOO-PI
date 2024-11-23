@@ -7,7 +7,7 @@ using ClubDeportivo_DSOO_PI.Entidades;
 
 namespace ClubDeportivo_DSOO_PI
 {
-    public partial class frmVencimientos : Form
+    public partial class frmVencimientos : BaseForm
     {
         private readonly Vencimientos vencimientosDatos;
 

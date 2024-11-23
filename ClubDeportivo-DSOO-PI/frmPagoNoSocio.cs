@@ -10,7 +10,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ClubDeportivo_DSOO_PI
 {
-    public partial class frmPagoNoSocio : Form
+    public partial class frmPagoNoSocio : BaseForm
     {
         private string horarioSeleccionado;
         private string diaSeleccionado;

@@ -16,7 +16,7 @@ using MySql.Data.MySqlClient;
 
 namespace ClubDeportivo_DSOO_PI
 {
-    public partial class frmPagoCuotaMensual : Form
+    public partial class frmPagoCuotaMensual : BaseForm
     {
         private string nroRegistro; // En la BBDD es idRegistro
         string montoTotal = "30000"; // Monto total de la cuota mensual para todos los socios

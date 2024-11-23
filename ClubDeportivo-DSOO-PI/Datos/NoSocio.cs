@@ -8,10 +8,9 @@ using System.Windows.Forms;
 namespace ClubDeportivo_DSOO_PI.Datos
 {
 
-    //  -----------------------arreglar clase no socio------------------
     internal class NoSocio
     {
-        //       public class NoSocio
+      
 
     // Método estático para registrar el pago de un no socio
     public static bool RegistrarPagoNoSocio(int idPersona, string actividadSeleccionada, string precio, string fechaPago)

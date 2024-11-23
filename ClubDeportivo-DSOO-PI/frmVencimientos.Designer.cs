@@ -44,6 +44,7 @@
             this.lblTituloVencimientos.Name = "lblTituloVencimientos";
             this.lblTituloVencimientos.Size = new System.Drawing.Size(528, 41);
             this.lblTituloVencimientos.TabIndex = 0;
+            this.lblTituloVencimientos.Tag = "tituloForm";
             this.lblTituloVencimientos.Text = "Vencimientos de Cuotas Mensuales";
             // 
             // dtgvVencimientos

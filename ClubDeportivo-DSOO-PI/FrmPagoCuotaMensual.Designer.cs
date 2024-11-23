@@ -51,8 +51,9 @@
             this.lblPagos.Location = new System.Drawing.Point(178, 9);
             this.lblPagos.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblPagos.Name = "lblPagos";
-            this.lblPagos.Size = new System.Drawing.Size(342, 37);
+            this.lblPagos.Size = new System.Drawing.Size(425, 47);
             this.lblPagos.TabIndex = 2;
+            this.lblPagos.Tag = "tituloForm";
             this.lblPagos.Text = "PAGO CUOTA MENSUAL";
             // 
             // lblUsuario
@@ -62,7 +63,7 @@
             this.lblUsuario.Location = new System.Drawing.Point(143, 80);
             this.lblUsuario.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(132, 17);
+            this.lblUsuario.Size = new System.Drawing.Size(172, 22);
             this.lblUsuario.TabIndex = 3;
             this.lblUsuario.Text = "Numero de Registro";
             // 
@@ -85,7 +86,7 @@
             this.label3.Location = new System.Drawing.Point(10, 0);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(99, 17);
+            this.label3.Size = new System.Drawing.Size(128, 22);
             this.label3.TabIndex = 5;
             this.label3.Text = "Medio de Pago";
             // 
@@ -95,7 +96,7 @@
             this.txtNroRegistro.Location = new System.Drawing.Point(325, 80);
             this.txtNroRegistro.Margin = new System.Windows.Forms.Padding(5);
             this.txtNroRegistro.Name = "txtNroRegistro";
-            this.txtNroRegistro.Size = new System.Drawing.Size(110, 29);
+            this.txtNroRegistro.Size = new System.Drawing.Size(110, 34);
             this.txtNroRegistro.TabIndex = 6;
             // 
             // groupBox1
@@ -124,7 +125,7 @@
             this.cbCuotas.Location = new System.Drawing.Point(131, 79);
             this.cbCuotas.Margin = new System.Windows.Forms.Padding(5);
             this.cbCuotas.Name = "cbCuotas";
-            this.cbCuotas.Size = new System.Drawing.Size(199, 25);
+            this.cbCuotas.Size = new System.Drawing.Size(199, 29);
             this.cbCuotas.TabIndex = 9;
             // 
             // rdCredito
@@ -134,7 +135,7 @@
             this.rdCredito.Location = new System.Drawing.Point(30, 79);
             this.rdCredito.Margin = new System.Windows.Forms.Padding(5);
             this.rdCredito.Name = "rdCredito";
-            this.rdCredito.Size = new System.Drawing.Size(72, 21);
+            this.rdCredito.Size = new System.Drawing.Size(91, 26);
             this.rdCredito.TabIndex = 8;
             this.rdCredito.TabStop = true;
             this.rdCredito.Text = "Crédito";
@@ -147,7 +148,7 @@
             this.rdEfectivo.Location = new System.Drawing.Point(30, 43);
             this.rdEfectivo.Margin = new System.Windows.Forms.Padding(5);
             this.rdEfectivo.Name = "rdEfectivo";
-            this.rdEfectivo.Size = new System.Drawing.Size(79, 21);
+            this.rdEfectivo.Size = new System.Drawing.Size(96, 26);
             this.rdEfectivo.TabIndex = 6;
             this.rdEfectivo.TabStop = true;
             this.rdEfectivo.Text = "Efectivo";
@@ -182,7 +183,7 @@
             this.lblResultado.Location = new System.Drawing.Point(339, 142);
             this.lblResultado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblResultado.Name = "lblResultado";
-            this.lblResultado.Size = new System.Drawing.Size(0, 17);
+            this.lblResultado.Size = new System.Drawing.Size(0, 22);
             this.lblResultado.TabIndex = 11;
             // 
             // button1
@@ -199,7 +200,7 @@
             // 
             // frmPagoCuotaMensual
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(704, 472);
             this.Controls.Add(this.button1);

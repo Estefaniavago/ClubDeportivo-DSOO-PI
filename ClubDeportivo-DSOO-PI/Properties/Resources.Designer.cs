@@ -73,6 +73,16 @@ namespace ClubDeportivo_DSOO_PI.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ClubDeportivoPOORecurso_1_3x1 {
+            get {
+                object obj = ResourceManager.GetObject("ClubDeportivoPOORecurso 1@3x1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap crossfit_3180368_1280 {
             get {
                 object obj = ResourceManager.GetObject("crossfit-3180368_1280", resourceCulture);
@@ -86,6 +96,16 @@ namespace ClubDeportivo_DSOO_PI.Properties {
         internal static System.Drawing.Bitmap fitmoveRecurso_2_3x {
             get {
                 object obj = ResourceManager.GetObject("fitmoveRecurso 2@3x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FondoLogin {
+            get {
+                object obj = ResourceManager.GetObject("FondoLogin", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

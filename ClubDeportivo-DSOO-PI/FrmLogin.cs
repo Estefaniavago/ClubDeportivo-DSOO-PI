@@ -16,53 +16,86 @@ using System.Windows.Forms;
 namespace ClubDeportivo_DSOO_PI
 {
     //frmLogin hereda de Form, clase de C#
-    public partial class frmLogin : Form
+    public partial class frmLogin : BaseForm
     {
         //Constructor de la clase frmLogin
         public frmLogin()
         {
            InitializeComponent();
+           EstilosGlobales.AplicarEstilosFormulario(this);
 
-            //ESTILOS
-            this.StartPosition = FormStartPosition.CenterScreen; // posición manual
-            this.Size = new Size(800, 450); // tamaño
-            this.Location = new Point(100, 100); // posición en la pantalla
         }
 
-           
+
         //Se ejecuta cuando el usuario hace click en el boton INGRESAR
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            
-            DataTable tablaLogin = new DataTable(); // es la que recibe los datos desde el formulario
-            Usuarios dato = new Usuarios(); // variable que contiene todas las caracteristicas de la clase
-            
-            //Consulta si las credenciales son validas
-            tablaLogin = dato.Log_Usu(txtUsuario.Text, txtPass.Text);
-            
-            //verifica si la consulta devolvio filas
-            if (tablaLogin.Rows.Count > 0)
-            {
-                // quiere decir que el resultado tiene 1 fila por lo que el usuario EXISTE
-                string nombreUsuario = tablaLogin.Rows[0]["nombreUsuario"].ToString();
 
-                MessageBox.Show($"Ingreso exitoso. Bienvenid@ {nombreUsuario}");
-               
-                //Abre el formulario del menu principal si la consulta es exitosa
-                frmPrincipal form2 = new frmPrincipal();
-                form2.ShowDialog();
-               
-            }
-            else
+            try
             {
-                MessageBox.Show("Usuario y/o password incorrecto. Intente nuevamente");
-                txtUsuario.Text = "USUARIO";
-                txtPass.UseSystemPasswordChar = false;
-                txtPass.Text = "CONTRASEÑA";
+                // Validar que los campos no estén vacíos
+                if (string.IsNullOrWhiteSpace(txtUsuario.Text) || txtUsuario.Text == "USUARIO" ||
+                    string.IsNullOrWhiteSpace(txtPass.Text) || txtPass.Text == "CONTRASEÑA")
+                {
+                    MessageBox.Show("Por favor, complete ambos campos antes de continuar.",
+                                    "Campos incompletos",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Warning);
+                    return;
+                }
+                DataTable tablaLogin = new DataTable(); // es la que recibe los datos desde el formulario
+                Usuarios dato = new Usuarios(); // variable que contiene todas las caracteristicas de la clase
+
+                //Consulta si las credenciales son validas
+                tablaLogin = dato.Log_Usu(txtUsuario.Text, txtPass.Text);
+
+                //verifica si la consulta devolvio filas
+                if (tablaLogin.Rows.Count > 0)
+                {
+                    // quiere decir que el resultado tiene 1 fila por lo que el usuario EXISTE
+                    string nombreUsuario = tablaLogin.Rows[0]["nombreUsuario"].ToString();
+
+                    MessageBox.Show($"Ingreso exitoso. Bienvenid@ {nombreUsuario}");
+
+                    //Abre el formulario del menu principal si la consulta es exitosa
+                    frmPrincipal form2 = new frmPrincipal();
+                    this.Hide();//oculta el formLogin
+                    form2.ShowDialog();
+                    this.Show(); //vuelve a mostrar el form de login
+
+                }
+                else
+                {
+                    MessageBox.Show("Usuario y/o password incorrecto. Intente nuevamente");
+                    //txtUsuario.Text = "USUARIO";
+                    //txtPass.UseSystemPasswordChar = false;
+                    //txtPass.Text = "CONTRASEÑA";
+                    ReiniciarCamposLogin();
+                }
+
             }
-            
+            catch (Exception ex)
+            {
+                // Manejo de errores, muestra un mensaje al usuario
+                MessageBox.Show($"Ocurrió un error: {ex.Message}",
+                                "Error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+                ReiniciarCamposLogin(); // Limpia los campos en caso de error
+            }
         }
 
+
+        // Método para reiniciar y restaurar los campos de texto
+        private void ReiniciarCamposLogin()
+        {
+            txtUsuario.Text = "USUARIO";
+            txtUsuario.ForeColor = Color.Gray;
+
+            txtPass.Text = "CONTRASEÑA";
+            txtPass.UseSystemPasswordChar = false;
+            txtPass.ForeColor = Color.Gray;
+        }
 
         private void txtUsuario_Enter(object sender, EventArgs e)
         {

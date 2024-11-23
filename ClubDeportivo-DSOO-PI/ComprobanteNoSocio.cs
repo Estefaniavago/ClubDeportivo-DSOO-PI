@@ -1,16 +1,8 @@
 ﻿using System;
-using System.IO;
-using System.Windows.Forms;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Drawing.Printing;
-using System.Globalization;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ClubDeportivo_DSOO_PI
 {
@@ -27,17 +19,20 @@ namespace ClubDeportivo_DSOO_PI
         public ComprobanteNoSocio()
         {
             InitializeComponent();
+
+            // Configuración inicial del formulario
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.BackColor = Color.FromArgb(240, 240, 240);
+            this.Size = new Size(500, 600); // Ajustar dimensiones
+            this.Paint += ComprobanteNoSocio_Paint; // Dibujar fondo y borde
         }
 
         private void ComprobanteNoSocio_Load_1(object sender, EventArgs e)
         {
-            
             try
             {
-
-                MessageBox.Show($"Nombre: {Nombre}, Apellido: {Apellido}, Actividad: {ActividadElegida}, Precio: {Precio}, Fecha: {FechaPago}, Medio de Pago: {MedioPago}");
-                
-                // Asignar los valores recibidos a los campos del formulario
+                // Asignar los valores recibidos a los TextBox
                 txtNombreNoSocio.Text = Nombre;
                 txtApellidoNoSocio.Text = Apellido;
                 txtActividadElegida.Text = ActividadElegida;
@@ -60,39 +55,58 @@ namespace ClubDeportivo_DSOO_PI
             }
         }
 
+        private void ComprobanteNoSocio_Paint(object sender, PaintEventArgs e)
+        {
+            // **1. Fondo con degradado vertical**
+            using (LinearGradientBrush gradiente = new LinearGradientBrush(
+                new Rectangle(0, 0, this.Width, this.Height),
+                Color.LightBlue, // Color inicial
+                Color.White,     // Color final
+                LinearGradientMode.Vertical))
+            {
+                e.Graphics.FillRectangle(gradiente, 0, 0, this.Width, this.Height);
+            }
+
+            // **2. Dibujar borde decorativo**
+            Pen borde = new Pen(Color.DarkBlue, 3);
+            e.Graphics.DrawRectangle(borde, 0, 0, this.Width - 1, this.Height - 1);
+        }
+
         private void btnImrpimirCompr_Click_1(object sender, EventArgs e)
         {
+            try
+            {
+                // Ocultar botón antes de imprimir
+                btnImrpimirCompr.Visible = false;
 
-            /* Eliminamos el boton imprimir de la vista*/
-            btnImrpimirCompr.Visible = false;
-            /* Creamos objeto para imprimir*/
-            PrintDocument pd = new PrintDocument();
-            pd.PrintPage += new PrintPageEventHandler(imprimirComprobanteNs);
-            pd.Print();
-            btnImrpimirCompr.Visible = true; // visualizamos nuevamente el boton de imprimir
+                // Imprimir
+                PrintDocument pd = new PrintDocument();
+                pd.PrintPage += ImprimirComprobanteNs;
+                pd.Print();
 
+                // Mostrar botón después de imprimir
+                btnImrpimirCompr.Visible = true;
 
-            MessageBox.Show("Operaación existosa", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            frmPrincipal principal = new frmPrincipal();
-            principal.Show();
-            this.Close();
+                MessageBox.Show("Operación exitosa", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al imprimir: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-    
-    
-       
-        private void imprimirComprobanteNs(object o, PrintPageEventArgs e)
+
+        private void ImprimirComprobanteNs(object sender, PrintPageEventArgs e)
         {
-            int x = SystemInformation.WorkingArea.X;
-            int y = SystemInformation.WorkingArea.Y;
-            int ancho = this.Width;
-            int alto = this.Height;
-            Rectangle bounds = new Rectangle(x, y, ancho, alto);
-            Bitmap img = new Bitmap(ancho, alto);
-            this.DrawToBitmap(img, bounds);
-            Point p = new Point(100, 100);
-            e.Graphics.DrawImage(img, p);
+            int x = 100;
+            int y = 100;
+
+            e.Graphics.DrawString($"Nombre: {Nombre}", new Font("Segoe UI", 12), Brushes.Black, x, y);
+            e.Graphics.DrawString($"Apellido: {Apellido}", new Font("Segoe UI", 12), Brushes.Black, x, y += 40);
+            e.Graphics.DrawString($"Actividad: {ActividadElegida}", new Font("Segoe UI", 12), Brushes.Black, x, y += 40);
+            e.Graphics.DrawString($"Precio: {Precio}", new Font("Segoe UI", 12), Brushes.Black, x, y += 40);
+            e.Graphics.DrawString($"Fecha de Pago: {FechaPago}", new Font("Segoe UI", 12), Brushes.Black, x, y += 40);
+            e.Graphics.DrawString($"Medio de Pago: {MedioPago}", new Font("Segoe UI", 12), Brushes.Black, x, y += 40);
         }
-
-
     }
 }

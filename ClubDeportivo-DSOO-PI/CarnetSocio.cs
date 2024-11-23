@@ -16,7 +16,7 @@ using System.Windows.Forms;
 
 namespace ClubDeportivo_DSOO_PI
 {
-    public partial class CarnetSocio : Form
+    public partial class CarnetSocio : BaseForm
 
     {
         private string nroRegistro;

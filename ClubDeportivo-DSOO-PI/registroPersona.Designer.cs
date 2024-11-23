@@ -57,6 +57,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(387, 47);
             this.label1.TabIndex = 0;
+            this.label1.Tag = "tituloForm";
             this.label1.Text = "REGISTRAR CLIENTE";
             // 
             // lblNombre
@@ -243,7 +244,7 @@
             this.Name = "registroPersona";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Registro de Cliente";
-            this.TransparencyKey = System.Drawing.Color.Salmon;
+            this.TransparencyKey = System.Drawing.Color.WhiteSmoke;
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -1,16 +1,8 @@
 ﻿using System;
-using System.IO;
-using System.Windows.Forms;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Drawing.Printing;
-using System.Globalization;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ClubDeportivo_DSOO_PI
 {
@@ -26,6 +18,13 @@ namespace ClubDeportivo_DSOO_PI
         public frmComprobanteSocio()
         {
             InitializeComponent();
+
+            // Configuración inicial del formulario
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.BackColor = Color.FromArgb(240, 240, 240);
+            this.Size = new Size(500, 600); // Ajustar dimensiones
+            this.Paint += FrmComprobanteSocio_Paint; // Dibujar fondo y borde
         }
 
         private void frmComprobanteSocio_Load(object sender, EventArgs e)
@@ -57,33 +56,63 @@ namespace ClubDeportivo_DSOO_PI
             }
         }
 
+        private void FrmComprobanteSocio_Paint(object sender, PaintEventArgs e)
+        {
+            // **1. Fondo con degradado vertical**
+            using (LinearGradientBrush gradiente = new LinearGradientBrush(
+                new Rectangle(0, 0, this.Width, this.Height),
+                Color.LightBlue, // Color inicial
+                Color.White,     // Color final
+                LinearGradientMode.Vertical))
+            {
+                e.Graphics.FillRectangle(gradiente, 0, 0, this.Width, this.Height);
+            }
+
+            // **2. Dibujar borde decorativo**
+            Pen borde = new Pen(Color.DarkBlue, 3);
+            e.Graphics.DrawRectangle(borde, 0, 0, this.Width - 1, this.Height - 1);
+        }
+
+
         private void btnImprimirComprobanteS_Click(object sender, EventArgs e)
         {
-            /* Eliminamos el boton imprimir de la vista*/
-            btnImprimirComprobanteS.Visible = false;
-            /* Creamos objeto para imprimir*/
-            PrintDocument pd = new PrintDocument();
-            pd.PrintPage += new PrintPageEventHandler(imprimirComprobanteNs);
-            pd.Print();
-            btnImprimirComprobanteS.Visible = true; // visualizamos nuevamente el boton de imprimir
+            try
+            {
+                // Crear un nuevo documento de impresión
+                PrintDocument pd = new PrintDocument();
+                pd.PrintPage += imprimirComprobanteS;
 
+                // Crear una ventana de vista previa de impresión
+                PrintPreviewDialog previewDialog = new PrintPreviewDialog
+                {
+                    Document = pd // Asignar el documento de impresión
+                };
 
-            MessageBox.Show("Operación existosa", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            frmPrincipal principal = new frmPrincipal();
-            principal.Show();
-            this.Close();
+                // Mostrar la vista previa
+                if (previewDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // Si el usuario confirma, imprimir el documento
+                    pd.Print();
+                    MessageBox.Show("Operación exitosa", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al imprimir: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-        private void imprimirComprobanteNs(object o, PrintPageEventArgs e)
+        private void imprimirComprobanteS(object o, PrintPageEventArgs e)
         {
-            int x = SystemInformation.WorkingArea.X;
-            int y = SystemInformation.WorkingArea.Y;
-            int ancho = this.Width;
-            int alto = this.Height;
-            Rectangle bounds = new Rectangle(x, y, ancho, alto);
-            Bitmap img = new Bitmap(ancho, alto);
-            this.DrawToBitmap(img, bounds);
-            Point p = new Point(100, 100);
-            e.Graphics.DrawImage(img, p);
+            int x = 100;
+            int y = 100;
+
+            e.Graphics.DrawString($"Nombre: {Nombre}", new Font("Segoe UI", 12), Brushes.Black, x, y);
+            e.Graphics.DrawString($"Apellido: {Apellido}", new Font("Segoe UI", 12), Brushes.Black, x, y += 40);
+            e.Graphics.DrawString($"Monto Cuota: {Montocuota}", new Font("Segoe UI", 12), Brushes.Black, x, y += 40);
+            e.Graphics.DrawString($"Fecha de Pago: {FechaPago}", new Font("Segoe UI", 12), Brushes.Black, x, y += 40);
+            e.Graphics.DrawString($"Medio de Pago: {MedioPago}", new Font("Segoe UI", 12), Brushes.Black, x, y += 40);
+            e.Graphics.DrawString($"Cuotas: {Cuotas}", new Font("Segoe UI", 12), Brushes.Black, x, y += 40);
         }
 
         

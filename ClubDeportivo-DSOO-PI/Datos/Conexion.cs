@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms; 
 using Microsoft.VisualBasic;
+using ClubDeportivo_DSOO_PI;
 
 
 // Referencia a MySQL (se agrega como libreria)
@@ -27,7 +28,7 @@ namespace ClubDeportivo.Datos
         {
             // variables usadas para larepetición de líneas de código
             bool correcto = false;
-            int mensaje;
+           
             // creamos las variables para recibir los datos desde el
             //teclado
 
@@ -46,24 +47,24 @@ namespace ClubDeportivo.Datos
                 T_puerto = CustomInputBox.Show("Ingrese puerto", "DATOS DE INSTALACIÓN MySQL");
                 T_usuario = CustomInputBox.Show("Ingrese usuario", "DATOS DE INSTALACIÓN MySQL");
                 T_clave = CustomInputBox.Show("Ingrese clave", "DATOS DE INSTALACIÓN MySQL");
-              
-                mensaje = (int)MessageBox.Show("su ingreso: SERVIDOR = " +
-            T_servidor + " PUERTO= " + T_puerto + " USUARIO: " +
-            T_usuario + " CLAVE: " + T_clave,
-            "AVISO DEL SISTEMA", MessageBoxButtons.YesNo,
-            MessageBoxIcon.Question);
-        if (mensaje != 6) // el valor 6 corresponde al SI
-        {
-            MessageBox.Show("INGRESE NUEVAMENTE LOS DATOS");
-            correcto = false;
-        }
-        else
-        {
-            correcto = true;
-        }
-    }
-// reemplazamos los datos concretos que teniamos por las
-//variables
+
+                // Mostrar el mensaje con el nuevo modal
+                string mensaje = $"Su ingreso:\nSERVIDOR = {T_servidor}\nPUERTO = {T_puerto}\nUSUARIO = {T_usuario}\nCLAVE = {T_clave}";
+                ModalConectionForm modal = new ModalConectionForm(mensaje, "AVISO DEL SISTEMA");
+                modal.ShowDialog();
+
+                // Evaluar la respuesta del usuario
+                if (modal.UserChoice) // Si elige "Sí", se confirma la configuración
+                {
+                    correcto = true;
+                }
+                else
+                {
+                    MessageBox.Show("Ingrese nuevamente los datos", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            // reemplazamos los datos concretos que teniamos por las
+            //variables
             this.baseDatos = "proyecto";
             this.servidor = T_servidor; // "localhost";
             this.puerto = T_puerto; //"3306";

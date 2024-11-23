@@ -54,6 +54,7 @@
             this.lblPersonasRegistradas.Name = "lblPersonasRegistradas";
             this.lblPersonasRegistradas.Size = new System.Drawing.Size(463, 47);
             this.lblPersonasRegistradas.TabIndex = 22;
+            this.lblPersonasRegistradas.Tag = "tituloForm";
             this.lblPersonasRegistradas.Text = "PERSONAS REGISTRADAS";
             // 
             // PersonasRegistradas

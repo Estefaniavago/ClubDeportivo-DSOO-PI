@@ -181,14 +181,17 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Datos\Actividad.cs" />
+    <Compile Include="Datos\BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Datos\CustomInputBox.cs" />
+    <Compile Include="Datos\EstilosGlobales.cs" />
     <Compile Include="Datos\Socio.cs" />
     <Compile Include="Datos\NoSocio.cs" />
     <Compile Include="Datos\Persona.cs" />
     <Compile Include="Datos\Conexion.cs" />
     <Compile Include="Datos\Usuarios.cs" />
     <Compile Include="Datos\Vencimientos.cs" />
-    <Compile Include="Entidades\E_Actividad.cs" />
     <Compile Include="Entidades\E_NoSocio.cs" />
     <Compile Include="Entidades\E_Socio.cs" />
     <Compile Include="Entidades\E_Persona.cs" />
@@ -216,6 +219,9 @@
     </Compile>
     <Compile Include="MensajeControl.Designer.cs">
       <DependentUpon>MensajeControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModalConectionForm.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="ModalVistaCarnet.cs">
       <SubType>Form</SubType>
@@ -315,6 +321,9 @@
   <ItemGroup>
     <Content Include="Assets\ClubDeportivoPOORecurso 1%403x.png" />
     <Content Include="Assets\fitmoveRecurso 2%403x.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\FondoLogin.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="ILLink\ILLink.Descriptors.LibraryBuild.xml" />

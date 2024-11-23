@@ -10,7 +10,7 @@ using System.Drawing;
 
 namespace ClubDeportivo_DSOO_PI
 {
-    public partial class registroPersona : Form
+    public partial class registroPersona : BaseForm
     {
 
         //Inicializo el formulario
