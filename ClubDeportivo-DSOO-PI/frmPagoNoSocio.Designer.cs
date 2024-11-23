@@ -121,10 +121,10 @@
             // btnComprobanteNoSocio
             // 
             this.btnComprobanteNoSocio.Font = new System.Drawing.Font("Cambria", 11F);
-            this.btnComprobanteNoSocio.Location = new System.Drawing.Point(407, 248);
+            this.btnComprobanteNoSocio.Location = new System.Drawing.Point(505, 262);
             this.btnComprobanteNoSocio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnComprobanteNoSocio.Name = "btnComprobanteNoSocio";
-            this.btnComprobanteNoSocio.Size = new System.Drawing.Size(242, 39);
+            this.btnComprobanteNoSocio.Size = new System.Drawing.Size(158, 42);
             this.btnComprobanteNoSocio.TabIndex = 7;
             this.btnComprobanteNoSocio.Text = "COMPROBANTE";
             this.btnComprobanteNoSocio.UseVisualStyleBackColor = true;
@@ -136,17 +136,17 @@
             this.grbMedioPago.Controls.Add(this.lblMedioDePago);
             this.grbMedioPago.Controls.Add(this.rdCredito);
             this.grbMedioPago.Controls.Add(this.rdEfectivo);
-            this.grbMedioPago.Location = new System.Drawing.Point(380, 89);
+            this.grbMedioPago.Location = new System.Drawing.Point(449, 89);
             this.grbMedioPago.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.grbMedioPago.Name = "grbMedioPago";
             this.grbMedioPago.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.grbMedioPago.Size = new System.Drawing.Size(279, 142);
+            this.grbMedioPago.Size = new System.Drawing.Size(259, 152);
             this.grbMedioPago.TabIndex = 8;
             this.grbMedioPago.TabStop = false;
             // 
             // btnPagar
             // 
-            this.btnPagar.Location = new System.Drawing.Point(100, 97);
+            this.btnPagar.Location = new System.Drawing.Point(83, 117);
             this.btnPagar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnPagar.Name = "btnPagar";
             this.btnPagar.Size = new System.Drawing.Size(112, 35);
@@ -209,12 +209,12 @@
             // dtgvActividad
             // 
             this.dtgvActividad.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvActividad.Location = new System.Drawing.Point(12, 199);
+            this.dtgvActividad.Location = new System.Drawing.Point(9, 199);
             this.dtgvActividad.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtgvActividad.Name = "dtgvActividad";
             this.dtgvActividad.RowHeadersWidth = 51;
             this.dtgvActividad.RowTemplate.Height = 24;
-            this.dtgvActividad.Size = new System.Drawing.Size(361, 166);
+            this.dtgvActividad.Size = new System.Drawing.Size(430, 166);
             this.dtgvActividad.TabIndex = 11;
             // 
             // btnValidarNSocio
@@ -232,7 +232,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(886, 513);
+            this.ClientSize = new System.Drawing.Size(953, 513);
+            this.Controls.Add(this.grbMedioPago);
             this.Controls.Add(this.btnComprobanteNoSocio);
             this.Controls.Add(this.btnValidarNSocio);
             this.Controls.Add(this.dtgvActividad);
@@ -245,7 +246,6 @@
             this.Controls.Add(this.txtNroRegistroNs);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.grbMedioPago);
             this.Font = new System.Drawing.Font("Cambria", 10F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);

@@ -40,7 +40,7 @@
             this.dtgvRegistro.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtgvRegistro.Name = "dtgvRegistro";
             this.dtgvRegistro.RowHeadersWidth = 51;
-            this.dtgvRegistro.Size = new System.Drawing.Size(726, 315);
+            this.dtgvRegistro.Size = new System.Drawing.Size(832, 361);
             this.dtgvRegistro.TabIndex = 17;
             this.dtgvRegistro.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvRegistro_CellContentClick);
             // 
@@ -61,7 +61,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(895, 548);
+            this.ClientSize = new System.Drawing.Size(963, 548);
             this.Controls.Add(this.lblPersonasRegistradas);
             this.Controls.Add(this.dtgvRegistro);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);

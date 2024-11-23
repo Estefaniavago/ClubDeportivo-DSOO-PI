@@ -14,10 +14,10 @@ namespace ClubDeportivo_DSOO_PI
 {
     public partial class frmPrincipal : BaseForm
     {
+        
         public frmPrincipal()
         {
             InitializeComponent();
-            
             //ESTILOS
             this.StartPosition = FormStartPosition.Manual; // posición manual
             this.Size = new Size(850, 450); // tamaño
@@ -71,15 +71,20 @@ namespace ClubDeportivo_DSOO_PI
             MostrarFormularioEnPanel(formCarnet);
         }
 
-         
+
         //BOTON PARA SALIR DEL SISTEMA
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Hasta luego.");
-            Application.Exit();
+            MessageBox.Show($"Hasta luego.", "Despedida", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // Abrir el formulario de login
+            frmLogin loginForm = new frmLogin();
+            loginForm.Show();
+
+            // Cerrar el formulario principal
+            this.Close();
         }
-       
-        
+
         // Método para cargar un formulario en panel2 sin bordes ni título
         private void MostrarFormularioEnPanel(Form formulario)
         {

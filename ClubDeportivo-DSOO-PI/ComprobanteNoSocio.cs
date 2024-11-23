@@ -8,6 +8,8 @@ namespace ClubDeportivo_DSOO_PI
 {
     public partial class ComprobanteNoSocio : Form
     {
+
+        private frmPagoNoSocio formularioOriginal;
         // Propiedades públicas para recibir los datos
         public string Nombre { get; set; }
         public string Apellido { get; set; }
@@ -16,20 +18,25 @@ namespace ClubDeportivo_DSOO_PI
         public string FechaPago { get; set; }
         public string MedioPago { get; set; }
 
-        public ComprobanteNoSocio()
+        public ComprobanteNoSocio(frmPagoNoSocio formularioOriginal)
         {
             InitializeComponent();
+
+            // Asignar el formulario original
+            this.formularioOriginal = formularioOriginal;
 
             // Configuración inicial del formulario
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.CenterScreen;
             this.BackColor = Color.FromArgb(240, 240, 240);
-            this.Size = new Size(500, 600); // Ajustar dimensiones
+            this.Size = new Size(600, 600); // Ajustar dimensiones
             this.Paint += ComprobanteNoSocio_Paint; // Dibujar fondo y borde
         }
 
         private void ComprobanteNoSocio_Load_1(object sender, EventArgs e)
         {
+            // Aplicar los estilos globales al formulario actual
+            EstilosGlobales.AplicarEstilosFormulario(this);
             try
             {
                 // Asignar los valores recibidos a los TextBox
@@ -76,19 +83,24 @@ namespace ClubDeportivo_DSOO_PI
         {
             try
             {
-                // Ocultar botón antes de imprimir
-                btnImrpimirCompr.Visible = false;
-
-                // Imprimir
+                // Crear un nuevo documento de impresión
                 PrintDocument pd = new PrintDocument();
                 pd.PrintPage += ImprimirComprobanteNs;
-                pd.Print();
 
-                // Mostrar botón después de imprimir
-                btnImrpimirCompr.Visible = true;
+                // Crear una ventana de vista previa de impresión
+                PrintPreviewDialog previewDialog = new PrintPreviewDialog
+                {
+                    Document = pd // Asignar el documento de impresión
+                };
 
-                MessageBox.Show("Operación exitosa", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                // Mostrar la vista previa
+                if (previewDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // Si el usuario confirma, imprimir el documento
+                    pd.Print();
+                    MessageBox.Show("Operación exitosa", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
             }
             catch (Exception ex)
             {
@@ -107,6 +119,23 @@ namespace ClubDeportivo_DSOO_PI
             e.Graphics.DrawString($"Precio: {Precio}", new Font("Segoe UI", 12), Brushes.Black, x, y += 40);
             e.Graphics.DrawString($"Fecha de Pago: {FechaPago}", new Font("Segoe UI", 12), Brushes.Black, x, y += 40);
             e.Graphics.DrawString($"Medio de Pago: {MedioPago}", new Font("Segoe UI", 12), Brushes.Black, x, y += 40);
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            // Limpia los datos de los controles
+            txtNombreNoSocio.Clear();
+            txtApellidoNoSocio.Clear();
+            txtActividadElegida.Clear();
+            txtPrecioActividad.Clear();
+            txtFechaDePagoNoSocio.Clear();
+            txtMedioDePago.Clear();
+
+            // Mostrar el formulario original
+            formularioOriginal.Show();
+
+            // Cerrar el formulario actual
+            this.Close();
         }
     }
 }

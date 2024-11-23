@@ -137,5 +137,11 @@ namespace ClubDeportivo_DSOO_PI
             }
 
         }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Hasta luego.");
+            Application.Exit();
+        }
     }
 }

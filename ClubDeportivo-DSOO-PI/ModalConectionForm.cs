@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace ClubDeportivo_DSOO_PI
 {
-    public class ModalConectionForm : Form
+    public class ModalConectionForm : BaseForm
     {
         private Label lblMessage;
         private Button btnYes;
@@ -28,17 +28,17 @@ namespace ClubDeportivo_DSOO_PI
                 AutoSize = false,
                 TextAlign = ContentAlignment.MiddleCenter,
                 Font = new Font("Segoe UI", 12, FontStyle.Regular),
-                Dock = DockStyle.Top,
-                Height = 120, // Altura para dar espacio al texto
-                Padding = new Padding(10, 20, 10, 10) // Espaciado interno
+                Size = new Size(400, 100),
+                Location = new Point((this.Width - 400) / 2, 40), // Centrado horizontal
+                Padding = new Padding(10) // Espaciado interno
             };
 
             // Panel para los botones
             Panel buttonPanel = new Panel
             {
                 Dock = DockStyle.Bottom,
-                Height = 60,
-                Padding = new Padding(10)
+                Height = 80,
+                Padding = new Padding(15)
             };
 
             // Botón "Sí"
@@ -50,7 +50,8 @@ namespace ClubDeportivo_DSOO_PI
                 ForeColor = Color.White,
                 FlatStyle = FlatStyle.Flat,
                 Width = 100,
-                Height = 40
+                Height = 40,
+                Margin = new Padding(10)
             };
             btnYes.FlatAppearance.BorderSize = 0;
             btnYes.Click += (s, e) => { UserChoice = true; this.Close(); };
@@ -64,7 +65,8 @@ namespace ClubDeportivo_DSOO_PI
                 ForeColor = Color.White,
                 FlatStyle = FlatStyle.Flat,
                 Width = 100,
-                Height = 40
+                Height = 40,
+                Margin = new Padding(10)
             };
             btnNo.FlatAppearance.BorderSize = 0;
             btnNo.Click += (s, e) => { UserChoice = false; this.Close(); };
@@ -72,14 +74,16 @@ namespace ClubDeportivo_DSOO_PI
             // Alinear los botones
             FlowLayoutPanel flowLayout = new FlowLayoutPanel
             {
-                Dock = DockStyle.Fill,
+                Dock = DockStyle.Bottom,
                 FlowDirection = FlowDirection.LeftToRight,
                 AutoSize = true,
                 WrapContents = false,
-                Padding = new Padding(0, 10, 0, 0)
+                Padding = new Padding(0),
+                Anchor = AnchorStyles.None // Mantener los botones centrados
             };
             flowLayout.Controls.Add(btnYes);
             flowLayout.Controls.Add(btnNo);
+
             buttonPanel.Controls.Add(flowLayout);
 
             // Añadir controles al formulario
@@ -88,3 +92,4 @@ namespace ClubDeportivo_DSOO_PI
         }
     }
 }
+

@@ -20,6 +20,7 @@ public static class EstilosGlobales
         AplicarEstilosRecursivos(formulario.Controls);
     }
 
+
     private static void AplicarEstilosRecursivos(Control.ControlCollection controls)
     {
         foreach (Control control in controls)
@@ -56,12 +57,18 @@ public static class EstilosGlobales
                 {
                     if (lbl.Tag.ToString() == "tituloPpal")
                     {
-                        lbl.Font = new Font("Segoe UI", 20, FontStyle.Bold);
-                        lbl.ForeColor = ColorTranslator.FromHtml("#01579B"); // Azul oscuro
+                        lbl.Font = new Font("Segoe UI", 24, FontStyle.Bold);
+                        lbl.ForeColor = ColorTranslator.FromHtml("#222222"); // Azul oscuro
                     }
+                    else if (lbl.Tag.ToString() == "tituloForm")
+                    {
+                        lbl.Font = new Font("Segoe UI", 20, FontStyle.Bold);
+                        lbl.ForeColor = ColorTranslator.FromHtml("#3D8A33"); // Verde más oscuro
+                    }
+
                     else if (lbl.Tag.ToString() == "tituloMenu")
                     {
-                        lbl.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+                        lbl.Font = new Font("Segoe UI", 22, FontStyle.Bold);
                         lbl.ForeColor = ColorTranslator.FromHtml("#3D8A33"); // Verde más oscuro
                     }
                 }
@@ -78,10 +85,35 @@ public static class EstilosGlobales
             }
             else if (control is TextBox txt)
             {
-                // Estilo para campos de texto
-                txt.BorderStyle = BorderStyle.FixedSingle;
-                txt.BackColor = Color.White;
+                // Configurar el TextBox
+                txt.BorderStyle = BorderStyle.None; // Sin bordes
+                txt.BackColor = Color.White; // Fondo blanco
                 txt.ForeColor = Color.FromArgb(51, 51, 51); // Negro suave
+
+                // Evento Paint para dibujar la sombra
+                txt.Parent.Paint += (s, e) =>
+                {
+                    using (GraphicsPath path = new GraphicsPath())
+                    {
+                        // Crear rectángulo para la sombra
+                        Rectangle rect = txt.Bounds;
+                        rect.Inflate(1, 1); // Expande el área para la sombra
+
+                        // Crear un rectángulo redondeado
+                        int radius = 10;
+                        path.AddArc(rect.X, rect.Y, radius, radius, 180, 90);
+                        path.AddArc(rect.Right - radius, rect.Y, radius, radius, 270, 90);
+                        path.AddArc(rect.Right - radius, rect.Bottom - radius, radius, radius, 0, 90);
+                        path.AddArc(rect.X, rect.Bottom - radius, radius, radius, 90, 90);
+                        path.CloseAllFigures();
+
+                        // Dibujar la sombra
+                        using (SolidBrush brush = new SolidBrush(Color.LightGray))
+                        {
+                            e.Graphics.FillPath(brush, path);
+                        }
+                    }
+                };
             }
             else if (control is Panel pnl)
             {

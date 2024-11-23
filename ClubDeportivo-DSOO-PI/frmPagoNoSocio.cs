@@ -94,7 +94,7 @@ namespace ClubDeportivo_DSOO_PI
                 !string.IsNullOrEmpty(txtNyANs.Text))
             {
                 // Crear y configurar el formulario de comprobante
-                ComprobanteNoSocio comprobanteForm = new ComprobanteNoSocio
+                ComprobanteNoSocio comprobanteForm = new ComprobanteNoSocio(this)
                 {
                     Nombre = txtNyANs.Text.Split(' ')[0],
                     Apellido = txtNyANs.Text.Split(' ')[1],
@@ -104,8 +104,9 @@ namespace ClubDeportivo_DSOO_PI
                     MedioPago = rdEfectivo.Checked ? "Efectivo" : rdCredito.Checked ? "Crédito" : "N/A"
                 };
 
-                // Mostrar el formulario de comprobante
-                comprobanteForm.ShowDialog(); // Utilizamos ShowDialog para que sea modal
+                // Ocultar el formulario actual y mostrar el comprobante
+                this.Hide();
+                comprobanteForm.ShowDialog();
             }
             else
             {
@@ -161,6 +162,7 @@ namespace ClubDeportivo_DSOO_PI
                             MessageBox.Show("Este registro corresponde a un socio.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             btnPagar.Enabled = false;
                         }
+
                         else
                         {
                             MessageBox.Show("Registro validado exitosamente.", "Validación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -205,7 +207,13 @@ namespace ClubDeportivo_DSOO_PI
 
                 if (pagoRegistrado)
                 {
+                    // Mostrar mensaje de éxito
                     MessageBox.Show("El pago ha sido registrado correctamente.", "Pago Registrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Deshabilitar el botón de pago
+                    btnPagar.Enabled = false;
+
+                    // Habilitar el botón de comprobante
                     btnComprobanteNoSocio.Enabled = true;
                 }
                 else

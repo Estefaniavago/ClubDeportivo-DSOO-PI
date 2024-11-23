@@ -39,6 +39,7 @@
             this.lblFechaPago = new System.Windows.Forms.Label();
             this.lblMedioDePago = new System.Windows.Forms.Label();
             this.btnImrpimirCompr = new System.Windows.Forms.Button();
+            this.btnCerrar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Comprobante
@@ -50,46 +51,47 @@
             this.Comprobante.Name = "Comprobante";
             this.Comprobante.Size = new System.Drawing.Size(229, 40);
             this.Comprobante.TabIndex = 0;
+            this.Comprobante.Tag = "tituloForm";
             this.Comprobante.Text = "Comprobante";
             // 
             // txtNombreNoSocio
             // 
-            this.txtNombreNoSocio.Location = new System.Drawing.Point(180, 60);
+            this.txtNombreNoSocio.Location = new System.Drawing.Point(204, 60);
             this.txtNombreNoSocio.Name = "txtNombreNoSocio";
             this.txtNombreNoSocio.Size = new System.Drawing.Size(200, 22);
             this.txtNombreNoSocio.TabIndex = 1;
             // 
             // txtApellidoNoSocio
             // 
-            this.txtApellidoNoSocio.Location = new System.Drawing.Point(180, 100);
+            this.txtApellidoNoSocio.Location = new System.Drawing.Point(204, 100);
             this.txtApellidoNoSocio.Name = "txtApellidoNoSocio";
             this.txtApellidoNoSocio.Size = new System.Drawing.Size(200, 22);
             this.txtApellidoNoSocio.TabIndex = 2;
             // 
             // txtActividadElegida
             // 
-            this.txtActividadElegida.Location = new System.Drawing.Point(180, 140);
+            this.txtActividadElegida.Location = new System.Drawing.Point(204, 140);
             this.txtActividadElegida.Name = "txtActividadElegida";
             this.txtActividadElegida.Size = new System.Drawing.Size(200, 22);
             this.txtActividadElegida.TabIndex = 3;
             // 
             // txtPrecioActividad
             // 
-            this.txtPrecioActividad.Location = new System.Drawing.Point(180, 180);
+            this.txtPrecioActividad.Location = new System.Drawing.Point(204, 180);
             this.txtPrecioActividad.Name = "txtPrecioActividad";
             this.txtPrecioActividad.Size = new System.Drawing.Size(200, 22);
             this.txtPrecioActividad.TabIndex = 4;
             // 
             // txtFechaDePagoNoSocio
             // 
-            this.txtFechaDePagoNoSocio.Location = new System.Drawing.Point(180, 220);
+            this.txtFechaDePagoNoSocio.Location = new System.Drawing.Point(204, 220);
             this.txtFechaDePagoNoSocio.Name = "txtFechaDePagoNoSocio";
             this.txtFechaDePagoNoSocio.Size = new System.Drawing.Size(200, 22);
             this.txtFechaDePagoNoSocio.TabIndex = 5;
             // 
             // txtMedioDePago
             // 
-            this.txtMedioDePago.Location = new System.Drawing.Point(180, 260);
+            this.txtMedioDePago.Location = new System.Drawing.Point(204, 260);
             this.txtMedioDePago.Name = "txtMedioDePago";
             this.txtMedioDePago.Size = new System.Drawing.Size(200, 22);
             this.txtMedioDePago.TabIndex = 6;
@@ -157,17 +159,29 @@
             // btnImrpimirCompr
             // 
             this.btnImrpimirCompr.Font = new System.Drawing.Font("Cambria", 10F);
-            this.btnImrpimirCompr.Location = new System.Drawing.Point(180, 300);
+            this.btnImrpimirCompr.Location = new System.Drawing.Point(84, 315);
             this.btnImrpimirCompr.Name = "btnImrpimirCompr";
-            this.btnImrpimirCompr.Size = new System.Drawing.Size(150, 30);
+            this.btnImrpimirCompr.Size = new System.Drawing.Size(138, 42);
             this.btnImrpimirCompr.TabIndex = 13;
-            this.btnImrpimirCompr.Text = "Imprimir Comprobante";
+            this.btnImrpimirCompr.Text = "IMPRIMIR";
             this.btnImrpimirCompr.UseVisualStyleBackColor = true;
             this.btnImrpimirCompr.Click += new System.EventHandler(this.btnImrpimirCompr_Click_1);
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.Font = new System.Drawing.Font("Cambria", 10F);
+            this.btnCerrar.Location = new System.Drawing.Point(287, 315);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(138, 42);
+            this.btnCerrar.TabIndex = 15;
+            this.btnCerrar.Text = "VOLVER";
+            this.btnCerrar.UseVisualStyleBackColor = true;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // ComprobanteNoSocio
             // 
             this.ClientSize = new System.Drawing.Size(825, 400);
+            this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.btnImrpimirCompr);
             this.Controls.Add(this.lblMedioDePago);
             this.Controls.Add(this.lblFechaPago);
@@ -205,5 +219,6 @@
         private System.Windows.Forms.Label lblFechaPago;
         private System.Windows.Forms.Label lblMedioDePago;
         private System.Windows.Forms.Button btnImrpimirCompr;
+        private System.Windows.Forms.Button btnCerrar;
     }
 }

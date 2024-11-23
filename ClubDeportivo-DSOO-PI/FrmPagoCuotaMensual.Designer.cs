@@ -19,7 +19,6 @@
             this.lblPagos = new System.Windows.Forms.Label();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.btnPagar = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.txtNroRegistro = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbCuotas = new System.Windows.Forms.ComboBox();
@@ -28,7 +27,7 @@
             this.btnComprobanteS = new System.Windows.Forms.Button();
             this.btnValidar = new System.Windows.Forms.Button();
             this.lblResultado = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnVolver = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -36,7 +35,7 @@
             // pictureBox1
             // 
             this.pictureBox1.ErrorImage = global::ClubDeportivo_DSOO_PI.Properties.Resources.crossfit_3180368_1280;
-            this.pictureBox1.Location = new System.Drawing.Point(-42, 59);
+            this.pictureBox1.Location = new System.Drawing.Point(-29, 57);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(5);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(162, 302);
@@ -48,7 +47,7 @@
             this.lblPagos.AutoSize = true;
             this.lblPagos.Font = new System.Drawing.Font("Cambria", 24F);
             this.lblPagos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(57)))), ((int)(((byte)(80)))));
-            this.lblPagos.Location = new System.Drawing.Point(178, 9);
+            this.lblPagos.Location = new System.Drawing.Point(149, 9);
             this.lblPagos.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblPagos.Name = "lblPagos";
             this.lblPagos.Size = new System.Drawing.Size(425, 47);
@@ -73,27 +72,16 @@
             this.btnPagar.Location = new System.Drawing.Point(154, 118);
             this.btnPagar.Margin = new System.Windows.Forms.Padding(5);
             this.btnPagar.Name = "btnPagar";
-            this.btnPagar.Size = new System.Drawing.Size(144, 45);
+            this.btnPagar.Size = new System.Drawing.Size(138, 42);
             this.btnPagar.TabIndex = 4;
             this.btnPagar.Text = "PAGAR";
             this.btnPagar.UseVisualStyleBackColor = true;
             this.btnPagar.Click += new System.EventHandler(this.btnPagar_Click);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Cambria", 11F);
-            this.label3.Location = new System.Drawing.Point(10, 0);
-            this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(128, 22);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Medio de Pago";
-            // 
             // txtNroRegistro
             // 
             this.txtNroRegistro.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.txtNroRegistro.Location = new System.Drawing.Point(325, 80);
+            this.txtNroRegistro.Location = new System.Drawing.Point(321, 81);
             this.txtNroRegistro.Margin = new System.Windows.Forms.Padding(5);
             this.txtNroRegistro.Name = "txtNroRegistro";
             this.txtNroRegistro.Size = new System.Drawing.Size(110, 34);
@@ -105,15 +93,14 @@
             this.groupBox1.Controls.Add(this.rdCredito);
             this.groupBox1.Controls.Add(this.btnPagar);
             this.groupBox1.Controls.Add(this.rdEfectivo);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(147, 124);
+            this.groupBox1.Location = new System.Drawing.Point(147, 156);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(5);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(5);
-            this.groupBox1.Size = new System.Drawing.Size(420, 207);
+            this.groupBox1.Size = new System.Drawing.Size(420, 169);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Medio de Pago";
             // 
             // cbCuotas
             // 
@@ -157,10 +144,10 @@
             // btnComprobanteS
             // 
             this.btnComprobanteS.Font = new System.Drawing.Font("Cambria", 10F);
-            this.btnComprobanteS.Location = new System.Drawing.Point(248, 319);
+            this.btnComprobanteS.Location = new System.Drawing.Point(147, 335);
             this.btnComprobanteS.Margin = new System.Windows.Forms.Padding(5);
             this.btnComprobanteS.Name = "btnComprobanteS";
-            this.btnComprobanteS.Size = new System.Drawing.Size(243, 42);
+            this.btnComprobanteS.Size = new System.Drawing.Size(138, 42);
             this.btnComprobanteS.TabIndex = 9;
             this.btnComprobanteS.Text = "COMPROBANTE";
             this.btnComprobanteS.UseVisualStyleBackColor = true;
@@ -168,7 +155,7 @@
             // 
             // btnValidar
             // 
-            this.btnValidar.Location = new System.Drawing.Point(455, 80);
+            this.btnValidar.Location = new System.Drawing.Point(451, 81);
             this.btnValidar.Margin = new System.Windows.Forms.Padding(5);
             this.btnValidar.Name = "btnValidar";
             this.btnValidar.Size = new System.Drawing.Size(119, 34);
@@ -180,30 +167,30 @@
             // lblResultado
             // 
             this.lblResultado.AutoSize = true;
-            this.lblResultado.Location = new System.Drawing.Point(339, 142);
+            this.lblResultado.Location = new System.Drawing.Point(153, 129);
             this.lblResultado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblResultado.Name = "lblResultado";
             this.lblResultado.Size = new System.Drawing.Size(0, 22);
             this.lblResultado.TabIndex = 11;
             // 
-            // button1
+            // btnVolver
             // 
-            this.button1.Font = new System.Drawing.Font("Cambria", 10F);
-            this.button1.Location = new System.Drawing.Point(592, 14);
-            this.button1.Margin = new System.Windows.Forms.Padding(5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(113, 42);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "VOLVER";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.btnVolver_Click);
+            this.btnVolver.Font = new System.Drawing.Font("Cambria", 10F);
+            this.btnVolver.Location = new System.Drawing.Point(419, 335);
+            this.btnVolver.Margin = new System.Windows.Forms.Padding(5);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(138, 42);
+            this.btnVolver.TabIndex = 12;
+            this.btnVolver.Text = "VOLVER";
+            this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // frmPagoCuotaMensual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(704, 472);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(842, 472);
+            this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.lblResultado);
             this.Controls.Add(this.btnValidar);
             this.Controls.Add(this.btnComprobanteS);
@@ -231,7 +218,6 @@
         private System.Windows.Forms.Label lblPagos;
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.Button btnPagar;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtNroRegistro;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rdEfectivo;
@@ -240,6 +226,6 @@
         private System.Windows.Forms.Button btnComprobanteS;
         private System.Windows.Forms.Button btnValidar;
         private System.Windows.Forms.Label lblResultado;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnVolver;
     }
 }

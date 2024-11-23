@@ -42,6 +42,7 @@
             this.txtMontoS = new System.Windows.Forms.TextBox();
             this.txtApellidoS = new System.Windows.Forms.TextBox();
             this.btnImprimirComprobanteS = new System.Windows.Forms.Button();
+            this.btnCerrar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblComprobanteS
@@ -49,13 +50,13 @@
             this.lblComprobanteS.AutoSize = true;
             this.lblComprobanteS.Font = new System.Drawing.Font("Cambria", 20F);
             this.lblComprobanteS.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(57)))), ((int)(((byte)(80)))));
-            this.lblComprobanteS.Location = new System.Drawing.Point(70, 23);
+            this.lblComprobanteS.Location = new System.Drawing.Point(140, 33);
             this.lblComprobanteS.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblComprobanteS.Name = "lblComprobanteS";
-            this.lblComprobanteS.Size = new System.Drawing.Size(561, 40);
+            this.lblComprobanteS.Size = new System.Drawing.Size(440, 40);
             this.lblComprobanteS.TabIndex = 0;
-            this.lblComprobanteS.Tag = "titulo";
-            this.lblComprobanteS.Text = "Comprobante de pago Cuota Mensual";
+            this.lblComprobanteS.Tag = "tituloForm";
+            this.lblComprobanteS.Text = "Comprobante Cuota Mensual";
             // 
             // lblNombreS
             // 
@@ -173,21 +174,33 @@
             // 
             // btnImprimirComprobanteS
             // 
-            this.btnImprimirComprobanteS.Font = new System.Drawing.Font("Cambria", 11F);
-            this.btnImprimirComprobanteS.Location = new System.Drawing.Point(240, 350);
+            this.btnImprimirComprobanteS.Font = new System.Drawing.Font("Cambria", 10F);
+            this.btnImprimirComprobanteS.Location = new System.Drawing.Point(185, 352);
             this.btnImprimirComprobanteS.Margin = new System.Windows.Forms.Padding(4);
             this.btnImprimirComprobanteS.Name = "btnImprimirComprobanteS";
-            this.btnImprimirComprobanteS.Size = new System.Drawing.Size(269, 28);
+            this.btnImprimirComprobanteS.Size = new System.Drawing.Size(138, 42);
             this.btnImprimirComprobanteS.TabIndex = 13;
-            this.btnImprimirComprobanteS.Text = "IMPRIMIR COMPROBANTE ";
+            this.btnImprimirComprobanteS.Text = "IMPRIMIR";
             this.btnImprimirComprobanteS.UseVisualStyleBackColor = true;
             this.btnImprimirComprobanteS.Click += new System.EventHandler(this.btnImprimirComprobanteS_Click);
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.Font = new System.Drawing.Font("Cambria", 10F);
+            this.btnCerrar.Location = new System.Drawing.Point(362, 352);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(138, 42);
+            this.btnCerrar.TabIndex = 14;
+            this.btnCerrar.Text = "VOLVER";
+            this.btnCerrar.UseVisualStyleBackColor = true;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // frmComprobanteSocio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.btnImprimirComprobanteS);
             this.Controls.Add(this.txtApellidoS);
             this.Controls.Add(this.txtMontoS);
@@ -227,5 +240,6 @@
         private System.Windows.Forms.TextBox txtMontoS;
         private System.Windows.Forms.TextBox txtApellidoS;
         private System.Windows.Forms.Button btnImprimirComprobanteS;
+        private System.Windows.Forms.Button btnCerrar;
     }
 }

@@ -8,6 +8,8 @@ namespace ClubDeportivo_DSOO_PI
 {
     public partial class frmComprobanteSocio : Form
     {
+
+        private frmPagoCuotaMensual formularioOriginal;
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Montocuota { get; set; }
@@ -15,20 +17,25 @@ namespace ClubDeportivo_DSOO_PI
         public string MedioPago { get; set; }
         public string Cuotas{ get; set; }
 
-        public frmComprobanteSocio()
+        public frmComprobanteSocio(frmPagoCuotaMensual formularioOriginal)
         {
             InitializeComponent();
+
+            // Asignar el formulario original para usarlo después
+            this.formularioOriginal = formularioOriginal;
 
             // Configuración inicial del formulario
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.CenterScreen;
             this.BackColor = Color.FromArgb(240, 240, 240);
-            this.Size = new Size(500, 600); // Ajustar dimensiones
+            this.Size = new Size(600, 600); // Ajustar dimensiones
             this.Paint += FrmComprobanteSocio_Paint; // Dibujar fondo y borde
         }
 
         private void frmComprobanteSocio_Load(object sender, EventArgs e)
         {
+            // Aplicar los estilos globales al formulario actual
+            EstilosGlobales.AplicarEstilosFormulario(this);
             try
             {
 
@@ -115,7 +122,22 @@ namespace ClubDeportivo_DSOO_PI
             e.Graphics.DrawString($"Cuotas: {Cuotas}", new Font("Segoe UI", 12), Brushes.Black, x, y += 40);
         }
 
-        
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            if (formularioOriginal != null)
+            {
+                // Limpia los datos del formulario original
+                formularioOriginal.LimpiarFormulario();
+
+                // Muestra el formulario original
+                formularioOriginal.Show();
+            }
+
+            // Cierra el formulario actual
+            this.Close();
+        }
+
+
     }
     }
          

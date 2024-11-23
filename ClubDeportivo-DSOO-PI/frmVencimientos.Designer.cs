@@ -40,21 +40,21 @@
             // 
             this.lblTituloVencimientos.Font = new System.Drawing.Font("Cambria", 20F);
             this.lblTituloVencimientos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(57)))), ((int)(((byte)(80)))));
-            this.lblTituloVencimientos.Location = new System.Drawing.Point(163, 22);
+            this.lblTituloVencimientos.Location = new System.Drawing.Point(111, 32);
             this.lblTituloVencimientos.Name = "lblTituloVencimientos";
-            this.lblTituloVencimientos.Size = new System.Drawing.Size(528, 41);
+            this.lblTituloVencimientos.Size = new System.Drawing.Size(560, 41);
             this.lblTituloVencimientos.TabIndex = 0;
             this.lblTituloVencimientos.Tag = "tituloForm";
-            this.lblTituloVencimientos.Text = "Vencimientos de Cuotas Mensuales";
+            this.lblTituloVencimientos.Text = "VENCIMIENTO CUOTAS MENSUALES";
             // 
             // dtgvVencimientos
             // 
             this.dtgvVencimientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvVencimientos.Location = new System.Drawing.Point(106, 149);
+            this.dtgvVencimientos.Location = new System.Drawing.Point(35, 149);
             this.dtgvVencimientos.Name = "dtgvVencimientos";
             this.dtgvVencimientos.RowHeadersWidth = 51;
             this.dtgvVencimientos.RowTemplate.Height = 24;
-            this.dtgvVencimientos.Size = new System.Drawing.Size(648, 235);
+            this.dtgvVencimientos.Size = new System.Drawing.Size(730, 235);
             this.dtgvVencimientos.TabIndex = 4;
             // 
             // dtpFiltroFecha

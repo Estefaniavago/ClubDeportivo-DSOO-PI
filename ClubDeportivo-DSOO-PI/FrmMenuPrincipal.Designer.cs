@@ -36,9 +36,9 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnPagoActividad = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnGrillaPr = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -65,7 +65,7 @@
             this.btnRegistroSocio.BackColor = System.Drawing.Color.DarkBlue;
             this.btnRegistroSocio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistroSocio.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnRegistroSocio.Location = new System.Drawing.Point(4, 161);
+            this.btnRegistroSocio.Location = new System.Drawing.Point(5, 171);
             this.btnRegistroSocio.Margin = new System.Windows.Forms.Padding(4);
             this.btnRegistroSocio.Name = "btnRegistroSocio";
             this.btnRegistroSocio.Size = new System.Drawing.Size(192, 48);
@@ -162,6 +162,18 @@
             this.panel1.TabIndex = 14;
             this.panel1.Tag = "panel1";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::ClubDeportivo_DSOO_PI.Properties.Resources.fitmoveRecurso_2_3x;
+            this.pictureBox1.Location = new System.Drawing.Point(6, 20);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(186, 75);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
             // btnGrillaPr
             // 
             this.btnGrillaPr.BackColor = System.Drawing.Color.DarkBlue;
@@ -184,18 +196,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(949, 465);
             this.panel2.TabIndex = 15;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::ClubDeportivo_DSOO_PI.Properties.Resources.fitmoveRecurso_2_3x;
-            this.pictureBox1.Location = new System.Drawing.Point(6, 20);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(186, 75);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
             // 
             // panel3
             // 

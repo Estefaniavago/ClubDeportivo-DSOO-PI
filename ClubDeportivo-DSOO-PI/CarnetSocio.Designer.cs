@@ -53,6 +53,7 @@
             this.lblCarnetSocio.Name = "lblCarnetSocio";
             this.lblCarnetSocio.Size = new System.Drawing.Size(289, 40);
             this.lblCarnetSocio.TabIndex = 0;
+            this.lblCarnetSocio.Tag = "tituloForm";
             this.lblCarnetSocio.Text = "CARNET DE SOCIO";
             // 
             // lblNombreSocio
@@ -102,7 +103,7 @@
             // txtNombreSocio
             // 
             this.txtNombreSocio.Location = new System.Drawing.Point(258, 109);
-            this.txtNombreSocio.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtNombreSocio.Margin = new System.Windows.Forms.Padding(5);
             this.txtNombreSocio.Name = "txtNombreSocio";
             this.txtNombreSocio.Size = new System.Drawing.Size(164, 26);
             this.txtNombreSocio.TabIndex = 5;
@@ -110,7 +111,7 @@
             // txtDniSocio
             // 
             this.txtDniSocio.Location = new System.Drawing.Point(258, 191);
-            this.txtDniSocio.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtDniSocio.Margin = new System.Windows.Forms.Padding(5);
             this.txtDniSocio.Name = "txtDniSocio";
             this.txtDniSocio.Size = new System.Drawing.Size(164, 26);
             this.txtDniSocio.TabIndex = 6;
@@ -118,7 +119,7 @@
             // txtFechaVencimientoSocio
             // 
             this.txtFechaVencimientoSocio.Location = new System.Drawing.Point(258, 240);
-            this.txtFechaVencimientoSocio.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtFechaVencimientoSocio.Margin = new System.Windows.Forms.Padding(5);
             this.txtFechaVencimientoSocio.Name = "txtFechaVencimientoSocio";
             this.txtFechaVencimientoSocio.Size = new System.Drawing.Size(164, 26);
             this.txtFechaVencimientoSocio.TabIndex = 7;
@@ -126,7 +127,7 @@
             // txtApellidoSocio
             // 
             this.txtApellidoSocio.Location = new System.Drawing.Point(258, 149);
-            this.txtApellidoSocio.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtApellidoSocio.Margin = new System.Windows.Forms.Padding(5);
             this.txtApellidoSocio.Name = "txtApellidoSocio";
             this.txtApellidoSocio.Size = new System.Drawing.Size(164, 26);
             this.txtApellidoSocio.TabIndex = 8;
@@ -146,7 +147,7 @@
             // 
             this.txtNroSocio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNroSocio.Location = new System.Drawing.Point(258, 72);
-            this.txtNroSocio.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtNroSocio.Margin = new System.Windows.Forms.Padding(5);
             this.txtNroSocio.Name = "txtNroSocio";
             this.txtNroSocio.Size = new System.Drawing.Size(164, 26);
             this.txtNroSocio.TabIndex = 10;
@@ -156,7 +157,7 @@
             // 
             this.btnValidarSocio.Font = new System.Drawing.Font("Cambria", 10F);
             this.btnValidarSocio.Location = new System.Drawing.Point(441, 68);
-            this.btnValidarSocio.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnValidarSocio.Margin = new System.Windows.Forms.Padding(5);
             this.btnValidarSocio.Name = "btnValidarSocio";
             this.btnValidarSocio.Size = new System.Drawing.Size(166, 32);
             this.btnValidarSocio.TabIndex = 11;
@@ -168,7 +169,7 @@
             // 
             this.btnImprimirCarnet.Font = new System.Drawing.Font("Cambria", 12F);
             this.btnImprimirCarnet.Location = new System.Drawing.Point(236, 291);
-            this.btnImprimirCarnet.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnImprimirCarnet.Margin = new System.Windows.Forms.Padding(5);
             this.btnImprimirCarnet.Name = "btnImprimirCarnet";
             this.btnImprimirCarnet.Size = new System.Drawing.Size(220, 38);
             this.btnImprimirCarnet.TabIndex = 12;
@@ -195,7 +196,7 @@
             this.Controls.Add(this.lblNombreSocio);
             this.Controls.Add(this.lblCarnetSocio);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "CarnetSocio";
             this.Text = "Emitir carnet";
             this.Load += new System.EventHandler(this.CarnetSocio_Load);

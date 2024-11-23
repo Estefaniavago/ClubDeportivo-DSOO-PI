@@ -112,11 +112,14 @@ namespace ClubDeportivo_DSOO_PI
         private void btnPagarPrimerCuota_Click(object sender, EventArgs e)
         {
 
-            // Crear una nueva instancia del formulario de pago
-            frmPagoCuotaMensual formulario = new frmPagoCuotaMensual();
-         
-            formulario.Show(); // Mostrar el formulario como modal
-            
+            frmPagoCuotaMensual formulario = new frmPagoCuotaMensual
+            {
+                FormularioOrigen = this // Establecer registroPersona como el formulario de origen
+            };
+
+            formulario.Show(); // Mostrar el formulario
+            this.Hide(); // Ocultar el formulario de registroPersona
+
 
         }
        

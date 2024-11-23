@@ -18,6 +18,8 @@ namespace ClubDeportivo_DSOO_PI
 {
     public partial class frmPagoCuotaMensual : BaseForm
     {
+
+        public Form FormularioOrigen { get; set; } // Propiedad para almacenar el formulario de origen
         private string nroRegistro; // En la BBDD es idRegistro
         string montoTotal = "30000"; // Monto total de la cuota mensual para todos los socios
         string nombre;
@@ -76,7 +78,7 @@ namespace ClubDeportivo_DSOO_PI
                     }
                     else
                     {
-                        lblResultado.Text += "es un no socio. Puede pagar para convertirse en socio.";
+                        lblResultado.Text += "No es socio. Puede pagar para convertirse en socio.";
                         lblResultado.ForeColor = Color.Blue;
                         btnPagar.Enabled = true;
                     }
@@ -149,14 +151,19 @@ namespace ClubDeportivo_DSOO_PI
                 cbCuotas.Text,
                 btnComprobanteS
             );
+            // Deshabilitar el botón de pago y mostrar un mensaje de confirmación
+            btnPagar.Enabled = false;
+            btnComprobanteS.Enabled = true; // Habilitar comprobante
+            lblResultado.Text = "Pago registrado exitosamente.";
+            lblResultado.ForeColor = Color.Green;
         }
 
        
         private void btnComprobante_Click(object sender, EventArgs e)
         {
-            
+
             //Instancia al comprobante y le pasa los datos cargados
-            frmComprobanteSocio comprobanteForm = new frmComprobanteSocio
+            frmComprobanteSocio comprobanteForm = new frmComprobanteSocio(this)
 
             {
                 Nombre = this.nombre,
@@ -167,26 +174,57 @@ namespace ClubDeportivo_DSOO_PI
                 Cuotas = cbCuotas.Text,
              
             };
-                           
+
+            // Ocultar el formulario actual y abrir el comprobante
+            this.Hide();
             comprobanteForm.ShowDialog();
 
         }
-        
+         private void btnVolver_Click(object sender, EventArgs e)
+        {
+            // Verificar el origen y regresar al formulario correspondiente
+            if (FormularioOrigen is registroPersona registroPersonaForm)
+            {
+                registroPersonaForm.Show(); // Mostrar el formulario de registroPersona si es el origen
+            }
+            else
+            {
+                frmPrincipal formPrincipal = new frmPrincipal();
+                formPrincipal.Show(); // Si no viene de registroPersona, regresa al menú principal
+            }
+
+            this.Close(); // Cerrar el formulario actual
+        }
+
 
         private void frmPagoCuotaMensual_Load(object sender, EventArgs e)
         {
             lblResultado.Text = "Ingrese el número de registro y presione Validar.";
             lblResultado.ForeColor = Color.Black;
             btnPagar.Enabled = false;
+            btnVolver.Visible = FormularioOrigen is registroPersona;
+
+            // Si ya se validó un registro anteriormente, vuelve a comprobar su estado
+            if (!string.IsNullOrEmpty(nroRegistro) && int.TryParse(nroRegistro, out int registroId))
+            {
+                ValidarRegistro(registroId);
+            }
         }
+         
+       
+        
 
-   
-        private void btnVolver_Click(object sender, EventArgs e)
+        public void LimpiarFormulario()
         {
-            frmPrincipal formPrincipal = new frmPrincipal();
-            formPrincipal.Show();
-            this.Close();
-
+            // Limpiar todos los controles y resetear el formulario
+            txtNroRegistro.Clear();
+            lblResultado.Text = "Ingrese el número de registro y presione Validar.";
+            lblResultado.ForeColor = Color.Black;
+            rdEfectivo.Checked = false;
+            rdCredito.Checked = false;
+            cbCuotas.SelectedIndex = -1;
+            btnPagar.Enabled = false;
+            btnComprobanteS.Enabled = false;
         }
     }
 }
