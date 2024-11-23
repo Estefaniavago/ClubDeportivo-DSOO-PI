@@ -18,7 +18,7 @@ namespace ClubDeportivo_DSOO_PI
         {
             InitializeComponent();
             
-            //ESTILOS, CHEQUEAR
+            //ESTILOS
             this.StartPosition = FormStartPosition.Manual; // posición manual
             this.Size = new Size(850, 450); // tamaño
             this.Location = new Point(100, 100); // posición en la pantalla
