@@ -64,6 +64,20 @@ public static class EstilosGlobales
                     {
                         lbl.Font = new Font("Segoe UI", 20, FontStyle.Bold);
                         lbl.ForeColor = ColorTranslator.FromHtml("#3D8A33"); // Verde más oscuro
+
+                        if (lbl.Parent != null)
+                        {
+                            lbl.Parent.Resize += (s, e) =>
+                            {
+                                // Centrar horizontalmente y verticalmente
+                                lbl.Left = (lbl.Parent.Width - lbl.Width) / 2; // Centrado horizontal
+                                
+                            };
+
+                            // Centrar inicialmente
+                            lbl.Left = (lbl.Parent.Width - lbl.Width) / 2; // Centrado horizontal
+                            
+                        }
                     }
 
                     else if (lbl.Tag.ToString() == "tituloMenu")

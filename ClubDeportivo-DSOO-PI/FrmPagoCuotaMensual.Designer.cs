@@ -47,7 +47,7 @@
             this.lblPagos.AutoSize = true;
             this.lblPagos.Font = new System.Drawing.Font("Cambria", 24F);
             this.lblPagos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(57)))), ((int)(((byte)(80)))));
-            this.lblPagos.Location = new System.Drawing.Point(149, 9);
+            this.lblPagos.Location = new System.Drawing.Point(149, 19);
             this.lblPagos.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblPagos.Name = "lblPagos";
             this.lblPagos.Size = new System.Drawing.Size(425, 47);
@@ -59,7 +59,7 @@
             // 
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.Font = new System.Drawing.Font("Cambria", 11F);
-            this.lblUsuario.Location = new System.Drawing.Point(143, 80);
+            this.lblUsuario.Location = new System.Drawing.Point(143, 88);
             this.lblUsuario.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(172, 22);
@@ -81,7 +81,7 @@
             // txtNroRegistro
             // 
             this.txtNroRegistro.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.txtNroRegistro.Location = new System.Drawing.Point(321, 81);
+            this.txtNroRegistro.Location = new System.Drawing.Point(325, 88);
             this.txtNroRegistro.Margin = new System.Windows.Forms.Padding(5);
             this.txtNroRegistro.Name = "txtNroRegistro";
             this.txtNroRegistro.Size = new System.Drawing.Size(110, 34);
@@ -155,7 +155,7 @@
             // 
             // btnValidar
             // 
-            this.btnValidar.Location = new System.Drawing.Point(451, 81);
+            this.btnValidar.Location = new System.Drawing.Point(448, 88);
             this.btnValidar.Margin = new System.Windows.Forms.Padding(5);
             this.btnValidar.Name = "btnValidar";
             this.btnValidar.Size = new System.Drawing.Size(119, 34);

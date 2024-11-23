@@ -28,10 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dtgvRegistro = new System.Windows.Forms.DataGridView();
             this.lblPersonasRegistradas = new System.Windows.Forms.Label();
+            this.dtgvRegistro = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvRegistro)).BeginInit();
             this.SuspendLayout();
+            // 
+            // lblPersonasRegistradas
+            // 
+            this.lblPersonasRegistradas.AutoSize = true;
+            this.lblPersonasRegistradas.Font = new System.Drawing.Font("Cambria", 24F);
+            this.lblPersonasRegistradas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(57)))), ((int)(((byte)(80)))));
+            this.lblPersonasRegistradas.Location = new System.Drawing.Point(239, 47);
+            this.lblPersonasRegistradas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPersonasRegistradas.Name = "lblPersonasRegistradas";
+            this.lblPersonasRegistradas.Size = new System.Drawing.Size(463, 47);
+            this.lblPersonasRegistradas.TabIndex = 22;
+            this.lblPersonasRegistradas.Tag = "tituloForm";
+            this.lblPersonasRegistradas.Text = "PERSONAS REGISTRADAS";
             // 
             // dtgvRegistro
             // 
@@ -40,22 +53,9 @@
             this.dtgvRegistro.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtgvRegistro.Name = "dtgvRegistro";
             this.dtgvRegistro.RowHeadersWidth = 51;
-            this.dtgvRegistro.Size = new System.Drawing.Size(832, 361);
+            this.dtgvRegistro.Size = new System.Drawing.Size(832, 329);
             this.dtgvRegistro.TabIndex = 17;
             this.dtgvRegistro.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvRegistro_CellContentClick);
-            // 
-            // lblPersonasRegistradas
-            // 
-            this.lblPersonasRegistradas.AutoSize = true;
-            this.lblPersonasRegistradas.Font = new System.Drawing.Font("Cambria", 24F);
-            this.lblPersonasRegistradas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(57)))), ((int)(((byte)(80)))));
-            this.lblPersonasRegistradas.Location = new System.Drawing.Point(188, 42);
-            this.lblPersonasRegistradas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblPersonasRegistradas.Name = "lblPersonasRegistradas";
-            this.lblPersonasRegistradas.Size = new System.Drawing.Size(463, 47);
-            this.lblPersonasRegistradas.TabIndex = 22;
-            this.lblPersonasRegistradas.Tag = "tituloForm";
-            this.lblPersonasRegistradas.Text = "PERSONAS REGISTRADAS";
             // 
             // PersonasRegistradas
             // 
